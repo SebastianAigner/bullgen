@@ -19,20 +19,20 @@ fun main(args: Array<String>) {
     val writer = StringWriter()
     val context = Context()
 
-    val imageProvider = GenericImageProvider(arrayOf("problem"))
-    imageProvider.provide()
+    val imageProvider = GenericImageProvider("problem")
+    println(imageProvider.provide())
 
-//    val slideContents = slideGenerators.map { it.generate(arrayOf("blockchain", "scalability", "happiness")) }
-//
-//    val slides = slideContents.map {
-//        Slide(it)
-//    }
-//
-//    context.setVariable("slides", slides)
-//    engine.process("index", context, writer)
-//    println(writer.buffer)
-//    val outString = writer.buffer.toString()
-//    File("bullgen_presentation.html").printWriter().use { out -> out.println(outString) }
+    val slideContents = slideGenerators.map { it.generate(arrayOf("blockchain", "scalability", "happiness")) }
+
+    val slides = slideContents.map {
+        Slide(it)
+    }
+
+    context.setVariable("slides", slides)
+    engine.process("index", context, writer)
+    println(writer.buffer)
+    val outString = writer.buffer.toString()
+    File("bullgen_presentation.html").printWriter().use { out -> out.println(outString) }
 }
 
 data class Slide(val content: String)
