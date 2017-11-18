@@ -5,6 +5,7 @@ import org.thymeleaf.TemplateEngine
 import org.thymeleaf.context.Context
 import org.thymeleaf.templateresolver.ClassLoaderTemplateResolver
 import providers.GenericImageProvider
+import providers.InspirationalQuotesProvider
 import java.io.File
 import java.io.StringWriter
 
@@ -25,17 +26,20 @@ fun main(args: Array<String>) {
 //    val imageProvider = GenericImageProvider("problem")
 //    println(imageProvider.provide())
 
-    val slideContents = slideGenerators.map { it.generate(arrayOf("blockchain", "scalability", "happiness")) }
+    val quoteProvider = InspirationalQuotesProvider()
+    println(quoteProvider.provide())
 
-    val slides = slideContents.map {
-        Slide(it)
-    }
-
-    context.setVariable("slides", slides)
-    engine.process("index", context, writer)
-    println(writer.buffer)
-    val outString = writer.buffer.toString()
-    File("bullgen_presentation.html").printWriter().use { out -> out.println(outString) }
+//    val slideContents = slideGenerators.map { it.generate(arrayOf("blockchain", "scalability", "happiness")) }
+//
+//    val slides = slideContents.map {
+//        Slide(it)
+//    }
+//
+//    context.setVariable("slides", slides)
+//    engine.process("index", context, writer)
+//    println(writer.buffer)
+//    val outString = writer.buffer.toString()
+//    File("bullgen_presentation.html").printWriter().use { out -> out.println(outString) }
 }
 
 data class Slide(val content: String)
