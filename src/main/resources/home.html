@@ -1,0 +1,16 @@
+<!DOCTYPE html SYSTEM "http://www.thymeleaf.org/dtd/xhtml1-strict-thymeleaf-3.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>My first template with Thymeleaf</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+</head>
+<body>
+    <h1>Oi cunt</h1>
+    <h3>Welcome <!--/*@thymesVar id="name" type="java.lang.String"*/-->
+    <span th:text="${name}"></span></h3>
+    <!--/*@thymesVar id="person" type="Person"*/-->
+    <h1 th:text="${person.firstName}"></h1>
+    <h5 th:text="${person.lastName}"></h5>
+</body>
+</html>
