@@ -123,9 +123,7 @@ fun destination(dir: Direction): String = when(dir) {
     }
 }
 
-operator fun StringBuilder.plusAssign(increment: String) {
-    this.append(increment)
-}
+
 
 fun doStringBuilding() {
     val sb = StringBuilder()
