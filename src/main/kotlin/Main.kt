@@ -4,6 +4,7 @@ import org.json.JSONObject
 import org.thymeleaf.TemplateEngine
 import org.thymeleaf.context.Context
 import org.thymeleaf.templateresolver.ClassLoaderTemplateResolver
+import providers.FaceImageProvider
 import providers.GenericImageProvider
 import java.io.File
 import java.io.StringWriter
@@ -22,7 +23,7 @@ fun main(args: Array<String>) {
     val writer = StringWriter()
     val context = Context()
 
-//    val imageProvider = GenericImageProvider("problem")
+//    val imageProvider = FaceImageProvider("businessman")
 //    println(imageProvider.provide())
 
     val slideContents = slideGenerators.map { it.generate(arrayOf("blockchain", "scalability", "happiness")) }
