@@ -1,4 +1,5 @@
 import generators.TitleSlideGenerator
+import generators.HappyTeamSlideGenerator
 import org.thymeleaf.TemplateEngine
 import org.thymeleaf.context.Context
 import org.thymeleaf.templateresolver.ClassLoaderTemplateResolver
@@ -6,6 +7,7 @@ import java.io.File
 import java.io.StringWriter
 
 val slideGenerators = arrayOf(
+    HappyTeamSlideGenerator(),
     TitleSlideGenerator()
 )
 
