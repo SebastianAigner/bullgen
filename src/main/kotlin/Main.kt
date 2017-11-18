@@ -1,13 +1,14 @@
 import generators.TitleSlideGenerator
+import generators.ProductGrowthSlideGenerator
 import org.json.JSONObject
 import org.thymeleaf.TemplateEngine
 import org.thymeleaf.context.Context
 import org.thymeleaf.templateresolver.ClassLoaderTemplateResolver
-import providers.getPaper
 import java.io.File
 import java.io.StringWriter
 
 val slideGenerators = arrayOf(
+    ProductGrowthSlideGenerator(),
     TitleSlideGenerator()
 )
 
