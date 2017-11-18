@@ -3,16 +3,14 @@ import SlideGenerator
 import HTMLString
 import java.util.*
 
+/* extension version */
+fun <T> Iterable<T>.shuffle(): List<T> {
+    val list = this.toMutableList().apply {  }
+    Collections.shuffle(list)
+    return list
+}
+
 class JustNumbersGenerator: SlideGenerator {
-
-
-    /* extension version */
-    fun <T> Iterable<T>.shuffle(): List<T> {
-        val list = this.toMutableList().apply {  }
-        Collections.shuffle(list)
-        return list
-    }
-
 
 
 
