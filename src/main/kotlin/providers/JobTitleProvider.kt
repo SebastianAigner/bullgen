@@ -1,13 +1,17 @@
 import HTMLString
 
 val jobPrePrefixes = arrayOf("Chief", "Senior", "Associate", "Junior", "Technical")
-val jobPrefixes = arrayOf("Application", "Support", "Full Stack")
+val jobPrefixes = arrayOf("Application", "Support", "Full Stack", "Digital")
 
 val jobTopics = arrayOf("Technology", "Information", "Data Center", "Data Quality", "Information Systems", "Computer",
-        "IT", ".NET", "Java", "Front End", "Back End", "Help Desk", "Database", "Network", "Web", "Telecommunications")
+        "IT", ".NET", "Java", "Front End", "Back End", "Help Desk", "JSON Parser", "Database", "Network", "Web",
+        "Telecommunications", "SEO", "Marketing", "Social Media", "Growth", "Content", "UX", "UI", "Accessibility",
+        "Interaction", "Mobile", "Frameworks", "Business Systems", "Cloud", "DevOps", "Agile Project", "Product", "Account",
+        "Security", "QA")
 
 val jobSuffixes = arrayOf("Director", "Officer", "Manager", "Specialist", "Engineer", "Architect", "Administrator",
-        "Analyst", "Developer", "Coordinator")
+        "Analyst", "Developer", "Coordinator", "Technologist", "Consultant", "Hacker", "Strategist", "Designer", "Modeler",
+        "Lead")
 
 
 fun provideJobTitle(): HTMLString {
