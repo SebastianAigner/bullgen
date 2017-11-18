@@ -28,6 +28,20 @@
 		<div class="reveal">
 			<div class="slides">
 				
+					<section><canvas data-chart="line"><!-- {
+        "data": {
+            "labels": ["March", "April", "May", "June", "July", "August", "September", "October", "November", "December", "January"],
+            "datasets": [
+                {
+                    "data": [65.02992417130012,74.64430896380216,91.29931421470744,92.20467895899466,76.7708091680889,93.5573054108872,94.11114075016755,92.06925045385844,94.87671937131519,79.62613367099028,142.31579188652523],
+                    "label": "Lead-to-client Gross Customer Acquisition Difference",
+                    "backgroundColor": "hsl(130, 70%, 50%)"
+                }
+            ]
+        },
+        "options": { "responsive": "true" }
+    } --></canvas></section>
+				
 					<section><h1>A presentation</h1><h3>about blockchain, scalability, happiness</section>
 				
 			</div>
@@ -38,16 +52,37 @@
 
 		<script>
 			// More info about config & dependencies:
-			// - https://github.com/hakimel/reveal.js#configuration
-			// - https://github.com/hakimel/reveal.js#dependencies
-			Reveal.initialize({
-				dependencies: [
-					{ src: 'plugin/markdown/marked.js' },
-					{ src: 'plugin/markdown/markdown.js' },
-					{ src: 'plugin/notes/notes.js', async: true },
-					{ src: 'plugin/highlight/highlight.js', async: true, callback: function() { hljs.initHighlightingOnLoad(); } }
-				]
-			});
+            // - https://github.com/hakimel/reveal.js#configuration
+            // - https://github.com/hakimel/reveal.js#dependencies
+            Reveal.initialize({
+                dependencies: [
+                    {src: 'plugin/markdown/marked.js'},
+                    {src: 'plugin/markdown/markdown.js'},
+                    {src: 'plugin/notes/notes.js', async: true},
+                    {
+                        src: 'plugin/highlight/highlight.js', async: true, callback: function () {
+                        hljs.initHighlightingOnLoad();
+                    }
+                    },
+                    {src: 'plugin/chart/Chart.min.js'},
+                    {src: 'plugin/chart/csv2chart.js'},
+                ],
+                chart: {
+                    defaults: {
+                        global: {
+                            title: {fontColor: "#FFF"},
+                            legend: {
+                                labels: {fontColor: "#FFF", fontSize: 24},
+                            },
+                        },
+                        scale: {
+                            scaleLabel: {fontColor: "#FFF"},
+                            gridLines: {color: "#888", zeroLineColor: "#888"},
+                            ticks: {fontColor: "#FFF"},
+                        }
+                    },
+                }
+            });
 		</script>
 	</body>
 </html>

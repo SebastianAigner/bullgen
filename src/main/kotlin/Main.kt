@@ -5,6 +5,7 @@ import generators.SuggestedReadingGenerator
 
 import generators.TitleSlideGenerator
 import generators.HappyTeamSlideGenerator
+import generators.ProductGrowthSlideGenerator
 import org.json.JSONObject
 import org.thymeleaf.TemplateEngine
 import org.thymeleaf.context.Context
@@ -20,6 +21,7 @@ val slideGenerators = arrayOf(
     EmojiJerkSlideGenerator(),
     SuggestedReadingGenerator(),
     HappyTeamSlideGenerator(),
+    ProductGrowthSlideGenerator(),
     TitleSlideGenerator()
 )
 
@@ -32,23 +34,17 @@ fun main(args: Array<String>) {
     val writer = StringWriter()
     val context = Context()
 
-//    val imageProvider = FaceImageProvider("businessman")
-//    println(imageProvider.provide())
+    val slideContents = slideGenerators.map { it.generate(arrayOf("blockchain", "scalability", "happiness")) }
 
-    val quoteProvider = InspirationalQuotesProvider()
-    println(quoteProvider.provide())
+    val slides = slideContents.map {
+        Slide(it)
+    }
 
-//    val slideContents = slideGenerators.map { it.generate(arrayOf("blockchain", "scalability", "happiness")) }
-//
-//    val slides = slideContents.map {
-//        Slide(it)
-//    }
-//
-//    context.setVariable("slides", slides)
-//    engine.process("index", context, writer)
-//    println(writer.buffer)
-//    val outString = writer.buffer.toString()
-//    File("bullgen_presentation.html").printWriter().use { out -> out.println(outString) }
+    context.setVariable("slides", slides)
+    engine.process("index", context, writer)
+    println(writer.buffer)
+    val outString = writer.buffer.toString()
+    File("bullgen_presentation.html").printWriter().use { out -> out.println(outString) }
 }
 
 data class Slide(val content: String)
