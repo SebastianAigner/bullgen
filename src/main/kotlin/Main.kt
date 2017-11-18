@@ -1,3 +1,4 @@
+import generators.SuggestedReadingGenerator
 import generators.TitleSlideGenerator
 import generators.HappyTeamSlideGenerator
 import org.json.JSONObject
@@ -10,6 +11,8 @@ import java.io.File
 import java.io.StringWriter
 
 val slideGenerators = arrayOf(
+    TitleSlideGenerator(),
+    SuggestedReadingGenerator(),
     HappyTeamSlideGenerator(),
     TitleSlideGenerator()
 )
