@@ -36,6 +36,8 @@ dependencies {
 
     // https://mvnrepository.com/artifact/org.json/json
     compile group: 'org.json', name: 'json', version: '20171018'
+    compile 'com.beust:klaxon:0.32'
+
 
 }
 

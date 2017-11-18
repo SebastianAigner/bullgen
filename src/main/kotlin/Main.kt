@@ -12,8 +12,22 @@ val slideGenerators = arrayOf(
 )
 
 fun main(args: Array<String>) {
-    val x = JSONObject("""{ bla: "shit" } """)
-    println(x.get("bla"))
+    val x = JSONObject("""
+        {
+    "stuff": {
+        "onetype": [
+            {"id":1,"name":"John Doe"},
+            {"id":2,"name":"Don Joeh"}
+        ],
+        "othertype": {"id":2,"company":"ACME"}
+    },
+    "otherstuff": {
+        "thing": [[1,42],[2,2]]
+     }
+} """)
+    val otherStuff = JSONObject(x.get("otherstuff"))
+    println(otherStuff.toMap())
+
     // getPaper()
     val resolver = ClassLoaderTemplateResolver()
     resolver.setTemplateMode("XHTML")

@@ -8,7 +8,5 @@ class TitleSlideGenerator: SlideGenerator {
 
         return "<h1>A presentation</h1>" +
                 "<h3>about ${keywords.joinToString()}"
-
-
     }
 }
