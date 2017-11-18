@@ -35,7 +35,7 @@ fun main(args: Array<String>) {
 //    val imageProvider = FaceImageProvider("businessman")
 //    println(imageProvider.provide())
 
-    val quoteProvider = InspirationalQuotesProvider()
+    val quoteProvider = InspirationalQuotesProvider("solution")
     println(quoteProvider.provide())
 
 //    val slideContents = slideGenerators.map { it.generate(arrayOf("blockchain", "scalability", "happiness")) }
