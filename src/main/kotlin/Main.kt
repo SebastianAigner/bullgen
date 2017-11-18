@@ -1,5 +1,6 @@
 import generators.SuggestedReadingGenerator
 import generators.TitleSlideGenerator
+import generators.HappyTeamSlideGenerator
 import org.json.JSONObject
 import org.thymeleaf.TemplateEngine
 import org.thymeleaf.context.Context
@@ -10,7 +11,9 @@ import java.io.StringWriter
 
 val slideGenerators = arrayOf(
     TitleSlideGenerator(),
-        SuggestedReadingGenerator()
+    SuggestedReadingGenerator(),
+    HappyTeamSlideGenerator(),
+    TitleSlideGenerator()
 )
 
 fun main(args: Array<String>) {
