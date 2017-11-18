@@ -1,4 +1,5 @@
 import generators.TitleSlideGenerator
+import generators.HappyTeamSlideGenerator
 import org.json.JSONObject
 import org.thymeleaf.TemplateEngine
 import org.thymeleaf.context.Context
@@ -8,27 +9,11 @@ import java.io.File
 import java.io.StringWriter
 
 val slideGenerators = arrayOf(
+    HappyTeamSlideGenerator(),
     TitleSlideGenerator()
 )
 
 fun main(args: Array<String>) {
-    val x = JSONObject("""
-        {
-    "stuff": {
-        "onetype": [
-            {"id":1,"name":"John Doe"},
-            {"id":2,"name":"Don Joeh"}
-        ],
-        "othertype": {"id":2,"company":"ACME"}
-    },
-    "otherstuff": {
-        "thing": [[1,42],[2,2]]
-     }
-} """)
-    val otherStuff = JSONObject(x.get("otherstuff"))
-    println(otherStuff.toMap())
-
-    // getPaper()
     val resolver = ClassLoaderTemplateResolver()
     resolver.setTemplateMode("XHTML")
     resolver.suffix = ".html"
