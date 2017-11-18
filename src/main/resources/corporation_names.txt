@@ -1,0 +1,616 @@
+21Vianet Group, Inc.
+2U, Inc.
+3D Systems Corporation
+51job, Inc.
+58.com Inc.
+A10 Networks, Inc.
+Aaron's,  Inc.
+Acacia Communications, Inc.
+ACI Worldwide, Inc.
+ACM Research, Inc.
+Activision Blizzard, Inc
+Actua Corporation
+Actuant Corporation
+Acxiom Corporation
+Adesto Technologies Corporation
+Adobe Systems Incorporated
+Advanced Micro Devices, Inc.
+Advanced Semiconductor Engineering, Inc.
+Aercap Holdings N.V.
+AeroCentury Corp.
+Aerohive Networks, Inc.
+Agilysys, Inc.
+Air Lease Corporation
+Aircastle Limited
+Airgain, Inc.
+AirMedia Group Inc
+Alarm.com Holdings, Inc.
+Allot Communications Ltd.
+Allscripts Healthcare Solutions, Inc.
+Alpha and Omega Semiconductor Limited
+Alphabet Inc.
+Alphabet Inc.
+Altaba Inc.
+Altair Engineering Inc.
+Alteryx, Inc.
+Ambarella, Inc.
+Amber Road, Inc.
+Amdocs Limited
+Ameri Holdings, Inc.
+American Software, Inc.
+Amkor Technology, Inc.
+AMN Healthcare Services Inc
+Amtech Systems, Inc.
+Analog Devices, Inc.
+ANSYS, Inc.
+AppFolio, Inc.
+Appian Corporation
+Apple Inc.
+Applied Materials, Inc.
+Applied Optoelectronics, Inc.
+Apptio, Inc.
+Aquantia Corp.
+Arista Networks, Inc.
+ARRIS International plc
+ASML Holding N.V.
+Aspen Technology, Inc.
+AstroNova, Inc.
+Asure Software Inc
+Atlassian Corporation Plc
+Atomera Incorporated
+Attunity Ltd.
+AU Optronics Corp
+Autodesk, Inc.
+Autohome Inc.
+Automatic Data Processing, Inc.
+AutoWeb, Inc.
+Aviat Networks, Inc.
+Avid Technology, Inc.
+Aware, Inc.
+Axcelis Technologies, Inc.
+AXT Inc
+B.O.S. Better Online Solutions
+Baidu, Inc.
+Bandwidth Inc.
+Barracuda Networks, Inc.
+Barrett Business Services, Inc.
+Bazaarvoice, Inc.
+Benchmark Electronics, Inc.
+Benefitfocus, Inc.
+BG Staffing Inc
+BIO-key International, Inc.
+Bitauto Holdings Limited
+Black Box Corporation
+Black Knight, Inc.
+Blackbaud, Inc.
+BlackBerry Limited
+BlackLine, Inc.
+Blonder Tongue Laboratories, Inc.
+Bottomline Technologies, Inc.
+Box, Inc.
+Bridgeline Digital, Inc.
+Brightcove Inc.
+Broadcom Limited
+BroadSoft, Inc.
+BroadVision, Inc.
+Brocade Communications Systems, Inc.
+Brooks Automation, Inc.
+CA Inc.
+Cabot Microelectronics Corporation
+CACI International, Inc.
+Cadence Design Systems, Inc.
+CAI International, Inc.
+CalAmp Corp.
+Callidus Software, Inc.
+Canadian Solar Inc.
+Carbonite, Inc.
+CarGurus, Inc.
+Cars.com Inc.
+Castlight Health, inc.
+Cavium, Inc.
+Celestica, Inc.
+Ceragon Networks Ltd.
+Cerner Corporation
+CEVA, Inc.
+Changyou.com Limited
+ChannelAdvisor Corporation
+Check Point Software Technologies Ltd.
+Cheetah Mobile Inc.
+Chicago Rivet & Machine Co.
+China Information Technology, Inc.
+ChinaCache International Holdings Ltd.
+ChinaNet Online Holdings, Inc.
+ChipMOS TECHNOLOGIES INC.
+Cirrus Logic, Inc.
+Cisco Systems, Inc.
+Cision Ltd.
+Citrix Systems, Inc.
+Cleantech Solutions International, Inc.
+Cloudera, Inc.
+Cognizant Technology Solutions Corporation
+CommerceHub, Inc.
+CommerceHub, Inc.
+CommScope Holding Company, Inc.
+Commvault Systems, Inc.
+Computer Programs and Systems, Inc.
+Computer Task Group, Incorporated
+Comtech Telecommunications Corp.
+Concurrent Computer Corporation
+Convergys Corporation
+CoreLogic, Inc.
+Cornerstone OnDemand, Inc.
+CounterPath Corporation
+Coupa Software Incorporated
+Cray Inc
+Cree, Inc.
+Criteo S.A.
+Cross Country Healthcare, Inc.
+CSG Systems International, Inc.
+CSP Inc.
+CSRA Inc.
+CTS Corporation
+Curtiss-Wright Corporation
+CVD Equipment Corporation
+CyberArk Software Ltd.
+Cypress Semiconductor Corporation
+CYREN Ltd.
+DAQO New Energy Corp.
+Datawatch Corporation
+Dell Technologies Inc.
+Determine, Inc. 
+Digi International Inc.
+Digimarc Corporation
+Digital Ally, Inc.
+Diodes Incorporated
+DLH Holdings Corp.
+Dover Corporation
+DSP Group, Inc.
+DST Systems, Inc.
+DXC Technology Company
+Eaton Corporation, PLC
+Ebix, Inc.
+Echelon Corporation
+EchoStar Corporation
+Edgewater Technology, Inc.
+eGain Corporation
+Electronic Arts Inc.
+Electronics for Imaging, Inc.
+Ellie Mae, Inc.
+Eltek Ltd.
+eMagin Corporation
+EMCORE Corporation
+Endurance International Group Holdings, Inc.
+Energous Corporation
+Energy Recovery, Inc.
+Enphase Energy, Inc.
+EPAM Systems, Inc.
+ePlus inc.
+Ericsson
+Everbridge, Inc.
+Everspin Technologies, Inc.
+Evertec, Inc.
+Evolving Systems, Inc.
+Evoqua Water Technologies Corp.
+Exa Corporation
+Exterran Corporation
+Extreme Networks, Inc.
+F5 Networks, Inc.
+Facebook, Inc.
+FactSet Research Systems Inc.
+Fang Holdings Limited
+Finisar Corporation
+FireEye, Inc.
+First Solar, Inc.
+Fiserv, Inc.
+Fitbit, Inc.
+Five9, Inc.
+Flex Ltd.
+FlexShopper, Inc.
+ForeScout Technologies, Inc.
+Foresight Autonomous Holdings Ltd.
+FormFactor, Inc.
+Formula Systems Ltd.
+Fortinet, Inc.
+Fusion Telecommunications International, Inc.
+Gardner Denver Holdings, Inc.
+GDS Holdings Limited
+GEE Group Inc.
+General Finance Corporation
+General Finance Corporation
+General Finance Corporation
+GigaMedia Limited
+Gigamon Inc.
+Gilat Satellite Networks Ltd.
+GlobalSCAPE, Inc.
+Globant S.A.
+Glu Mobile Inc.
+GoDaddy Inc.
+Graham Corporation
+Great Elm Capital Group, Inc. 
+Gridsum Holding Inc.
+Groupon, Inc.
+GSE Systems, Inc.
+GSI Technology, Inc.
+Guidewire Software, Inc.
+Hanwha Q CELLS Co., Ltd. 
+Harmonic Inc.
+Harte-Hanks, Inc.
+HealthStream, Inc.
+Heidrick & Struggles International, Inc.
+Hewlett Packard Enterprise Company
+Himax Technologies, Inc.
+Hortonworks, Inc.
+HP Inc.
+HubSpot, Inc.
+Hudson Global, Inc.
+Ichor Holdings
+Identiv, Inc.
+IEC Electronics Corp.
+IHS Markit Ltd.
+Illinois Tool Works Inc.
+Immersion Corporation
+Imperva, Inc.
+Infosys Limited
+Innodata Inc.
+Innovative Solutions and Support, Inc.
+Inovalon Holdings, Inc.
+Inphi Corporation
+Inpixon 
+Insperity, Inc.
+Inspired Entertainment, Inc.
+Instructure, Inc.
+Integrated Device Technology, Inc.
+Intel Corporation
+Intellicheck, Inc.
+Intelligent Systems Corporation
+Interlink Electronics, Inc.
+Intermolecular, Inc.
+Internap Corporation
+International Business Machines Corporation
+Internet Initiative Japan, Inc.
+Interpublic Group of Companies, Inc.
+Intersections, Inc.
+InterXion Holding N.V.
+Intevac, Inc.
+Intuit Inc.
+iPass Inc.
+IPG Photonics Corporation
+IXYS Corporation
+j2 Global, Inc.
+JA Solar Holdings, Co., Ltd.
+Jabil Inc.
+Jack Henry & Associates, Inc.
+JinkoSolar Holding Company Limited
+JMU Limited
+John Bean Technologies Corporation
+Juniper Networks, Inc.
+Kadant Inc
+Kelly Services, Inc.
+Kelly Services, Inc.
+Key Technology, Inc.
+Key Tronic Corporation
+Kforce, Inc.
+Kimball Electronics, Inc.
+Kingtone Wirelessinfo Solution Holding Ltd
+Kopin Corporation
+Korn/Ferry International
+Kulicke and Soffa Industries, Inc.
+KVH Industries, Inc.
+Kyocera Corporation
+L3 Technologies, Inc.
+Lam Research Corporation
+Lantronix, Inc.
+Lattice Semiconductor Corporation
+Leaf Group Ltd.
+Leidos Holdings, Inc.
+Liberty TripAdvisor Holdings, Inc.
+Liberty TripAdvisor Holdings, Inc.
+LightPath Technologies, Inc.
+Lincoln Electric Holdings, Inc.
+LINE Corporation
+LiqTech International, Inc.
+LivePerson, Inc.
+Logitech International S.A.
+LogMein, Inc.
+Loral Space and Communications, Inc.
+Luxoft Holding, Inc.
+MACOM Technology Solutions Holdings, Inc.
+Magic Software Enterprises Ltd.
+MagnaChip Semiconductor Corporation
+MagneGas Corporation
+Majesco
+MAM Software Group, Inc.
+Manhattan Associates, Inc.
+Manitex International, Inc.
+ManpowerGroup
+Marin Software Incorporated
+Marvell Technology Group Ltd.
+Match Group, Inc.
+Materialise NV
+Mattersight Corporation
+Maxar Technologies Ltd.
+Maxim Integrated Products, Inc.
+MaxLinear, Inc
+McGrath RentCorp
+MDC Partners Inc.
+Medical Transcription Billing, Corp.
+Medical Transcription Billing, Corp.
+Medidata Solutions, Inc.
+Mellanox Technologies, Ltd.
+Micro Focus Intl PLC
+Microchip Technology Incorporated
+Micron Technology, Inc.
+Microsemi Corporation
+Microsoft Corporation
+MicroStrategy Incorporated
+Milacron Holdings Corp.
+Mimecast Limited
+MIND C.T.I. Ltd.
+MINDBODY, Inc.
+Mitcham Industries, Inc.
+Mitcham Industries, Inc.
+Mitek Systems, Inc.
+Mitel Networks Corporation
+MiX Telematics Limited
+MobileIron, Inc.
+Model N, Inc.
+Momo Inc.
+MongoDB, Inc.
+Monolithic Power Systems, Inc.
+Monotype Imaging Holdings Inc.
+Monster Digital, Inc.
+Monster Digital, Inc.
+MoSys, Inc.
+Motorola Solutions, Inc.
+Moxian, Inc.
+MuleSoft, Inc.
+My Size, Inc.
+Nano Dimension Ltd.
+NantHealth, Inc.
+National Instruments Corporation
+NeoPhotonics Corporation
+Net Element, Inc.
+NetApp, Inc.
+Netlist, Inc.
+NetScout Systems, Inc.
+NetSol Technologies Inc.
+New Relic, Inc.
+NICE Ltd
+Nokia Corporation
+NQ Mobile Inc.
+NTT DOCOMO, Inc
+Nuance Communications, Inc.
+Nutanix, Inc.
+NVE Corporation
+NVIDIA Corporation
+NXP Semiconductors N.V.
+O2Micro International Limited
+Oclaro, Inc.
+Okta, Inc.
+Omnicell, Inc.
+Omnicom Group Inc.
+On Assignment, Inc.
+ON Semiconductor Corporation
+On Track Innovations Ltd
+Ooma, Inc.
+Open Text Corporation
+Oracle Corporation
+OSI Systems, Inc.
+P & F Industries, Inc.
+Palo Alto Networks, Inc.
+Pareteum Corporation
+Park City Group, Inc.
+Park Electrochemical Corporation
+ParkerVision, Inc.
+Paycom Software, Inc.
+Paylocity Holding Corporation
+PC-Tel, Inc.
+PDF Solutions, Inc.
+Pegasystems Inc.
+Pentair plc.
+Perficient, Inc.
+Perion Network Ltd
+Photronics, Inc.
+Pixelworks, Inc.
+Plexus Corp.
+Pointer Telocation Ltd.
+PolarityTE, Inc.
+Power Integrations, Inc.
+Presidio, Inc.
+Professional Diversity Network, Inc.
+Progress Software Corporation
+Proofpoint, Inc.
+PROS Holdings, Inc.
+PTC Inc.
+Pure Storage, Inc. 
+Q2 Holdings, Inc.
+QAD Inc.
+QAD Inc.
+Qorvo, Inc.
+QUALCOMM Incorporated
+Quality Systems, Inc.
+Qualstar Corporation
+Qualys, Inc.
+Quantenna Communications, Inc.
+Quantum Corporation
+Quest Resource Holding Corporation.
+QuickLogic Corporation
+Qumu Corporation
+Radcom Ltd.
+RadiSys Corporation
+Rambus, Inc.
+Rapid7, Inc.
+RCM Technologies, Inc.
+RealNetworks, Inc.
+RealPage, Inc.
+Red Hat, Inc.
+RELM Wireless Corporation
+Renesola Ltd.
+Renren Inc.
+Rent-A-Center Inc.
+Resonant Inc.
+Rexnord Corporation
+Ringcentral, Inc.
+Robert Half International Inc.
+Rosetta Stone
+Rubicon Technology, Inc.
+RumbleOn, Inc.
+Sabre Corporation
+Salesforce.com Inc
+Sanmina Corporation
+SAP SE
+Sapiens International Corporation N.V.
+ScanSource, Inc.
+SCIENCE APPLICATIONS INTERNATIONAL CORPORATION
+Scientific Games Corp
+SeaChange International, Inc.
+Seagate Technology PLC
+SecureWorks Corp.
+Semiconductor  Manufacturing International Corporation
+SemiLEDS Corporation
+Semtech Corporation
+SendGrid, Inc.
+Sequans Communications S.A.
+ServiceNow, Inc.
+SGOCO Group, Ltd
+SharpSpring, Inc.
+ShiftPixy, Inc.
+Shopify Inc.
+ShotSpotter, Inc.
+Shutterstock, Inc.
+Sierra Wireless, Inc.
+Sify Technologies Limited
+Sigma Designs, Inc.
+SigmaTron International, Inc.
+Silicom Ltd
+Silicon Laboratories, Inc.
+Silicon Motion Technology Corporation
+Siliconware Precision Industries Company, Ltd.
+Silver Spring Networks, Inc.
+Simulations Plus, Inc.
+Sina Corporation
+Skyworks Solutions, Inc.
+SMART Global Holdings, Inc.
+Smith Micro Software, Inc.
+SMTC Corporation
+Snap Inc.
+Social Reality, Inc.
+Socket Mobile, Inc.
+Sogou Inc.
+Sohu.com Inc.
+SolarEdge Technologies, Inc.
+Sonic Foundry, Inc.
+Sonus Networks, Inc.
+Sparton Corporation
+Sphere 3D Corp.
+SPI Energy Co., Ltd.
+Splunk Inc.
+SPS Commerce, Inc.
+SPX Corporation
+SPX FLOW, Inc.
+Square, Inc.
+SS&C Technologies Holdings, Inc.
+Staffing 360 Solutions, Inc.
+Standex International Corporation
+StarTek, Inc.
+STMicroelectronics N.V.
+Stratasys, Ltd.
+Streamline Health Solutions, Inc.
+SunPower Corporation
+Super Micro Computer, Inc.
+SuperCom, Ltd.
+Superconductor Technologies Inc.
+support.com, Inc.
+Switch, Inc.
+Sykes Enterprises, Incorporated
+Symantec Corporation
+Synacor, Inc.
+Synaptics Incorporated
+Synchronoss Technologies, Inc.
+Synnex Corporation
+Synopsys, Inc.
+Syntel, Inc.
+Tableau Software, Inc.
+Taiwan Semiconductor Manufacturing Company Ltd.
+Take-Two Interactive Software, Inc.
+Talend S.A.
+Tech Data Corporation
+Technical Communications Corporation
+Telaria, Inc.
+TeleTech Holdings, Inc.
+Tennant Company
+Teradata Corporation
+Texas Instruments Incorporated
+Textainer Group Holdings Limited
+The Descartes Systems Group Inc.
+The KEYW Holding Corporation
+The Middleby Corporation
+The Rubicon Project, Inc.
+The Stars Group Inc.
+The Trade Desk, Inc.
+The Ultimate Software Group, Inc.
+Tintri, Inc.
+Top Image Systems, Ltd.
+Tower Semiconductor Ltd.
+TransAct Technologies Incorporated
+Travelzoo
+Trio-Tech International
+TripAdvisor, Inc.
+Triton International Limited
+trivago N.V.
+TrueBlue, Inc.
+TrueCar, Inc.
+TSR, Inc.
+TTM Technologies, Inc.
+Tucows Inc.
+Twilio Inc.
+Twin Disc, Incorporated
+Twitter, Inc.
+Tyler Technologies, Inc.
+Ubiquiti Networks, Inc.
+Ultra Clean Holdings, Inc.
+Unisys Corporation
+United Microelectronics Corporation
+United Rentals, Inc.
+Upland Software, Inc.
+Varonis Systems, Inc.
+VASCO Data Security International, Inc.
+Veeco Instruments Inc.
+Veeva Systems Inc.
+Verint Systems Inc.
+VeriSign, Inc.
+Verisk Analytics, Inc.
+Veritone, Inc.
+ViaSat, Inc.
+Viavi Solutions Inc.
+Virtusa Corporation
+Vmware, Inc.
+Volt Information Sciences, Inc.
+Vuzix Corporation
+Wayside Technology Group, Inc.
+Web.com Group, Inc.
+Weibo Corporation
+Welbilt, Inc.
+Western Digital Corporation
+WidePoint Corporation
+Wipro Limited
+Wix.com Ltd.
+Workday, Inc.
+Workiva Inc.
+WPP plc
+WSI Industries Inc.
+Xerox Corporation
+Xilinx, Inc.
+Xperi Corporation
+Xplore Technologies Corp
+Xunlei Limited
+Yandex N.V.
+Yext, Inc.
+Yingli Green Energy Holding Company Limited
+YuMe, Inc.
+YY Inc.
+Zebra Technologies Corporation
+Zedge, Inc.
+Zendesk, Inc.
+Zix Corporation
+Zynga Inc.
