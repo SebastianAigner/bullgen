@@ -1,15 +1,19 @@
+import generators.SuggestedReadingGenerator
 import generators.TitleSlideGenerator
 import generators.HappyTeamSlideGenerator
 import org.json.JSONObject
 import org.thymeleaf.TemplateEngine
 import org.thymeleaf.context.Context
 import org.thymeleaf.templateresolver.ClassLoaderTemplateResolver
+import providers.FaceImageProvider
 import providers.GenericImageProvider
 import providers.InspirationalQuotesProvider
 import java.io.File
 import java.io.StringWriter
 
 val slideGenerators = arrayOf(
+    TitleSlideGenerator(),
+    SuggestedReadingGenerator(),
     HappyTeamSlideGenerator(),
     TitleSlideGenerator()
 )
@@ -23,7 +27,7 @@ fun main(args: Array<String>) {
     val writer = StringWriter()
     val context = Context()
 
-//    val imageProvider = GenericImageProvider("problem")
+//    val imageProvider = FaceImageProvider("businessman")
 //    println(imageProvider.provide())
 
     val quoteProvider = InspirationalQuotesProvider()
