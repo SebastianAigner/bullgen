@@ -1,8 +1,10 @@
 import generators.TitleSlideGenerator
 import generators.HappyTeamSlideGenerator
+import org.json.JSONObject
 import org.thymeleaf.TemplateEngine
 import org.thymeleaf.context.Context
 import org.thymeleaf.templateresolver.ClassLoaderTemplateResolver
+import providers.getPaper
 import java.io.File
 import java.io.StringWriter
 

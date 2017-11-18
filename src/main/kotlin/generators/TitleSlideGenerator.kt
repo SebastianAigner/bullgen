@@ -1,6 +1,7 @@
 package generators
 import HTMLString
 import SlideGenerator
+import org.json.JSONObject
 
 class TitleSlideGenerator: SlideGenerator {
     override fun generate(keywords: Array<String>): HTMLString {
