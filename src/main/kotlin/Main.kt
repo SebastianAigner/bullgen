@@ -1,7 +1,9 @@
 import generators.TitleSlideGenerator
+import org.json.JSONObject
 import org.thymeleaf.TemplateEngine
 import org.thymeleaf.context.Context
 import org.thymeleaf.templateresolver.ClassLoaderTemplateResolver
+import providers.getPaper
 import java.io.File
 import java.io.StringWriter
 
@@ -10,6 +12,9 @@ val slideGenerators = arrayOf(
 )
 
 fun main(args: Array<String>) {
+    val x = JSONObject("""{ bla: "shit" } """)
+    println(x.get("bla"))
+    // getPaper()
     val resolver = ClassLoaderTemplateResolver()
     resolver.setTemplateMode("XHTML")
     resolver.suffix = ".html"
