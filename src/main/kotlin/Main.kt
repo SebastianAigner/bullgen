@@ -1,3 +1,4 @@
+import generators.EmojiJerkSlideGenerator
 import generators.TitleSlideGenerator
 import generators.HappyTeamSlideGenerator
 import org.json.JSONObject
@@ -9,8 +10,9 @@ import java.io.File
 import java.io.StringWriter
 
 val slideGenerators = arrayOf(
-    HappyTeamSlideGenerator(),
-    TitleSlideGenerator()
+        HappyTeamSlideGenerator(),
+        TitleSlideGenerator(),
+        EmojiJerkSlideGenerator()
 )
 
 fun main(args: Array<String>) {
