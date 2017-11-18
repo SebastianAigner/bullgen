@@ -12,6 +12,7 @@ import org.thymeleaf.context.Context
 import org.thymeleaf.templateresolver.ClassLoaderTemplateResolver
 import providers.GenericImageProvider
 import providers.InspirationalQuotesProvider
+import providers.TheValleyNameProvider
 import java.io.File
 import java.io.StringWriter
 
@@ -33,6 +34,18 @@ fun main(args: Array<String>) {
     engine.setTemplateResolver(resolver)
     val writer = StringWriter()
     val context = Context()
+
+//    val imageProvider = FaceImageProvider("businessman")
+//    println(imageProvider.provide())
+
+//    val quoteProvider = InspirationalQuotesProvider()
+//    println(quoteProvider.provide())
+
+//    val markovNameProvider = TheValleyNameProvider()
+//    markovNameProvider.provide()
+
+//    val markovNameProvider = TheValleyNameProvider()
+//    markovNameProvider.provide()
 
     val slideContents = slideGenerators.map { it.generate(arrayOf("blockchain", "scalability", "happiness")) }
 
