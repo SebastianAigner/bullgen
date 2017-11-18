@@ -1,9 +1,8 @@
 import generators.TitleSlideGenerator
-import org.json.JSONObject
 import org.thymeleaf.TemplateEngine
 import org.thymeleaf.context.Context
 import org.thymeleaf.templateresolver.ClassLoaderTemplateResolver
-import providers.getPaper
+import providers.GenericImageProvider
 import java.io.File
 import java.io.StringWriter
 
@@ -12,9 +11,6 @@ val slideGenerators = arrayOf(
 )
 
 fun main(args: Array<String>) {
-    val x = JSONObject("""{ bla: "shit" } """)
-    println(x.get("bla"))
-    // getPaper()
     val resolver = ClassLoaderTemplateResolver()
     resolver.setTemplateMode("XHTML")
     resolver.suffix = ".html"
@@ -23,17 +19,20 @@ fun main(args: Array<String>) {
     val writer = StringWriter()
     val context = Context()
 
-    val slideContents = slideGenerators.map { it.generate(arrayOf("blockchain", "scalability", "happiness")) }
+    val imageProvider = GenericImageProvider(arrayOf("problem"))
+    imageProvider.provide()
 
-    val slides = slideContents.map {
-        Slide(it)
-    }
-
-    context.setVariable("slides", slides)
-    engine.process("index", context, writer)
-    println(writer.buffer)
-    val outString = writer.buffer.toString()
-    File("bullgen_presentation.html").printWriter().use { out -> out.println(outString) }
+//    val slideContents = slideGenerators.map { it.generate(arrayOf("blockchain", "scalability", "happiness")) }
+//
+//    val slides = slideContents.map {
+//        Slide(it)
+//    }
+//
+//    context.setVariable("slides", slides)
+//    engine.process("index", context, writer)
+//    println(writer.buffer)
+//    val outString = writer.buffer.toString()
+//    File("bullgen_presentation.html").printWriter().use { out -> out.println(outString) }
 }
 
 data class Slide(val content: String)
