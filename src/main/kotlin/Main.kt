@@ -5,9 +5,13 @@ import generators.SuggestedReadingGenerator
 
 import generators.TitleSlideGenerator
 import generators.HappyTeamSlideGenerator
+import generators.ProductGrowthSlideGenerator
+import org.json.JSONObject
 import org.thymeleaf.TemplateEngine
 import org.thymeleaf.context.Context
 import org.thymeleaf.templateresolver.ClassLoaderTemplateResolver
+import providers.GenericImageProvider
+import providers.InspirationalQuotesProvider
 import providers.TheValleyNameProvider
 import java.io.File
 import java.io.StringWriter
@@ -18,6 +22,7 @@ val slideGenerators = arrayOf(
     EmojiJerkSlideGenerator(),
     SuggestedReadingGenerator(),
     HappyTeamSlideGenerator(),
+    ProductGrowthSlideGenerator(),
     TitleSlideGenerator()
 )
 
@@ -35,6 +40,9 @@ fun main(args: Array<String>) {
 
 //    val quoteProvider = InspirationalQuotesProvider()
 //    println(quoteProvider.provide())
+
+//    val markovNameProvider = TheValleyNameProvider()
+//    markovNameProvider.provide()
 
 //    val markovNameProvider = TheValleyNameProvider()
 //    markovNameProvider.provide()

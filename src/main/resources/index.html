@@ -39,16 +39,37 @@
 
 		<script>
 			// More info about config & dependencies:
-			// - https://github.com/hakimel/reveal.js#configuration
-			// - https://github.com/hakimel/reveal.js#dependencies
-			Reveal.initialize({
-				dependencies: [
-					{ src: 'plugin/markdown/marked.js' },
-					{ src: 'plugin/markdown/markdown.js' },
-					{ src: 'plugin/notes/notes.js', async: true },
-					{ src: 'plugin/highlight/highlight.js', async: true, callback: function() { hljs.initHighlightingOnLoad(); } }
-				]
-			});
+            // - https://github.com/hakimel/reveal.js#configuration
+            // - https://github.com/hakimel/reveal.js#dependencies
+            Reveal.initialize({
+                dependencies: [
+                    {src: 'plugin/markdown/marked.js'},
+                    {src: 'plugin/markdown/markdown.js'},
+                    {src: 'plugin/notes/notes.js', async: true},
+                    {
+                        src: 'plugin/highlight/highlight.js', async: true, callback: function () {
+                        hljs.initHighlightingOnLoad();
+                    }
+                    },
+                    {src: 'plugin/chart/Chart.min.js'},
+                    {src: 'plugin/chart/csv2chart.js'},
+                ],
+                chart: {
+                    defaults: {
+                        global: {
+                            title: {fontColor: "#FFF"},
+                            legend: {
+                                labels: {fontColor: "#FFF", fontSize: 24},
+                            },
+                        },
+                        scale: {
+                            scaleLabel: {fontColor: "#FFF"},
+                            gridLines: {color: "#888", zeroLineColor: "#888"},
+                            ticks: {fontColor: "#FFF"},
+                        }
+                    },
+                }
+            });
 		</script>
 	</body>
 </html>
