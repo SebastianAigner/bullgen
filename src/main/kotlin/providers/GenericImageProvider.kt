@@ -27,7 +27,6 @@ class GenericImageProvider(val terms: String) {
         return if (error == null) {
             val parser = Parser()
             val json = parser.parse(StringBuilder(data)) as JsonObject
-//            val numberOfImages = json.int("nextOffset")
             val images = json.array<JSONObject>("value")!!
             val randomImage = (0..(images.size - 1)).random()
             (images.string("contentUrl")[randomImage])

@@ -19,8 +19,8 @@ fun main(args: Array<String>) {
     val writer = StringWriter()
     val context = Context()
 
-    val imageProvider = GenericImageProvider("problem")
-    println(imageProvider.provide())
+//    val imageProvider = GenericImageProvider("problem")
+//    println(imageProvider.provide())
 
     val slideContents = slideGenerators.map { it.generate(arrayOf("blockchain", "scalability", "happiness")) }
 
