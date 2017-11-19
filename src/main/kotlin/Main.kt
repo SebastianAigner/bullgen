@@ -10,18 +10,25 @@ import java.io.File
 import java.io.StringWriter
 
 val slideGenerators = arrayOf(
-        HappyTeamSlideGenerator(),
-        TitleSlideGenerator(),
-        CorporateSlideGenerator(),
-        TwitterSlideGenerator(),
-        JustNumbersGenerator(),
-        EmojiJerkSlideGenerator(),
-        MathSlideGenerator(),
-        GenericFillerSlideGenerator(),
-        ProductGrowthSlideGenerator(),
-        GermanConceptGenerator(),
-        InspirationalSlide(),
-        SuggestedReadingGenerator()
+    TitleSlideGenerator(),
+    ProblemIntroSlideGenerator(),
+    ProblemStatementSlideGenerator(),
+    GenericFillerSlideGenerator(),
+    GenericFillerSlideGenerator(),
+    TwitterSlideGenerator(),
+    CorporateSlideGenerator(),
+//    JustNumbersGenerator(),
+//    EmojiJerkSlideGenerator(),
+    MathSlideGenerator(),
+    ProductGrowthSlideGenerator(),
+    ProductGrowthSlideGenerator(),
+    GenericFillerSlideGenerator(),
+    GermanConceptGenerator(),
+    ProductGrowthSlideGenerator(),
+    InspirationalSlide(),
+    HappyTeamSlideGenerator(),
+    SuggestedReadingGenerator(),
+    QASlideGenerator()
 )
 
 fun main(args: Array<String>) {
@@ -33,7 +40,15 @@ fun main(args: Array<String>) {
     val writer = StringWriter()
     val context = Context()
 
-    val slideContents = slideGenerators.map { it.generate(arrayOf(getNoun(), getNoun(), getNoun())) }
+    val keywords = arrayOf(
+            provideIndustrySector(),
+            provideIndustryTrouble(),
+            provideIndustryTrouble(),
+            getNoun(),
+            getNoun()
+    )
+
+    val slideContents = slideGenerators.map { it.generate(keywords) }
 
     val slides = slideContents.map {
         Slide(it)

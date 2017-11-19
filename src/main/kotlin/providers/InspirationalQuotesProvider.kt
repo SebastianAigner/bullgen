@@ -10,9 +10,9 @@ import com.github.kittinunf.fuel.httpPost
 import org.json.JSONObject
 import java.util.*
 
-class InspirationalQuotesProvider() {
+class InspirationalQuotesProvider(term: String) {
 
-    val path = "https://favqs.com/api/quotes/?filter=solution"
+    val path = "https://favqs.com/api/quotes/?filter=" + term
 
     private fun ClosedRange<Int>.random() = Random().nextInt(endInclusive - start) +  start
 
