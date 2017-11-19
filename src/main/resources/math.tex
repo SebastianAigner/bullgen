@@ -1,0 +1,3488 @@
+% $Id: math.tex,v 2.13 2013/09/01 21:18:54 johanw Exp johanw $ 
+\mag=1000
+\documentstyle[a4wide,fancyheadings,twoside]{report}
+\parindent 0pt
+
+\voffset 0mm
+\hoffset 0mm
+\oddsidemargin 0mm
+\evensidemargin 0mm
+\textwidth 16.1925cm
+
+\setlength{\headrulewidth}{0.5pt}
+\setlength{\footrulewidth}{0.5pt}
+\unitlength 1mm
+
+\makeatletter
+
+% changes to report.sty
+
+\def\@makechapterhead#1{{\parindent 0pt\raggedright
+\ifnum\c@secnumdepth >\m@ne\huge\bf\@chapapp{} \thechapter\par
+\vskip 18pt\fi\Huge\bf #1\par
+\nobreak\vskip 40pt}}
+
+\def\@makeschapterhead#1{{\parindent 0pt\raggedright
+\Huge\bf #1\par
+\nobreak\vskip 40pt}}
+
+\makeatother
+
+\begin{document}
+\typeout{Mathematics Formulary by J.C.A. Wevers <johanw@vulcan.xs4all.nl>}
+
+\newfont{\sfd}{cmssdc10 scaled\magstep0}
+\newfont{\cmu}{cmu10 scaled\magstep0}
+
+\def\npar{\par\medskip}
+%\def\vec#1{\mbox{\boldmath$#1$\unboldmath}} % Uncomment this when you don't like the arrows
+\def\vvec#1{\vec{#1}\,}
+\def\e#1{\vec{e}_{\rm #1}}
+\def\ee#1{\vec{e}_{#1}}
+\def\Q#1#2{\frac{\partial #1}{\partial #2}}
+\def\QQ#1#2{\frac{\partial^2 #1}{\partial #2^2}}
+\def\Qc#1#2#3{\left(\frac{\partial #1}{\partial #2}\right)_{#3}}
+\def\RR{I\hspace{-1mm}R}
+\def\NN{I\hspace{-1mm}N}
+\def\II{I\hspace{-1mm}I}
+\def\KK{I\hspace{-1mm}K}
+\def\MM{I\hspace{-1mm}M}
+\def\ZZ{Z\hspace{-1ex}Z}
+\def\CC{C\hspace*{-1.2ex}\rule{0.4pt}{1.5ex}\hspace*{1.2ex}}
+\def\dddot#1{\stackrel{...}{#1}}
+\def\half{\mbox{$\frac{1}{2}$}}
+\def\kwart{\mbox{$\frac{1}{4}$}}
+\def\av#1{\left\langle #1 \right\rangle}
+\def\oiint{\int\hspace{-2ex}\int\hspace{-3ex}\bigcirc~}
+\def\iint{\int\hspace{-1.5ex}\int}
+\def\iiint{\int\hspace{-1.5ex}\int\hspace{-1.5ex}\int}
+
+\pagestyle{fancyplain}
+\lhead[\fancyplain{}{\thepage}]{\fancyplain{}{\cmu Mathematics Formulary by J.C.A. Wevers}}
+\rhead[\fancyplain{}{\cmu Mathematics Formulary door J.C.A. Wevers}]{\fancyplain{}{\thepage}}
+\cfoot{\fancyplain{\thepage}{}}
+
+\thispagestyle{empty}
+\hrule
+\rule{.4pt}{22.35cm}\hspace*{161.62mm}\rule{.4pt}{22.35cm}
+\vspace*{-17cm}
+\begin{center}
+\Huge
+\fbox{\fbox{Mathematics Formulary}}
+\end{center}
+\vspace{2cm}
+\centerline{\Large\bf By ir. J.C.A. Wevers}
+\vfill
+\hrule
+\newpage
+\thispagestyle{empty}
+\copyright~1999, 2013~~J.C.A. Wevers\hfill Version: September 02, 2013
+\npar
+\hrule
+\par
+\bigskip
+Dear reader,
+\npar
+This document contains 66 pages with mathematical equations intended for
+physicists and engineers. It is intended to be a short reference for anyone
+who often needs to look up mathematical equations.
+\npar
+This document can also be obtained from the author, Johan Wevers ({\tt johanw@vulcan.xs4all.nl}).
+\npar
+It can also be found on the WWW on {\tt http://www.xs4all.nl/\~{}johanw/index.html}.
+\npar
+This work is licenced under the Creative Commons Attribution 3.0 Netherlands Lic
+ense.
+To view a copy of this licence, visit {\tt http://creativecommons.org/licenses/by/3.0/nl/} or send a letter to Creative Commons, 171 Second Street, Suite 300, San Francisco, California 94105, USA.
+\npar
+The C code for the rootfinding via Newtons method and the FFT in chapter
+\ref{chap:num} are from ``{\it Numerical Recipes in C}~'', 2nd Edition,
+ISBN 0-521-43108-5.
+\npar
+The Mathematics Formulary is made with te\TeX\ and \LaTeX\ version 2.09.
+\npar
+If you prefer the notation in which vectors are typefaced in boldface, uncomment
+the redefinition of the {\tt $\backslash$vec} command and recompile the file.
+\npar
+If you find any errors or have any comments, please let me know. I am always
+open for suggestions and possible corrections to the mathematics formulary.
+\npar
+Johan Wevers
+\vfill
+\hrule
+
+\newpage
+
+\pagenumbering{Roman}
+\addcontentsline{toc}{chapter}{Contents}
+\tableofcontents
+\cleardoublepage
+
+\pagenumbering{arabic}
+
+\renewcommand{\chaptermark}[1]{\markboth{#1}{#1}}
+\lhead[\fancyplain{}{\thepage}]{\fancyplain{}{\cmu Chapter \thechapter: \leftmark}}
+\rhead[\fancyplain{}{\cmu Mathematics Formulary by ir. J.C.A. Wevers}]{\fancyplain{}{\thepage}}
+
+\chapter{Basics}
+\typeout{Basics}
+\section{Goniometric functions}
+For the goniometric ratios for a point $p$ on the unit circle holds:
+\[
+\cos(\phi)=x_p~~,~~\sin(\phi)=y_p~~,~~\tan(\phi)=\frac{y_p}{x_p}
+\]
+$\sin^2(x)+\cos^2(x)=1$ and $\cos^{-2}(x)=1+\tan^2(x)$.
+\[
+\cos(a\pm b)=\cos(a)\cos(b)\mp\sin(a)\sin(b)~~,~~
+\sin(a\pm b)=\sin(a)\cos(b)\pm\cos(a)\sin(b)
+\]
+\[
+\tan(a\pm b)=\frac{\tan(a)\pm\tan(b)}{1\mp\tan(a)\tan(b)}
+\]
+The {\bf sum formulas} are:
+\begin{eqnarray*}
+\sin(p)+\sin(q)&=&2\sin(\half(p+q))\cos(\half(p-q))\\
+\sin(p)-\sin(q)&=&2\cos(\half(p+q))\sin(\half(p-q))\\
+\cos(p)+\cos(q)&=&2\cos(\half(p+q))\cos(\half(p-q))\\
+\cos(p)-\cos(q)&=&-2\sin(\half(p+q))\sin(\half(p-q))\\
+\end{eqnarray*}
+From these equations can be derived that
+\begin{eqnarray*}
+2\cos^2(x)=1+\cos(2x)   &~~,~~&2\sin^2(x)=1-\cos(2x)\\
+\sin(\pi-x)=\sin(x)     &~~,~~&\cos(\pi-x)=-\cos(x)\\
+\sin(\half\pi-x)=\cos(x)&~~,~~&\cos(\half\pi-x)=\sin(x)
+\end{eqnarray*}
+{\bf Conclusions from equalities}:
+\begin{eqnarray*}
+\underline{\sin(x)=\sin(a)}&~~\Rightarrow~~&x=a\pm2k\pi\mbox{ or }x=(\pi-a)\pm2k\pi,~~k\in\NN\\
+\underline{\cos(x)=\cos(a)}&~~\Rightarrow~~&x=a\pm2k\pi\mbox{ or }x=-a\pm2k\pi\\
+\underline{\tan(x)=\tan(a)}&~~\Rightarrow~~&x=a\pm k\pi\mbox{ and }x\neq\frac{\pi}{2}\pm k\pi
+\end{eqnarray*}
+The following relations exist between the inverse goniometric functions:
+\[
+\arctan(x)=\arcsin\left(\frac{x}{\sqrt{x^2+1}}\right)=\arccos\left(\frac{1}{\sqrt{x^2+1}}\right)~~,~~
+\sin(\arccos(x))=\sqrt{1-x^2}
+\]
+
+\section{Hyperbolic functions}
+The hyperbolic functions are defined by:
+\[
+\sinh(x)=\frac{{\rm e}^x-{\rm e}^{-x}}{2}~~,~~~\cosh(x)=\frac{{\rm e}^x+{\rm e}^{-x}}{2}~~,~~~\tanh(x)=\frac{\sinh(x)}{\cosh(x)}
+\]
+From this follows that $\cosh^2(x)-\sinh^2(x)=1$. Further holds:
+\[
+{\rm arsinh}(x)=\ln|x+\sqrt{x^2+1}|~~~,~~~{\rm arcosh}(x)={\rm arsinh}(\sqrt{x^2-1})
+\]
+
+\section{Calculus}
+The derivative of a function is defined as:
+\[
+\frac{df}{dx}=\lim_{h\rightarrow0}\frac{f(x+h)-f(x)}{h}
+\]
+Derivatives obey the following algebraic rules:
+\[
+d(x\pm y)=dx\pm dy~~,~~d(xy)=xdy+ydx~~,~~d\left(\frac{x}{y}\right)=\frac{ydx-xdy}{y^2}
+\]
+For the derivative of the inverse function $f^{\rm inv}(y)$, defined by
+$f^{\rm inv}(f(x))=x$, holds at point $P=(x,f(x))$:
+\[
+\left(\frac{df^{\rm inv}(y)}{dy}\right)_P\cdot\left(\frac{df(x)}{dx}\right)_P=1
+\]
+Chain rule: if $f=f(g(x))$, then holds
+\[
+\frac{df}{dx}=\frac{df}{dg}\frac{dg}{dx}
+\]
+Further, for the derivatives of products of functions holds:
+\[
+(f\cdot g)^{(n)}=\sum\limits_{k=0}^n{n\choose k}f^{(n-k)}\cdot g^{(k)}
+\]
+For the {\it primitive function} $F(x)$ holds: $F'(x)=f(x)$.
+An overview of derivatives and primitives is:
+\begin{center}
+\begin{tabular}{||c|c|c||}
+\hline
+\boldmath$y=f(x)$\unboldmath&\boldmath$dy/dx=f'(x)$\unboldmath&\boldmath$\int f(x)dx$\rule{0pt}{12pt}\rule[-7pt]{0pt}{0pt}\unboldmath\\
+\hline
+\hline
+$ax^n$&$anx^{n-1}$&$a(n+1)^{-1}x^{n+1}$\rule{0pt}{12pt}\\
+$1/x$&$-x^{-2}$&$\ln|x|$\\
+$a$&$0$&$ax$\\
+\hline
+$a^x$&$a^x\ln(a)$&$a^x/\ln(a)$\rule{0pt}{12pt}\\
+${\rm e}^x$&${\rm e}^x$&${\rm e}^x$\\
+$^a\log(x)$&$(x\ln(a))^{-1}$&$(x\ln(x)-x)/\ln(a)$\\
+$\ln(x)$&$1/x$&$x\ln(x)-x$\\
+\hline
+$\sin(x)$&$\cos(x)$&$-\cos(x)$\\
+$\cos(x)$&$-\sin(x)$&$\sin(x)$\\
+$\tan(x)$&$\cos^{-2}(x)$&$-\ln|\cos(x)|$\\
+$\sin^{-1}(x)$&$-\sin^{-2}(x)\cos(x)$&$\ln|\tan(\half x)|$\\
+$\sinh(x)$&$\cosh(x)$&$\cosh(x)$\\
+$\cosh(x)$&$\sinh(x)$&$\sinh(x)$\\
+$\arcsin(x)$&$1/\sqrt{1-x^2}$&$x\arcsin(x)+\sqrt{1-x^2}$\\
+$\arccos(x)$&$-1/\sqrt{1-x^2}$&$x\arccos(x)-\sqrt{1-x^2}$\\
+$\arctan(x)$&$(1+x^2)^{-1}$&$x\arctan(x)-\half\ln(1+x^2)$\rule[-7pt]{0pt}{0pt}\\
+\hline
+$(a+x^2)^{-1/2}$&$-x(a+x^2)^{-3/2}$&$\ln|x+\sqrt{a+x^2}|$\rule{0pt}{12pt}\\
+$(a^2-x^2)^{-1}$&$2x(a^2+x^2)^{-2}$&$\displaystyle\frac{1}{2a}\ln|(a+x)/(a-x)|$\rule[-10pt]{0pt}{23pt}\\
+\hline
+\end{tabular}
+\end{center}
+The {\it curvature} $\rho$ of a curve is given by:
+$\displaystyle\rho=\frac{(1+(y')^2)^{3/2}}{|y''|}$
+\npar
+The theorem of De 'l H\^opital: if $f(a)=0$ and $g(a)=0$, then is
+$\displaystyle\lim_{x\rightarrow a}\frac{f(x)}{g(x)}=\lim_{x\rightarrow a}\frac{f'(x)}{g'(x)}$
+
+\section{Limits}
+\[
+\lim_{x\rightarrow0}\frac{\sin(x)}{x}=1~~,~~
+\lim_{x\rightarrow0}\frac{{\rm e}^x-1}{x}=1~~,~~
+\lim_{x\rightarrow0}\frac{\tan(x)}{x}=1~~,~~
+\lim_{k\rightarrow0}(1+k)^{1/k}={\rm e}~~,~~
+\lim_{x\rightarrow\infty}\left(1+\frac{n}{x}\right)^x={\rm e}^n
+\]
+\[
+\lim_{x\downarrow0}x^a\ln(x)=0~~,~~
+\lim_{x\rightarrow\infty}\frac{\ln^p(x)}{x^a}=0~~,~~
+\lim_{x\rightarrow0}\frac{\ln(x+a)}{x}=a~~,~~
+\lim_{x\rightarrow\infty}\frac{x^p}{a^x}=0~~\mbox{als }|a|>1.
+\]
+\[
+\lim_{x\rightarrow0}\left(a^{1/x}-1\right)=\ln(a)~~,~~
+\lim_{x\rightarrow0}\frac{\arcsin(x)}{x}=1~~,~~
+\lim_{x\rightarrow\infty}\sqrt[x]{x}=1
+\]
+
+\section{Complex numbers and quaternions}
+\subsection{Complex numbers}
+The complex number $z=a+bi$ with $a$ and $b\in\RR$. $a$ is the {\it real part},
+$b$ the {\it imaginary part} of $z$. $|z|=\sqrt{a^2+b^2}$. By definition
+holds: $i^2=-1$. Every complex number can be written as $z=|z|\exp(i\varphi)$,
+with $\tan(\varphi)=b/a$. The {\it complex conjugate} of $z$ is defined as
+$\overline{z}=z^*:=a-bi$. Further holds:
+\begin{eqnarray*}
+(a+bi)(c+di)&=&(ac-bd)+i(ad+bc)\\
+(a+bi)+(c+di)&=&a+c+i(b+d)\\
+\frac{a+bi}{c+di}&=&\frac{(ac+bd)+i(bc-ad)}{c^2+d^2}
+\end{eqnarray*}
+Goniometric functions can be written as complex exponents:
+\begin{eqnarray*}
+\sin(x)&=&\frac{1}{2i}({\rm e}^{ix}-{\rm e}^{-ix})\\
+\cos(x)&=&\frac{1}{2}({\rm e}^{ix}+{\rm e}^{-ix})
+\end{eqnarray*}
+From this follows that $\cos(ix)=\cosh(x)$ and $\sin(ix)=i\sinh(x)$.
+Further follows from this that\newline
+${\rm e}^{\pm ix}=\cos(x)\pm i\sin(x)$, so
+${\rm e}^{iz}\neq0\forall z$. Also the theorem of De Moivre follows from
+this:\\ $(\cos(\varphi)+i\sin(\varphi))^n=\cos(n\varphi)+i\sin(n\varphi)$.
+\npar
+Products and quotients of complex numbers can be written as:
+\begin{eqnarray*}
+z_1\cdot z_2&=&|z_1|\cdot|z_2|(\cos(\varphi_1+\varphi_2)+i\sin(\varphi_1+\varphi_2))\\
+\frac{z_1}{z_2}&=&\frac{|z_1|}{|z_2|}(\cos(\varphi_1-\varphi_2)+i\sin(\varphi_1-\varphi_2))
+\end{eqnarray*}
+The following can be derived:
+\[
+|z_1+z_2|\leq|z_1|+|z_2|~~,~~|z_1-z_2|\geq|~|z_1|-|z_2|~|
+\]
+And from $z=r\exp(i\theta)$ follows: $\ln(z)=\ln(r)+i\theta$, $\ln(z)=\ln(z)\pm2n\pi i$.
+
+\subsection{Quaternions}
+Quaternions are defined as: $z=a+bi+cj+dk$, with $a,b,c,d\in\RR$ and
+$i^2=j^2=k^2=-1$. The products of $i,j,k$ with each other are given by
+$ij=-ji=k$, $jk=-kj=i$ and $ki=-ik=j$.
+
+\section{Geometry}
+\subsection{Triangles}
+The sine rule is:
+\[
+\frac{a}{\sin(\alpha)}=\frac{b}{\sin(\beta)}=\frac{c}{\sin(\gamma)}
+\]
+Here, $\alpha$ is the angle opposite to $a$, $\beta$ is opposite to $b$ and
+$\gamma$ opposite to $c$. The cosine rule is: $a^2=b^2+c^2-2bc\cos(\alpha)$.
+For each triangle holds: $\alpha+\beta+\gamma=180^\circ$.
+\npar
+Further holds:
+\[
+\frac{\tan(\half(\alpha+\beta))}{\tan(\half(\alpha-\beta))}=\frac{a+b}{a-b}
+\]
+The surface of a triangle is given by $\half ab\sin(\gamma)=\half ah_a=\sqrt{s(s-a)(s-b)(s-c)}$
+with $h_a$ the perpendicular on $a$ and $s=\half(a+b+c)$.
+
+\subsection{Curves}
+{\bf Cycloid}: if a circle with radius $a$ rolls along a straight line, the
+trajectory of a point on this circle has the following parameter equation:
+\[
+x=a(t+\sin(t))~~,~~y=a(1+\cos(t))
+\]
+{\bf Epicycloid}: if a small circle with radius $a$ rolls along a big circle
+with radius $R$, the trajectory of a point on the small circle has the
+following parameter equation:
+\[
+x=a\sin\left(\frac{R+a}{a}t\right)+(R+a)\sin(t)~~,~~
+y=a\cos\left(\frac{R+a}{a}t\right)+(R+a)\cos(t)
+\]
+{\bf Hypocycloid}: if a small circle with radius $a$ rolls inside a big circle
+with radius $R$, the trajectory of a point on the small circle has the
+following parameter equation:
+\[
+x=a\sin\left(\frac{R-a}{a}t\right)+(R-a)\sin(t)~~,~~
+y=-a\cos\left(\frac{R-a}{a}t\right)+(R-a)\cos(t)
+\]
+A hypocycloid with $a=R$ is called a {\bf cardioid}. It has the following
+parameterequation in polar coordinates: $r=2a[1-\cos(\varphi)]$.
+
+\section{Vectors}
+The {\it inner product} is defined by:
+$\displaystyle\vec{a}\cdot\vec{b}=\sum_i a_ib_i=|\vvec{a}|\cdot|\vvec{b}|\cos(\varphi)$
+\npar
+where $\varphi$ is the angle between $\vec{a}$ and $\vec{b}$. The {\it external
+product} is in $\RR^3$ defined by:
+\[
+\vec{a}\times\vec{b}=\left(\begin{array}{c}
+a_yb_z-a_zb_y\\
+a_zb_x-a_xb_z\\
+a_xb_y-a_yb_x\end{array}\right)=
+\left|\begin{array}{ccc}
+\vec{e}_x&\vec{e}_y&\vec{e}_z\\
+a_x&a_y&a_z\\
+b_x&b_y&b_z\end{array}\right|
+\]
+Further holds: $|\vec{a}\times\vvec{b}|=|\vvec{a}|\cdot|\vvec{b}|\sin(\varphi)$, and
+$\vec{a}\times(\vec{b}\times\vvec{c})=(\vec{a}\cdot\vvec{c})\vec{b}-(\vec{a}\cdot\vvec{b})\vec{c}$.
+
+\section{Series}
+\subsection{Expansion}
+The Binomium of Newton is:
+\[
+(a+b)^n=\sum_{k=0}^n{n\choose k}a^{n-k}b^k
+\]
+where $\displaystyle{n\choose k}:=\frac{n!}{k!(n-k)!}$.
+\npar
+By subtracting the series $\sum\limits_{k=0}^n r^k$ and $r\sum\limits_{k=0}^n r^k$
+one finds:
+\[
+\sum_{k=0}^n r^k=\frac{1-r^{n+1}}{1-r}
+\]
+and for $|r|<1$ this gives the {\it geometric series}:
+$\displaystyle\sum_{k=0}^\infty r^k=\frac{1}{1-r}$.
+\npar
+The {\it arithmetic series} is given by:
+$\displaystyle\sum_{n=0}^N(a+nV)=a(N+1)+\half N(N+1)V$.
+\npar
+The expansion of a function around the point $a$ is given by the
+{\it Taylor series}:
+\[
+f(x)=f(a)+(x-a)f'(a)+\frac{(x-a)^2}{2}f''(a)+\cdots+\frac{(x-a)^n}{n!}f^{(n)}(a)+R
+\]
+where the remainder is given by:
+\[
+R_n(h)=(1-\theta)^n\frac{h^n}{n!}f^{(n+1)}(\theta h)
+\]
+and is subject to:
+\[
+\frac{mh^{n+1}}{(n+1)!}\leq R_n(h)\leq\frac{Mh^{n+1}}{(n+1)!}
+\]
+From this one can deduce that
+\[
+(1-x)^\alpha=\sum_{n=0}^\infty{\alpha\choose n}x^n
+\]
+One can derive that:
+\[
+\sum_{n=1}^\infty\frac{1}{n^2}=\frac{\pi^2}{6}~,~~
+\sum_{n=1}^\infty\frac{1}{n^4}=\frac{\pi^4}{90}~,~~
+\sum_{n=1}^\infty\frac{1}{n^6}=\frac{\pi^6}{945}
+\]
+\[
+\sum_{k=1}^nk^2=\mbox{$\frac{1}{6}$}n(n+1)(2n+1)~,~~
+\sum_{n=1}^\infty\frac{(-1)^{n+1}}{n^2}=\frac{\pi^2}{12}~,~~
+\sum_{n=1}^\infty\frac{(-1)^{n+1}}{n}=\ln(2)
+\]
+\[
+\sum_{n=1}^\infty\frac{1}{4n^2-1}=\mbox{$\frac{1}{2}$}~,~~
+\sum_{n=1}^\infty\frac{1}{(2n-1)^2}=\frac{\pi^2}{8}~,~~
+\sum_{n=1}^\infty\frac{1}{(2n-1)^4}=\frac{\pi^4}{96}~,~~
+\sum_{n=1}^\infty\frac{(-1)^{n+1}}{(2n-1)^3}=\frac{\pi^3}{32}
+\]
+
+\subsection{Convergence and divergence of series}
+If $\sum\limits_n|u_n|$ converges, $\sum\limits_n u_n$ also converges.
+\npar
+If $\lim\limits_{n\rightarrow\infty}u_n\neq0$ then $\sum\limits_n u_n$ is divergent.
+\npar
+An alternating series of which the absolute values of the terms drop
+monotonously to 0 is convergent (Leibniz).
+\npar
+If $\int_p^{\infty}f(x)dx<\infty$, then $\sum\limits_n f_n$ is convergent.
+\npar
+If $u_n>0~\forall n$ then is $\sum\limits_n u_n$ convergent {\it if}
+$\sum\limits_n\ln(u_n+1)$ is convergent.
+\npar
+If $u_n=c_nx^n$ the radius of convergence $\rho$ of
+$\sum\limits_n u_n$ is given by:
+$\displaystyle\frac{1}{\rho}=\lim_{n\rightarrow\infty}\sqrt[n]{|c_n|}=
+\lim_{n\rightarrow\infty}\left|\frac{c_{n+1}}{c_n}\right|$.
+\npar
+The series $\displaystyle\sum_{n=1}^\infty \frac{1}{n^p}$ is convergent if
+$p>1$ and divergent if $p\leq1$.
+\npar
+If: $\displaystyle\lim_{n\rightarrow\infty}\frac{u_n}{v_n}=p$,
+than the following is true: if $p>0$ than $\sum\limits_{n}u_n$ and $\sum\limits_{n}v_n$
+are both divergent or both convergent, if $p=0$ holds: if $\sum\limits_{n}v_n$
+is convergent, than $\sum\limits_{n}u_n$ is also convergent.
+\npar
+If $L$ is defined by:
+$\displaystyle L=\lim_{n\rightarrow\infty}\sqrt[n]{|n_n|}$, or by:
+$\displaystyle L=\lim_{n\rightarrow\infty}\left|\frac{u_{n+1}}{u_n}\right|$,
+then is $\sum\limits_{n}u_n$ divergent if $L>1$ and convergent if $L<1$.
+
+\subsection{Convergence and divergence of functions}
+\label{sec:convf}
+$f(x)$ is continuous in $x=a$ only if the upper - and lower limit are equal:
+$\lim\limits_{x\uparrow a}f(x)=\lim\limits_{x\downarrow a}f(x)$.
+This is written as: $f(a^-)=f(a^+)$.
+\npar
+If $f(x)$ is continuous in $a$ {\it and}:
+$\lim\limits_{x\uparrow a}f'(x)=\lim\limits_{x\downarrow a}f'(x)$,
+{\it than} $f(x)$ is differentiable in $x=a$.
+\npar
+We define: $\|f\|_W:={\rm sup}(|f(x)|~|x\in W)$, and $\lim\limits_{x\rightarrow\infty}f_n(x)=f(x)$.
+Than holds: $\{f_n\}$ is uniform convergent if $\lim\limits_{n\rightarrow\infty}\|f_n-f\|=0$,
+or: $\forall(\varepsilon>0)\exists(N)\forall(n\geq N)\|f_n-f\|<\varepsilon$.
+\npar
+Weierstrass' test: if $\sum\|u_n\|_W$ is convergent, than $\sum u_n$ is
+uniform convergent.
+\npar
+We define $\displaystyle S(x)=\sum_{n=N}^\infty u_n(x)$ and
+$\displaystyle F(y)=\int\limits_a^bf(x,y)dx:=F$. Than it can be proved that:
+\begin{center}
+\begin{tabular}{||l|l|p{5cm}|p{6cm}||}
+\hline
+\bf Theorem&\bf For&\bf Demands on $W$&\bf Than holds on $W$\\
+\hline
+\hline
+ &rows    &$f_n$ continuous,                           &$f$ is continuous\\
+ &        &$\{f_n\}$ uniform convergent                &\\
+\cline{2-4}
+C&series  &$S(x)$ uniform convergent,                  &$S$ is continuous\\
+ &        &$u_n$ continuous                            &\\
+\cline{2-4}
+ &integral&$f$ is continuous                           &$F$ is continuous\\
+\hline
+ &rows    &$f_n$ can be integrated,                    &$f_n$ can be integrated,\\
+ &        &$\{f_n\}$ uniform convergent                &$\int f(x)dx=\lim\limits_{n\rightarrow\infty}\int f_ndx$\rule[-10pt]{0pt}{0pt}\\
+\cline{2-4}
+I&series  &$S(x)$ is uniform convergent,               &$S$ can be integrated, $\int Sdx=\sum\int u_ndx$\rule{0pt}{13pt}\\
+ &        &$u_n$ can be integrated                     &\\
+\cline{2-4}
+ &integral&$f$ is continuous                           &$\int Fdy=\iint f(x,y)dxdy$\rule{0pt}{13pt}\rule[-8pt]{0pt}{0pt}\\
+\hline
+ &rows    &$\{f_n\}\in$C$^{-1}$; $\{f_n'\}$ unif.conv $\rightarrow\phi$&$f'=\phi(x)$\rule{0pt}{13pt}\rule[-7pt]{0pt}{0pt}\\
+\cline{2-4}
+D&series  &$u_n\in$C$^{-1}$; $\sum u_n$ conv; $\sum u_n'$ u.c.&$S'(x)=\sum u_n'(x)$\rule{0pt}{13pt}\rule[-7pt]{0pt}{0pt}\\
+\cline{2-4}
+ &integral&$\partial f/\partial y$ continuous          &$F_y=\int f_y(x,y)dx$\rule{0pt}{13pt}\rule[-7pt]{0pt}{0pt}\\
+\hline
+\end{tabular}
+\end{center}
+
+\section{Products and quotients}
+For $a,b,c,d\in\RR$ holds:\\
+The {\bf distributive property}: $(a+b)(c+d)=ac+ad+bc+bd$\\
+The {\bf associative property}: $a(bc)=b(ac)=c(ab)$ and $a(b+c)=ab+ac$\\
+The {\bf commutative property}: $a+b=b+a$, $ab=ba$.
+\npar
+Further holds:
+\[
+\frac{a^{2n}-b^{2n}}{a\pm b}=a^{2n-1}\pm a^{2n-2}b+a^{2n-3}b^2\pm\cdots\pm b^{2n-1}~~~,~~~
+\frac{a^{2n+1}-b^{2n+1}}{a+b}=\sum_{k=0}^n a^{2n-k}b^{2k}
+\]
+\[
+(a\pm b)(a^2\pm ab+b^2)=a^3\pm b^3~,~~(a+b)(a-b)=a^2+b^2~,~~
+\frac{a^3\pm b^3}{a+b}=a^2\mp ba+b^2
+\]
+
+\section{Logarithms}
+{\bf Definition}: $^a\log(x)=b\Leftrightarrow a^b=x$. For logarithms with
+base $e$ one writes $\ln(x)$.
+\npar
+{\bf Rules}: $\log(x^n)=n\log(x)$, $\log(a)+\log(b)=\log(ab)$, $\log(a)-\log(b)=\log(a/b)$.
+
+\section{Polynomials}
+Equations of the type
+\[
+\sum_{k=0}^n a_kx^k=0
+\]
+have $n$ roots which may be equal to each other. Each polynomial $p(z)$ of order
+$n\geq1$ has at least one root in $\CC$. If all $a_k\in\RR$ holds: when
+$x=p$ with $p\in\CC$ a root, than $p^*$ is also a root. Polynomials up to and
+including order 4 have a general analytical solution, for polynomials with
+order $\geq5$ there does not exist a general analytical solution.
+\npar
+For $a,b,c\in\RR$ and $a\neq0$ holds:
+the 2nd order equation $ax^2+bx+c=0$ has the general solution:
+\[
+x=\frac{-b\pm\sqrt{b^2-4ac}}{2a}
+\]
+For $a,b,c,d\in\RR$ and $a\neq0$ holds:
+the 3rd order equation $ax^3+bx^2+cx+d=0$ has the general analytical solution:
+\begin{eqnarray*}
+x_1&=&~K-\frac{3ac-b^2}{9a^2K}-\frac{b}{3a}\\
+x_2=x_3^*&=&-\frac{K}{2}+\frac{3ac-b^2}{18a^2K}-\frac{b}{3a}+i\frac{\sqrt{3}}{2}\left(K+\frac{3ac-b^2}{9a^2K}\right)\\
+\end{eqnarray*}
+with $\displaystyle K=\left(\frac{9abc-27da^2-2b^3}{54a^3}+
+\frac{\sqrt{3}\,\sqrt{4ac^3-c^2b^2-18abcd+27a^2d^2+4db^3}}{18a^2}\right)^{1/3}$
+
+\section{Primes}
+A {\it prime} is a number $\in\NN$ that can only be divided by itself and
+1. There are an infinite number of primes. Proof: suppose that the collection of primes
+$P$ would be finite, than construct the number $q=1+\prod\limits_{p\in P}p$,
+than holds $q=1(p)$ and so $Q$ cannot be written as a product of primes from
+$P$. This is a contradiction.
+\npar
+If $\pi(x)$ is the number of primes $\leq x$, than holds:
+\[
+\lim_{x\rightarrow\infty}\frac{\pi(x)}{x/\ln(x)}=1~~~\mbox{and}~~~
+\lim_{x\rightarrow\infty}\frac{\pi(x)}{\int\limits_2^x\frac{dt}{\ln(t)}}=1
+\]
+For each $N\geq2$ there is a prime between $N$ and $2N$.
+\npar
+The numbers $F_k:=2^k+1$ with $k\in\NN$ are called {\it Fermat numbers}.
+Many Fermat numbers are prime.
+\npar
+The numbers $M_k:=2^k-1$ are called {\it Mersenne numbers}. They occur when
+one searches for {\it perfect numbers}, which are numbers $n\in\NN$ which are
+the sum of their different dividers, for example $6=1+2+3$. There are 23
+Mersenne numbers for $k<12000$ which are prime:
+for $k\in\{2,3,5,7,13,17,19,31,61,89,107,127,521,$
+$607,1279,2203,2281,3217,4253,4423,9689,9941,11213\}$.
+\npar
+To check if a given number $n$ is prime one can use a sieve method. The
+first known sieve method was developed by Eratosthenes. A faster method for
+large numbers are the 4 Fermat tests, who don't prove that a number is prime
+but give a large probability.
+\begin{enumerate}
+\item Take the first 4 primes: $b=\{2,3,5,7\}$,
+\item Take $w(b)=b^{n-1}~{\rm mod}~n$, for each $b$,
+\item If $w=1$ for each $b$, then $n$ is probably prime. For each other value
+      of $w$, $n$ is certainly not prime.
+\end{enumerate}
+
+
+\chapter{Probability and statistics}
+\typeout{Probability and statistics}
+\section{Combinations}
+The number of possible {\it combinations} of $k$ elements from $n$ elements is
+given by
+\[
+{n\choose k}=\frac{n!}{k!(n-k)!}
+\]
+The number of {\it permutations} of $p$ from $n$ is given by
+\[
+\frac{n!}{(n-p)!}=p!{n\choose p}
+\]
+The number of different ways to classify $n_i$ elements in $i$ groups, when
+the total number of elements is $N$, is
+\[
+\frac{N!}{\prod\limits_i n_i!}
+\]
+
+\section{Probability theory}
+The probability $P(A)$ that an event $A$ occurs is defined by:
+\[
+P(A)=\frac{n(A)}{n(U)}
+\]
+where $n(A)$ is the number of events when $A$ occurs and $n(U)$ the total
+number of events.
+\npar
+The probability $P(\neg A)$ that $A$ {\it does not} occur is: $P(\neg A)=1-P(A)$.
+The probability $P(A\cup B)$ that $A$ and $B$ {\it both} occur is given by:
+$P(A\cup B)=P(A)+P(B)-P(A\cap B)$. If $A$ and $B$ are independent, than holds:
+$P(A\cap B)=P(A)\cdot P(B)$.
+\npar
+The probability $P(A|B)$ that $A$ occurs, given the fact that $B$ occurs, is:
+\[
+P(A|B)=\frac{P(A\cap B)}{P(B)}
+\]
+
+\section{Statistics}
+\subsection{General}
+The {\it average} or {\it mean} value $\av{x}$ of a collection of values is:
+$\av{x}=\sum_i x_i/n$. The {\it standard deviation} $\sigma_x$ in the
+distribution of $x$ is given by:
+\[
+\sigma_x=\sqrt{\frac{\sum\limits_{i=1}^n(x_i-\av{x})^2}{n}}
+\]
+When samples are being used the sample variance $s$ is given by
+$\displaystyle s^2=\frac{n}{n-1}\sigma^2$.
+\npar
+The {\it covariance} $\sigma_{xy}$ of $x$ and $y$ is given by::
+\[
+\sigma_{xy}=\frac{\sum\limits_{i=1}^n(x_i-\av{x})(y_i-\av{y})}{n-1}
+\]
+The {\it correlation coefficient} $r_{xy}$ of $x$ and $y$ than becomes:
+$r_{xy}=\sigma_{xy}/\sigma_x\sigma_y$.
+\npar
+The standard deviation in a variable $f(x,y)$ resulting from errors in
+$x$ and $y$ is:
+\[
+\sigma^2_{f(x,y)}=\left(\Q{f}{x}\sigma_x\right)^2+\left(\Q{f}{y}\sigma_y\right)^2+
+\Q{f}{x}\Q{f}{y}\sigma_{xy}
+\]
+
+\subsection{Distributions}
+\begin{enumerate}
+\item {\bf The Binomial distribution} is the distribution describing a
+      sampling with replacement. The probability for success is $p$. The
+      probability $P$ for $k$ successes in $n$ trials is then given by:
+      \[
+      P(x=k)={n\choose k}p^k(1-p)^{n-k}
+      \]
+      The standard deviation is given by $\sigma_x=\sqrt{np(1-p)}$ and the
+      expectation value is $\varepsilon=np$.
+\item {\bf The Hypergeometric distribution} is the distribution describing
+      a sampling without replacement in which the order is irrelevant.
+      The probability for $k$ successes in a trial with $A$ possible
+      successes and $B$ possible failures is then given by:
+      \[
+      P(x=k)=\frac{\displaystyle{A\choose k}{B\choose n-k}}{\displaystyle{A+B\choose n}}
+      \]
+      The expectation value is given by $\varepsilon=nA/(A+B)$.
+\item {\bf The Poisson distribution} is a limiting case of the binomial
+      distribution when $p\rightarrow0$, $n\rightarrow\infty$ and also
+      $np=\lambda$ is constant.
+      \[
+      P(x)=\frac{\lambda^x {\rm e}^{-\lambda}}{x!}
+      \]
+      This distribution is normalized to $\displaystyle\sum\limits_{x=0}^\infty P(x)=1$.
+\item {\bf The Normal distribution} is a limiting case of the binomial distribution
+      for continuous variables:
+      \[
+      P(x)=\frac{1}{\sigma\sqrt{2\pi}}\exp\left(-\frac{1}{2}\left(\frac{x-\av{x}}{\sigma}\right)^2\right)
+      \]
+\item {\bf The Uniform distribution} occurs when a random number $x$ is taken
+      from the set $a\leq x\leq b$ and is given by:
+      \[
+      \left\{\begin{array}{l}\displaystyle
+      P(x)=\frac{1}{b-a}~~~\mbox{if}~~~a\leq x\leq b\\
+      \\
+      P(x)=0~~~\mbox{in all other cases}
+      \end{array}\right.
+      \]
+      $\av{x}=\half(b-a)$ and $\displaystyle\sigma^2=\frac{(b-a)^2}{12}$.
+\item {\bf The Gamma distribution} is given by:
+      \[
+      \left\{\begin{array}{l}\displaystyle
+      P(x)=\frac{x^{\alpha-1}{\rm e}^{-x/\beta}}{\beta^\alpha\Gamma(\alpha)}~~~\mbox{if}~~~0\leq y\leq\infty
+      \end{array}\right.
+      \]
+      with $\alpha>0$ and $\beta>0$. The distribution has the following
+      properties: $\av{x}=\alpha\beta$, $\sigma^2=\alpha\beta^2$.
+\item {\bf The Beta distribution} is given by:
+      \[
+      \left\{\begin{array}{l}\displaystyle
+      P(x)=\frac{x^{\alpha-1}(1-x)^{\beta-1}}{\beta(\alpha,\beta)}~~~\mbox{if}~~~0\leq x\leq1\\
+      \\
+      P(x)=0~~~\mbox{everywhere else}
+      \end{array}\right.
+      \]
+      and has the following properties: $\displaystyle\av{x}=\frac{\alpha}{\alpha+\beta}$,
+      $\displaystyle\sigma^2=\frac{\alpha\beta}{(\alpha+\beta)^2(\alpha+\beta+1)}$.
+      \npar
+      For $P(\chi^2)$ holds: $\alpha=V/2$ and $\beta=2$.
+\item {\bf The Weibull distribution} is given by:
+      \[
+      \left\{\begin{array}{l}\displaystyle
+      P(x)=\frac{\alpha}{\beta}x^{\alpha-1}{\rm e}^{-x^\alpha}~~~\mbox{if}~~~0\leq x\leq\infty\wedge\alpha\wedge\beta>0\\
+      \\
+      P(x)=0~~~\mbox{in all other cases}
+      \end{array}\right.
+      \]
+      The average is $\av{x}=\beta^{1/\alpha}\Gamma((\alpha+1)\alpha)$
+\item For a {\bf two-dimensional distribution} holds:
+      \[
+      P_1(x_1)=\int P(x_1,x_2)dx_2~~,~~~P_2(x_2)=\int P(x_1,x_2)dx_1
+      \]
+      with
+      \[
+      \varepsilon(g(x_1,x_2))=\iint g(x_1,x_2)P(x_1,x_2)dx_1dx_2=\sum_{x_1}\sum_{x_2}g\cdot P
+      \]
+\end{enumerate}
+
+\section{Regression analyses}
+When there exists a relation between the quantities $x$ and $y$ of the form
+$y=ax+b$ and there is a measured set $x_i$ with related $y_i$, the following
+relation holds for $a$ and $b$ with $\vec{x}=(x_1,x_2,...,x_n)$ and
+$\vec{e}=(1,1,...,1)$:
+\[
+\vec{y}-a\vec{x}-b\vec{e}\in<\vec{x},\vec{e}>^\perp
+\]
+From this follows that the inner products are 0:
+\[
+\left\{
+\begin{array}{l}
+(\vec{y},\vvec{x})-a(\vec{x},\vvec{x})-b(\vec{e},\vvec{x})=0\\
+(\vec{y},\vvec{e})-a(\vec{x},\vvec{e})-b(\vec{e},\vvec{e})=0
+\end{array}\right.
+\]
+with $(\vec{x},\vvec{x})=\sum\limits_i x_i^2$, $(\vec{x},\vvec{y})=\sum\limits_ix_iy_i$,
+$(\vec{x},\vvec{e})=\sum\limits_ix_i$ and $(\vec{e},\vvec{e})=n$.
+$a$ and $b$ follow from this.
+\npar
+A similar method works for higher order polynomial fits: for a second order
+fit holds:
+\[
+\vec{y}-a\vec{x^2}-b\vec{x}-c\vec{e}\in<\vec{x^2},\vec{x},\vec{e}>^\perp
+\]
+with $\vec{x^2}=(x_1^2,...,x_n^2)$.
+\npar
+The {\it correlation coefficient} $r$ is a measure for the quality of a fit.
+In case of linear regression it is given by:
+\[
+r=\frac{n\sum xy-\sum x\sum y}{\sqrt{(n\sum x^2-(\sum x)^2)(n\sum y^2-(\sum y)^2)}}
+\]
+
+
+\chapter{Calculus}
+\typeout{Calculus}
+\section{Integrals}
+\subsection{Arithmetic rules}
+The primitive function $F(x)$ of $f(x)$ obeys the rule $F'(x)=f(x)$. With
+$F(x)$ the primitive of $f(x)$ holds for the definite integral
+\[
+\int\limits_a^bf(x)dx=F(b)-F(a)
+\]
+If $u=f(x)$ holds:
+\[
+\int\limits_a^bg(f(x))df(x)=\int\limits_{f(a)}^{f(b)}g(u)du
+\]
+{\bf Partial integration}: with $F$ and $G$ the primitives of $f$ and $g$
+holds:
+\[
+\int f(x)\cdot g(x)dx=f(x)G(x)-\int G(x)\frac{df(x)}{dx}dx
+\]
+A derivative can be brought under the intergral sign (see section
+\ref{sec:convf} for the required conditions):
+\[
+\frac{d}{dy}\left[\int\limits_{x=g(y)}^{x=h(y)}f(x,y)dx\right]=
+\int\limits_{x=g(y)}^{x=h(y)}\Q{f(x,y)}{y}dx-f(g(y),y)\frac{dg(y)}{dy}+f(h(y),y)\frac{dh(y)}{dy}
+\]
+
+\subsection{Arc lengts, surfaces and volumes}
+The arc length $\ell$ of a curve $y(x)$ is given by:
+\[
+\ell=\int\sqrt{1+\left(\frac{dy(x)}{dx}\right)^2}dx
+\]
+The arc length $\ell$ of a parameter curve $F(\vec{x}(t))$ is:
+\[
+\ell=\int Fds=\int F(\vec{x}(t))|\dot{\vec{x}}(t)|dt
+\]
+with
+\[
+\vec{t}=\frac{d\vec{x}}{ds}=\frac{\dot{\vec{x}}(t)}{|\dot{\vec{x}}(t)|}~~~,~~|\vec{t}~|=1
+\]
+\[
+\int(\vec{v},\vec{t})ds=\int(\vec{v},\dot{\vec{t}}(t))dt=\int(v_1dx+v_2dy+v_3dz)
+\]
+The surface $A$ of a solid of revolution is:
+\[
+A=2\pi\int y\sqrt{1+\left(\frac{dy(x)}{dx}\right)^2}dx
+\]
+The volume $V$ of a solid of revolution is:
+\[
+V=\pi\int f^2(x)dx
+\]
+
+\subsection{Separation of quotients}
+\label{sec:breuksplits}
+Every rational function $P(x)/Q(x)$ where $P$ and $Q$ are polynomials can be
+written as a linear combination of functions of the type $(x-a)^k$ with
+$k\in\ZZ$, and of functions of the type
+\[
+\frac{px+q}{((x-a)^2+b^2)^n}
+\]
+with $b>0$ and $n\in\NN$. So:
+\[
+\frac{p(x)}{(x-a)^n}=\sum_{k=1}^n\frac{A_k}{(x-a)^k}~~,~~~
+\frac{p(x)}{((x-b)^2+c^2)^n}=\sum_{k=1}^n \frac{A_kx+B}{((x-b)^2+c^2)^k}
+\]
+Recurrent relation: for $n\neq0$ holds:
+\[
+\int\frac{dx}{(x^2+1)^{n+1}}=\frac{1}{2n}\frac{x}{(x^2+1)^n}+\frac{2n-1}{2n}\int\frac{dx}{(x^2+1)^n}
+\]
+
+\subsection{Special functions}
+\subsubsection{Elliptic functions}
+Elliptic functions can be written as a power series as follows:
+\[
+\sqrt{1-k^2\sin^2(x)}=1-\sum_{n=1}^\infty\frac{(2n-1)!!}{(2n)!!(2n-1)}k^{2n}\sin^{2n}(x)
+\]
+\[
+\frac{1}{\sqrt{1-k^2\sin^2(x)}}=1+\sum_{n=1}^\infty\frac{(2n-1)!!}{(2n)!!}k^{2n}\sin^{2n}(x)
+\]
+with $n!!=n(n-2)!!$.
+
+\subsubsection{The Gamma function}
+The gamma function $\Gamma(y)$ is defined by:
+\[
+\Gamma(y)=\int\limits_0^\infty{\rm e}^{-x}x^{y-1}dx
+\]
+One can derive that $\Gamma(y+1)=y\Gamma(y)=y!$. This is a way to define
+faculties for non-integers. Further one can derive that
+\[
+\Gamma(n+\half)=\frac{\sqrt{\pi}}{2^n}(2n-1)!!~~\mbox{and}~~
+\Gamma^{(n)}(y)=\int\limits_0^\infty{\rm e}^{-x}x^{y-1}\ln^n(x)dx
+\]
+
+\subsubsection{The Beta function}
+The betafunction $\beta(p,q)$ is defined by:
+\[
+\beta(p,q)=\int\limits_0^1x^{p-1}(1-x)^{q-1}dx
+\]
+with $p$ and $q$ $>0$. The beta and gamma functions are related by the
+following equation:
+\[
+\beta(p,q)=\frac{\Gamma(p)\Gamma(q)}{\Gamma(p+q)}
+\]
+
+\subsubsection{The Delta function}
+The delta function $\delta(x)$ is an infinitely thin peak function with
+surface 1. It can be defined by:
+\[
+\delta(x)=\lim_{\varepsilon\rightarrow0}P(\varepsilon,x)~~\mbox{with}~~
+P(\varepsilon,x)=\left\{
+\begin{array}{l}
+0~~~\mbox{for}~|x|>\varepsilon\\
+\displaystyle\frac{1}{2\varepsilon}~~~\mbox{when}~|x|<\varepsilon
+\end{array}\right.
+\]
+Some properties are:
+\[
+\int\limits_{-\infty}^\infty\delta(x)dx=1~~,~~~
+\int\limits_{-\infty}^\infty F(x)\delta(x)dx=F(0)
+\]
+
+\subsection{Goniometric integrals}
+When solving goniometric integrals it can be useful to change variables. The
+following holds if one defines $\tan(\frac{1}{2}x):=t$:
+\[
+dx=\frac{2dt}{1+t^2}~,~~\cos(x)=\frac{1-t^2}{1+t^2}~,~~\sin(x)=\frac{2t}{1+t^2}
+\]
+Each integral of the type $\int R(x,\sqrt{ax^2+bx+c})dx$ can be converted into
+one of the types that were treated in {\bf section \ref{sec:breuksplits}}.
+After this conversion one can substitute in the integrals of the type:
+\begin{eqnarray*}
+\int R(x,\sqrt{x^2+1})dx&~:~~&x=\tan(\varphi)          ~,dx=\frac{d\varphi}{\cos(\varphi)}               ~~\mbox{of}~~\sqrt{x^2+1}=t+x\\
+\int R(x,\sqrt{1-x^2})dx&~:~~&x=\sin(\varphi)          ~,dx=\cos(\varphi)d\varphi                        ~~\mbox{of}~~\sqrt{1-x^2}=1-tx\\
+\int R(x,\sqrt{x^2-1})dx&~:~~&x=\frac{1}{\cos(\varphi)}~,dx=\frac{\sin(\varphi)}{\cos^2(\varphi)}d\varphi~~\mbox{of}~~\sqrt{x^2-1}=x-t
+\end{eqnarray*}
+These definite integrals are easily solved:
+\[
+\int\limits_0^{\pi/2}\cos^n(x)\sin^m(x)dx=\frac{(n-1)!!(m-1)!!}{(m+n)!!}\cdot
+\left\{\begin{array}{l}
+\pi/2\mbox{~~when $m$ and $n$ are both even}\\
+1\mbox{~~~~~~in all other cases}
+\end{array}\right.
+\]
+Some important integrals are:
+\[
+\int\limits_0^\infty\frac{xdx}{{\rm e}^{ax}+1}=\frac{\pi^2}{12a^2}~~,~~
+\int\limits_{-\infty}^\infty\frac{x^2dx}{({\rm e}^x+1)^2}=\frac{\pi^2}{3}~~,~~
+\int\limits_0^\infty\frac{x^3dx}{{\rm e}^x-1}=\frac{\pi^4}{15}
+\]
+
+\section{Functions with more variables}
+\subsection{Derivatives}
+The {\it partial derivative} with respect to $x$ of a function $f(x,y)$ is defined by:
+\[
+\Qc{f}{x}{x_0}=\lim_{h\rightarrow0}\frac{f(x_0+h,y_0)-f(x_0,y_0)}{h}
+\]
+The {\it directional derivative} in the direction of $\alpha$ is defined by:
+\[
+\Q{f}{\alpha}=\lim_{r\downarrow0}\frac{f(x_0+r\cos(\alpha),y_0+r\sin(\alpha))-f(x_0,y_0)}{r}=
+(\vec{\nabla}f,(\sin\alpha,\cos\alpha))=\frac{\nabla f\cdot\vec{v}}{|\vec{v}|}
+\]
+When one changes to coordinates $f(x(u,v),y(u,v))$ holds:
+\[
+\Q{f}{u}=\Q{f}{x}\Q{x}{u}+\Q{f}{y}\Q{y}{u}
+\]
+If $x(t)$ and $y(t)$ depend only on one parameter $t$ holds:
+\[
+\Q{f}{t}=\Q{f}{x}\frac{dx}{dt}+\Q{f}{y}\frac{dy}{dt}
+\]
+The {\it total differential} $df$ of a function of 3 variables is given by:
+\[
+df=\Q{f}{x}dx+\Q{f}{y}dy+\Q{f}{z}dz
+\]
+So
+\[
+\frac{df}{dx}=\Q{f}{x}+\Q{f}{y}\frac{dy}{dx}+\Q{f}{z}\frac{dz}{dx}
+\]
+The {\it tangent} in point $\vec{x}_0$ at the surface $f(x,y)=0$ is given by
+the equation $f_x(\vec{x}_0)(x-x_0)+f_y(\vec{x}_0)(y-y_0)=0$.
+\npar
+The {\it tangent plane} in $\vec{x}_0$ is given by:
+$f_x(\vec{x}_0)(x-x_0)+f_y(\vec{x}_0)(y-y_0)=z-f(\vec{x}_0)$.
+
+\subsection{Taylor series}
+A function of two variables can be expanded as follows in a Taylor series:
+\[
+f(x_0+h,y_0+k)=\sum\limits_{p=0}^n \frac{1}{p!}
+\left(h\Q{^p}{x^p}+k\Q{^p}{y^p}\right)f(x_0,y_0)+R(n)
+\]
+with $R(n)$ the residual error and
+\[
+\left(h\Q{^p}{x^p}+k\Q{^p}{y^p}\right)f(a,b)=\sum\limits_{m=0}^p{p\choose m}
+h^mk^{p-m}\frac{\partial^pf(a,b)}{\partial x^m\partial y^{p-m}}
+\]
+
+\subsection{Extrema}
+When $f$ is continuous on a compact boundary $V$ there exists a global
+maximum and a global minumum for $f$ on this boundary. A boundary is called
+compact if it is limited and closed.
+\npar
+Possible extrema of $f(x,y)$ on a boundary $V\in\RR^2$ are:
+\begin{enumerate}
+\item Points on $V$ where $f(x,y)$ is not differentiable,
+\item Points where $\vec{\nabla}f=\vec{0}$,
+\item If the boundary $V$ is given by $\varphi(x,y)=0$, than all points where
+      $\vec{\nabla}f(x,y)+\lambda\vec{\nabla}\varphi(x,y)=0$ are possible
+      for extrema. This is the multiplicator method of Lagrange, $\lambda$
+      is called a multiplicator.
+\end{enumerate}
+The same as in $\RR^2$ holds in $\RR^3$ when the area to be searched is
+constrained by a compact $V$, and $V$ is defined by $\varphi_1(x,y,z)=0$ and
+$\varphi_2(x,y,z)=0$ for extrema of $f(x,y,z)$ for points (1) and (2).
+Point (3) is rewritten as follows: possible extrema are points where
+$\vec{\nabla}f(x,y,z)+\lambda_1\vec{\nabla}\varphi_1(x,y,z)+\lambda_2\vec{\nabla}\varphi_2(x,y,z)=0$.
+
+\subsection{The $\nabla$-operator}
+In cartesian coordinates $(x,y,z)$ holds:
+\begin{eqnarray*}
+\vec{\nabla}     &=&\Q{}{x}\ee{x}+\Q{}{y}\ee{y}+\Q{}{z}\ee{z}\\
+{\rm grad}f      &=&\Q{f}{x}\ee{x}+\Q{f}{y}\ee{y}+\Q{f}{z}\ee{z}\\
+{\rm div}~\vec{a}&=&\Q{a_x}{x}+\Q{a_y}{y}+\Q{a_z}{z}\\
+{\rm curl}~\vec{a}&=&\left(\Q{a_z}{y}-\Q{a_y}{z}\right)\ee{x}+
+                    \left(\Q{a_x}{z}-\Q{a_z}{x}\right)\ee{y}+
+                    \left(\Q{a_y}{x}-\Q{a_x}{y}\right)\ee{z}\\
+\nabla^2 f       &=&\QQ{f}{x}+\QQ{f}{y}+\QQ{f}{z}
+\end{eqnarray*}
+
+In cylindrical coordinates $(r,\varphi,z)$ holds:
+\begin{eqnarray*}
+\vec{\nabla}     &=&\Q{}{r}\ee{r}+\frac{1}{r}\Q{}{\varphi}\ee{\varphi}+\Q{}{z}\ee{z}\\
+{\rm grad}f      &=&\Q{f}{r}\ee{r}+\frac{1}{r}\Q{f}{\varphi}\ee{\varphi}+\Q{f}{z}\ee{z}\\
+{\rm div}~\vec{a}&=&\Q{a_r}{r}+\frac{a_r}{r}+\frac{1}{r}\Q{a_\varphi}{\varphi}+\Q{a_z}{z}\\
+{\rm curl}~\vec{a}&=&\left(\frac{1}{r}\Q{a_z}{\varphi}-\Q{a_\varphi}{z}\right)\ee{r}+
+                    \left(\Q{a_r}{z}-\Q{a_z}{r}\right)\ee{\varphi}+
+                    \left(\Q{a_\varphi}{r}+\frac{a_\varphi}{r}-\frac{1}{r}\Q{a_r}{\varphi}\right)\ee{z}\\
+\nabla^2 f       &=&\QQ{f}{r}+\frac{1}{r}\Q{f}{r}+\frac{1}{r^2}\QQ{f}{\varphi}+\QQ{f}{z}
+\end{eqnarray*}
+
+In spherical coordinates $(r,\theta,\varphi)$ holds:
+\begin{eqnarray*}
+\vec{\nabla}     &=&\Q{}{r}\ee{r}+\frac{1}{r}\Q{}{\theta}\ee{\theta}+\frac{1}{r\sin\theta}\Q{}{\varphi}\ee{\varphi}\\
+{\rm grad}f      &=&\Q{f}{r}\ee{r}+\frac{1}{r}\Q{f}{\theta}\ee{\theta}+\frac{1}{r\sin\theta}\Q{f}{\varphi}\ee{\varphi}\\
+{\rm div}~\vec{a}&=&\Q{a_r}{r}+\frac{2a_r}{r}+\frac{1}{r}\Q{a_\theta}{\theta}+\frac{a_\theta}{r\tan\theta}+\frac{1}{r\sin\theta}\Q{a_\varphi}{\varphi}\\
+{\rm curl}~\vec{a}&=&\left(\frac{1}{r}\Q{a_\varphi}{\theta}+\frac{a_\theta}{r\tan\theta}-\frac{1}{r\sin\theta}\Q{a_\theta}{\varphi}\right)\ee{r}+
+                    \left(\frac{1}{r\sin\theta}\Q{a_r}{\varphi}-\Q{a_\varphi}{r}-\frac{a_\varphi}{r}\right)\ee{\theta}+\\
+                 &&\left(\Q{a_\theta}{r}+\frac{a_\theta}{r}-\frac{1}{r}\Q{a_r}{\theta}\right)\ee{\varphi}\\
+\nabla^2 f       &=&\QQ{f}{r}+\frac{2}{r}\Q{f}{r}+\frac{1}{r^2}\QQ{f}{\theta}+\frac{1}{r^2\tan\theta}\Q{f}{\theta}+\frac{1}{r^2\sin^2\theta}\QQ{f}{\varphi}
+\end{eqnarray*}
+
+General orthonormal curvilinear coordinates $(u,v,w)$ can be derived from
+cartesian coordinates by the transformation $\vec{x}=\vec{x}(u,v,w)$. The unit
+vectors are given by:
+\[
+\ee{u}=\frac{1}{h_1}\Q{\vec{x}}{u}~,~~ \ee{v}=\frac{1}{h_2}\Q{\vec{x}}{v}~,~~
+\ee{w}=\frac{1}{h_3}\Q{\vec{x}}{w}
+\]
+where the terms $h_i$ give normalization to length 1. The differential operators
+are than given by:
+\begin{eqnarray*}
+{\rm grad}f      &=&\frac{1}{h_1}\Q{f}{u}\ee{u}+\frac{1}{h_2}\Q{f}{v}\ee{v}+\frac{1}{h_3}\Q{f}{w}\ee{w}\\
+{\rm div}~\vec{a}&=&\frac{1}{h_1h_2h_3}\left(\Q{}{u}(h_2h_3a_u)+\Q{}{v}(h_3h_1a_v)+\Q{}{w}(h_1h_2a_w)\right)\\
+{\rm curl}~\vec{a}&=&\frac{1}{h_2h_3}\left(\Q{(h_3a_w)}{v}-\Q{(h_2a_v)}{w}\right)\ee{u}+
+                    \frac{1}{h_3h_1}\left(\Q{(h_1a_u)}{w}-\Q{(h_3a_w)}{u}\right)\ee{v}+\\
+                  &&\frac{1}{h_1h_2}\left(\Q{(h_2a_v)}{u}-\Q{(h_1a_u)}{v}\right)\ee{w}\\
+\nabla^2 f       &=&\frac{1}{h_1h_2h_3}\left[\Q{}{u}\left(\frac{h_2h_3}{h_1}\Q{f}{u}\right)+
+                    \Q{}{v}\left(\frac{h_3h_1}{h_2}\Q{f}{v}\right)+
+                    \Q{}{w}\left(\frac{h_1h_2}{h_3}\Q{f}{w}\right)\right]
+\end{eqnarray*}
+
+Some properties of the $\nabla$-operator are:
+\[
+\begin{array}{l@{~~~~~}l@{~~~~~}l}
+{\rm div}(\phi\vec{v})=\phi{\rm div}\vec{v}+{\rm grad}\phi\cdot\vec{v}&
+{\rm curl}(\phi\vec{v})=\phi{\rm curl}\vec{v}+({\rm grad}\phi)\times\vec{v}&{\rm curl~grad}\phi=\vec{0}\\
+{\rm div}(\vec{u}\times\vec{v})=\vec{v}\cdot({\rm curl}\vec{u})-\vec{u}\cdot({\rm curl}\vec{v})&
+{\rm curl~curl}\vec{v}={\rm grad~div}\vec{v}-\nabla^2\vec{v}&{\rm div~curl}\vec{v}=0\\
+{\rm div~grad}\phi=\nabla^2\phi&\nabla^2\vec{v}\equiv(\nabla^2v_1,\nabla^2v_2,\nabla^2v_3)
+\end{array}
+\]
+Here, $\vec{v}$ is an arbitrary vectorfield and $\phi$ an arbitrary scalar
+field.
+
+\subsection{Integral theorems}
+Some important integral theorems are:
+\[
+\begin{array}{l@{~~}l}
+\mbox{Gauss:}&\displaystyle\oiint(\vec{v}\cdot\vec{n})d^2A=\iiint({\rm div}\vvec{v})d^3V\\[5mm]
+\mbox{Stokes for a scalar field:}&\displaystyle\oint(\phi\cdot\e{t})ds=\iint(\vec{n}\times{\rm grad}\phi)d^2A\\[5mm]
+\mbox{Stokes for a vector field:}&\displaystyle\oint(\vec{v}\cdot\e{t})ds=\iint({\rm curl}\vec{v}\cdot\vec{n})d^2A\\[5mm]
+\mbox{this gives:}&\displaystyle\oiint({\rm curl}\vec{v}\cdot\vec{n})d^2A=0\\[5mm]
+\mbox{Ostrogradsky:}&\displaystyle\oiint(\vec{n}\times\vvec{v})d^2A=\iiint({\rm curl}\vvec{v})d^3A\\[5mm]
+\mbox{}&\displaystyle\oiint(\phi\vvec{n})d^2A=\iiint({\rm grad}\phi)d^3V
+\end{array}
+\]
+Here the orientable surface $\int\hspace{-1mm}\int d^2A$ is bounded by the
+Jordan curve $s(t)$.
+
+\subsection{Multiple integrals}
+Let $A$ be a closed curve given by $f(x,y)=0$, than the surface $A$ inside
+the curve in $\RR^2$ is given by
+\[
+A=\iint d^2A=\iint dxdy
+\]
+Let the surface $A$ be defined by the function $z=f(x,y)$. The volume $V$
+bounded by $A$ and the $xy$ plane is than given by:
+\[
+V=\iint f(x,y)dxdy
+\]
+The volume inside a closed surface defined by $z=f(x,y)$ is given by:
+\[
+V=\iiint d^3V=\iint f(x,y)dxdy=\iiint dxdydz
+\]
+
+\subsection{Coordinate transformations}
+The expressions $d^2A$ and $d^3V$ transform as follows when one changes
+coordinates to $\vec{u}=(u,v,w)$ through the transformation $x(u,v,w)$:
+\[
+V=\iiint f(x,y,z)dxdydz=\iiint f(\vec{x}(\vec{u}))\left|\Q{\vec{x}}{\vec{u}}\right|dudvdw
+\]
+In $\RR^2$ holds:
+\[
+\Q{\vec{x}}{\vec{u}}=\left|\begin{array}{cc}x_u&x_v\\ y_u&y_v\end{array}\right|
+\]
+Let the surface $A$ be defined by $z=F(x,y)=X(u,v)$. Than the volume bounded by
+the $xy$ plane and $F$ is given by:
+\[
+\iint\limits_Sf(\vec{x})d^2A=\iint\limits_Gf(\vec{x}(\vec{u}))
+\left|\Q{X}{u}\times\Q{X}{v}\right|dudv=
+\iint\limits_Gf(x,y,F(x,y))\sqrt{1+\partial_xF^2+\partial_yF^2}dxdy
+\]
+
+\section{Orthogonality of functions}
+The inner product of two functions $f(x)$ and $g(x)$ on the interval $[a,b]$
+is given by:
+\[
+(f,g)=\int\limits_a^bf(x)g(x)dx
+\]
+or, when using a weight function $p(x)$, by:
+\[
+(f,g)=\int\limits_a^bp(x)f(x)g(x)dx
+\]
+The {\it norm} $\|f\|$ follows from: $\|f\|^2=(f,f)$. A set functions $f_i$
+is {\it orthonormal} if $(f_i,f_j)=\delta_{ij}$.
+\npar
+Each function $f(x)$ can be written as a sum of orthogonal functions:
+\[
+f(x)=\sum_{i=0}^\infty c_ig_i(x)
+\]
+and $\sum c_i^2\leq\|f\|^2$. Let the set $g_i$ be orthogonal, than it follows:
+\[
+c_i=\frac{f,g_i}{(g_i,g_i)}
+\]
+
+\section{Fourier series}
+Each function can be written as a sum of independent base functions. When one
+chooses the orthogonal basis $(\cos(nx),\sin(nx))$ we have a Fourier series.
+\npar
+A periodical function $f(x)$ with period $2L$ can be written as:
+\[
+f(x)=a_0+\sum_{n=1}^\infty\left[a_n\cos\left(\frac{n\pi x}{L}\right)+b_n\sin\left(\frac{n\pi x}{L}\right)\right]
+\]
+Due to the orthogonality follows for the coefficients:
+\[
+a_0=\frac{1}{2L}\int\limits_{-L}^Lf(t)dt~~,~~
+a_n=\frac{1}{L}\int\limits_{-L}^Lf(t)\cos\left(\frac{n\pi t}{L}\right)dt~~,~~
+b_n=\frac{1}{L}\int\limits_{-L}^Lf(t)\sin\left(\frac{n\pi t}{L}\right)dt
+\]
+A Fourier series can also be written as a sum of complex exponents:
+\[
+f(x)=\sum_{n=-\infty}^\infty c_n{\rm e}^{inx}
+\]
+with
+\[
+c_n=\frac{1}{2\pi}\int\limits_{-\pi}^\pi f(x){\rm e}^{-inx}dx
+\]
+The {\it Fourier transform} of a function $f(x)$ gives the transformed function
+$\hat{f}(\omega)$:
+\[
+\hat{f}(\omega)=\frac{1}{\sqrt{2\pi}}\int\limits_{-\infty}^\infty f(x){\rm e}^{-i\omega x}dx
+\]
+The inverse transformation is given by:
+\[
+\frac{1}{2}\left[f(x^+)+f(x^-)\right]=\frac{1}{\sqrt{2\pi}}\int\limits_{-\infty}^\infty\hat{f}(\omega){\rm e}^{i\omega x}d\omega
+\]
+where $f(x^+)$ and $f(x^-)$ are defined by the lower - and upper limit:
+\[
+f(a^-)=\lim_{x\uparrow a}f(x)~~,~~f(a^+)=\lim_{x\downarrow a}f(x)
+\]
+For continuous functions is $\frac{1}{2}\left[f(x^+)+f(x^-)\right]=f(x)$.
+
+\chapter{Differential equations}
+\typeout{Differential equations}
+\section{Linear differential equations}
+\subsection{First order linear DE}
+The general solution of a linear differential equation is given by
+$y_{\rm A}=y_{\rm H}+y_{\rm P}$, where $y_{\rm H}$ is the solution of the
+{\it homogeneous equation} and $y_{\rm P}$ is a {\it particular solution}.
+\npar
+A first order differential equation is given by: $y'(x)+a(x)y(x)=b(x)$.
+Its homogeneous equation is $y'(x)+a(x)y(x)=0$.
+\npar
+The solution of the homogeneous equation is given by
+\[
+y_{\rm H}=k\exp\left(\int a(x)dx\right)
+\]
+Suppose that $a(x)=a=$constant.
+\npar
+Substitution of $\exp(\lambda x)$ in the homogeneous equation leads to the
+{\it characteristic equation} $\lambda+a=0$\\ $\Rightarrow\lambda=-a$.
+\npar
+Suppose $b(x)=\alpha\exp(\mu x)$. Than one can distinguish two cases:
+\begin{enumerate}
+\item $\lambda\neq\mu$: a particular solution is: $y_{\rm P}=\exp(\mu x)$
+\item $\lambda=\mu$: a particular solution is: $y_{\rm P}=x\exp(\mu x)$
+\end{enumerate}
+\npar
+When a DE is solved by {\it variation of parameters} one writes:
+$y_{\rm P}(x)=y_{\rm H}(x)f(x)$, and than one solves $f(x)$ from this.
+
+\subsection{Second order linear DE}
+A differential equation of the second order with constant coefficients is given
+by: $y''(x)+ay'(x)+by(x)=c(x)$. If $c(x)=c=$constant there exists a particular
+solution $y_{\rm P}=c/b$.
+\npar
+Substitution of $y=\exp(\lambda x)$ leads to the characteristic equation
+$\lambda^2+a\lambda+b=0$.
+\npar
+There are now 2 possibilities:
+\begin{enumerate}
+\item $\lambda_1\neq\lambda_2$: than $y_{\rm H}=\alpha\exp(\lambda_1 x)+\beta\exp(\lambda_2 x)$.
+\item $\lambda_1=\lambda_2=\lambda$: than $y_{\rm H}=(\alpha +\beta x)\exp(\lambda x)$.
+\end{enumerate}
+\npar
+If $c(x)=p(x)\exp(\mu x)$ where $p(x)$ is a polynomial there are 3 possibilities:
+\begin{enumerate}
+\item $\lambda_1,\lambda_2\neq\mu$: $y_{\rm P}=q(x)\exp(\mu x)$.
+\item $\lambda_1=\mu,\lambda_2\neq\mu$: $y_{\rm P}=xq(x)\exp(\mu x)$.
+\item $\lambda_1=\lambda_2=\mu$: $y_{\rm P}=x^2q(x)\exp(\mu x)$.
+\end{enumerate}
+where $q(x)$ is a polynomial of the same order as $p(x)$.
+\npar
+When: $y''(x)+\omega^2y(x)=\omega f(x)$ and $y(0)=y'(0)=0$ follows:
+$y(x)=\int\limits_0^xf(x)\sin(\omega(x-t))dt$.
+
+\subsection{The Wronskian}
+We start with the LDE $y''(x)+p(x)y'(x)+q(x)y(x)=0$ and the two initial conditions
+$y(x_0)=K_0$ and $y'(x_0)=K_1$. When $p(x)$ and $q(x)$ are continuous on the open
+interval $I$ there exists a unique solution $y(x)$ on this interval.
+\npar
+The general solution can than be written as $y(x)=c_1y_1(x)+c_2y_2(x)$ and
+$y_1$ and $y_2$ are linear independent. These are also {\it all} solutions of
+the LDE.
+\npar
+The {\it Wronskian} is defined by:
+\[
+W(y_1,y_2)=
+\left|\begin{array}{cc}
+y_1&y_2\\
+y'_1&y'_2
+\end{array}\right|=y_1y'_2-y_2y'_1
+\]
+$y_1$ and $y_2$ are linear independent if and only if on the interval
+$I$ when $\exists x_0\in I$ so that holds:\\
+$W(y_1(x_0),y_2(x_0))=0$.
+
+\subsection{Power series substitution}
+When a series $y=\sum a_nx^n$ is substituted in the LDE with constant
+coefficients $y''(x)+py'(x)+qy(x)=0$ this leads to:
+\[
+\sum_n\left[n(n-1)a_nx^{n-2}+pna_nx^{n-1}+qa_nx^n\right]=0
+\]
+Setting coefficients for equal powers of $x$ equal gives:
+\[
+(n+2)(n+1)a_{n+2}+p(n+1)a_{n+1}+qa_n=0
+\]
+This gives a general relation between the coefficients. Special cases are
+$n=0,1,2$.
+
+\section{Some special cases}
+\subsection{Frobenius' method}
+Given the LDE
+\[
+\frac{d^2y(x)}{dx^2}+\frac{b(x)}{x}\frac{dy(x)}{dx}+\frac{c(x)}{x^2}y(x)=0
+\]
+with $b(x)$ and $c(x)$ analytical at $x=0$. This LDE has at least one solution
+of the form
+\[
+y_i(x)=x^{r_i}\sum_{n=0}^\infty a_nx^n~~~\mbox{with}~~i=1,2
+\]
+with $r$ real or complex and chosen so that $a_0\neq0$. When one expands $b(x)$
+and $c(x)$ as $b(x)=b_0+b_1x+b_2x^2+...$ and $c(x)=c_0+c_1x+c_2x^2+...$, it
+follows for $r$:
+\[
+r^2+(b_0-1)r+c_0=0
+\]
+There are now 3 possibilities:
+\begin{enumerate}
+\item $r_1=r_2$: than $y(x)=y_1(x)\ln|x|+y_2(x)$.
+\item $r_1-r_2\in\NN$: than $y(x)=ky_1(x)\ln|x|+y_2(x)$.
+\item $r_1-r_2\neq\ZZ$: than $y(x)=y_1(x)+y_2(x)$.
+\end{enumerate}
+
+\subsection{Euler}
+Given the LDE
+\[
+x^2\frac{d^2y(x)}{dx^2}+ax\frac{dy(x)}{dx}+by(x)=0
+\]
+Substitution of $y(x)=x^r$ gives an equation for $r$: $r^2+(a-1)r+b=0$. From
+this one gets two solutions $r_1$ and $r_2$. There are now 2 possibilities:
+\begin{enumerate}
+\item $r_1\neq r_2$: than $y(x)=C_1x^{r1}+C_2x^{r_2}$.
+\item $r_1=r_2=r$: than $y(x)=(C_1\ln(x)+C_2)x^r$.
+\end{enumerate}
+
+\subsection{Legendre's DE}
+Given the LDE
+\[
+(1-x^2)\frac{d^2y(x)}{dx^2}-2x\frac{dy(x)}{dx}+n(n-1)y(x)=0
+\]
+The solutions of this equation are given by $y(x)=aP_n(x)+by_2(x)$
+where the {\it Legendre polynomials} $P(x)$ are defined by:
+\[
+P_n(x)=\frac{d^n}{dx^n}\left(\frac{(1-x^2)^n}{2^n n!}\right)
+\]
+For these holds: $\|P_n\|^2=2/(2n+1)$.
+
+\subsection{The associated Legendre equation}
+This equation follows from the $\theta$-dependent part of the wave equation
+$\nabla^2\Psi=0$ by substitution of\\ $\xi=\cos(\theta)$. Than follows:
+\[
+(1-\xi^2)\frac{d}{d\xi}\left((1-\xi^2)\frac{dP(\xi)}{d\xi}\right)+
+[C(1-\xi^2)-m^2]P(\xi)=0
+\]
+Regular solutions exists only if $C=l(l+1)$. They are of the form:
+\[
+P_l^{|m|}(\xi)=(1-\xi^2)^{m/2}\frac{d^{|m|}P^0(\xi)}{d\xi^{|m|}}=
+\frac{(1-\xi^2)^{|m|/2}}{2^ll!}\frac{d^{|m|+l}}{d\xi^{|m|+l}}(\xi^2-1)^l
+\]
+For $|m|>l$ is $P_l^{|m|}(\xi)=0$.
+Some properties of $P_l^0(\xi)$ zijn:
+\[
+\int\limits_{-1}^1P_l^0(\xi)P_{l'}^0(\xi)d\xi=\frac{2}{2l+1}\delta_{ll'}~~~,~~~
+\sum_{l=0}^\infty P_l^0(\xi)t^l=\frac{1}{\sqrt{1-2\xi t+t^2}}
+\]
+This polynomial can be written as:
+\[
+P_l^0(\xi)=\frac{1}{\pi}\int\limits_0^\pi(\xi+\sqrt{\xi^2-1}\cos(\theta))^ld\theta
+\]
+
+\subsection{Solutions for Bessel's equation}
+Given the LDE
+\[
+x^2\frac{d^2y(x)}{dx^2}+x\frac{dy(x)}{dx}+(x^2-\nu^2)y(x)=0
+\]
+also called {\it Bessel's equation}, and the Bessel functions of the first
+kind
+\[
+J_\nu(x)=x^\nu\sum_{m=0}^\infty\frac{(-1)^mx^{2m}}{2^{2m+\nu}m!\Gamma(\nu+m+1)}
+\]
+for $\nu:=n\in\NN$ this becomes:
+\[
+J_n(x)=x^n\sum_{m=0}^\infty\frac{(-1)^mx^{2m}}{2^{2m+n}m!(n+m)!}
+\]
+When $\nu\neq\ZZ$ the solution is given by $y(x)=aJ_\nu(x)+bJ_{-\nu}(x)$.
+But because for $n\in\ZZ$ holds:\\ $J_{-n}(x)=(-1)^nJ_n(x)$, this does not
+apply to integers. The general solution of Bessel's equation is given by
+$y(x)=aJ_\nu(x)+bY_\nu(x)$, where $Y_\nu$ are the {\it Bessel functions of the
+second kind}:
+\[
+Y_\nu(x)=\frac{J_\nu(x)\cos(\nu\pi)-J_{-\nu}(x)}{\sin(\nu\pi)}~~~\mbox{and}~~~
+Y_n(x)=\lim_{\nu\rightarrow n}Y_\nu(x)
+\]
+The equation $x^2y''(x)+xy'(x)-(x^2+\nu^2)y(x)=0$ has the modified
+Bessel functions of the first kind $I_\nu(x)=i^{-\nu}J_\nu(ix)$ as solution,
+and also solutions $K_\nu=\pi[I_{-\nu}(x)-I_\nu(x)]/[2\sin(\nu\pi)]$.
+\npar
+Sometimes it can be convenient to write the solutions of Bessel's equation in
+terms of the Hankel functions
+\[
+H^{(1)}_n(x)=J_n(x)+iY_n(x)~~,~~H^{(2)}_n(x)=J_n(x)-iY_n(x)
+\]
+
+\subsection{Properties of Bessel functions}
+Bessel functions are orthogonal with respect to the weight function $p(x)=x$.
+\npar
+$J_{-n}(x)=(-1)^nJ_n(x)$. The Neumann functions $N_m(x)$ are definied as:
+\[
+N_m(x)=\frac{1}{2\pi}J_m(x)\ln(x)+\frac{1}{x^m}\sum_{n=0}^\infty \alpha_nx^{2n}
+\]
+The following holds: $\lim\limits_{x\rightarrow0}J_m(x)=x^m$,
+$\lim\limits_{x\rightarrow0}N_m(x)=x^{-m}$ for $m\neq0$,
+$\lim\limits_{x\rightarrow0}N_0(x)=\ln(x)$.
+\[
+\lim_{r\rightarrow\infty}H(r)=\frac{{\rm e}^{\pm ikr}{\rm e}^{i\omega t}}{\sqrt{r}}~~,~~
+\lim_{x\rightarrow\infty}J_n(x)=\sqrt{\frac{2}{\pi x}}\cos(x-x_n)~~,~~
+\lim_{x\rightarrow\infty}J_{-n}(x)=\sqrt{\frac{2}{\pi x}}\sin(x-x_n)
+\]
+with $x_n=\half\pi(n+\half)$.
+\[
+J_{n+1}(x)+J_{n-1}(x)=\frac{2n}{x}J_n(x)~~,~~J_{n+1}(x)-J_{n-1}(x)=-2\frac{dJ_n(x)}{dx}
+\]
+The following integral relations hold:
+\[
+J_m(x)=\frac{1}{2\pi}\int\limits_0^{2\pi}\exp[i(x\sin(\theta)-m\theta)]d\theta=
+\frac{1}{\pi}\int\limits_0^\pi\cos(x\sin(\theta)-m\theta)d\theta
+\]
+
+\subsection{Laguerre's equation}
+Given the LDE
+\[
+x\frac{d^2y(x)}{dx^2}+(1-x)\frac{dy(x)}{dx}+ny(x)=0
+\]
+Solutions of this equation are the Laguerre polynomials $L_n(x)$:
+\[
+L_n(x)=\frac{{\rm e}^x}{n!}\frac{d^n}{dx^n}\left(x^n{\rm e}^{-x}\right)=
+\sum_{m=0}^\infty\frac{(-1)^m}{m!}{n\choose m}x^m
+\]
+
+\subsection{The associated Laguerre equation}
+Given the LDE
+\[
+\frac{d^2y(x)}{dx^2}+\left(\frac{m+1}{x}-1\right)\frac{dy(x)}{dx}+\left(\frac{n+\half(m+1)}{x}\right)y(x)=0
+\]
+Solutions of this equation are the associated Laguerre polynomials $L_n^m(x)$:
+\[
+L_n^m(x)=\frac{(-1)^mn!}{(n-m)!}{\rm e}^{-x}x^{-m}\frac{d^{n-m}}{dx^{n-m}}\left({\rm e}^{-x}x^n\right)
+\]
+
+\subsection{Hermite}
+\def\Hn{{\rm H}_n}
+\def\Hen{{\rm He}_n}
+The differential equations of Hermite are:
+\[
+\frac{d^2\Hn(x)}{dx^2}-2x\frac{d\Hn(x)}{dx}+2n\Hn(x)=0~~\mbox{and}~~
+\frac{d^2\Hen(x)}{dx^2}-x\frac{d\Hen(x)}{dx}+n\Hen(x)=0
+\]
+Solutions of these equations are the Hermite polynomials, given by:
+\[
+\Hn(x)=(-1)^n\exp\left(\frac{1}{2}x^2\right)\frac{d^n(\exp(-\half x^2))}{dx^n}=2^{n/2}\Hen(x\sqrt{2})
+\]
+\[
+\Hen(x)=(-1)^n(\exp\left(x^2\right)\frac{d^n(\exp(-x^2))}{dx^n}=2^{-n/2}\Hn(x/\sqrt{2})
+\]
+
+\subsection{Chebyshev}
+The LDE
+\[
+(1-x^2)\frac{d^2U_n(x)}{dx^2}-3x\frac{dU_n(x)}{dx}+n(n+2)U_n(x)=0
+\]
+has solutions of the form
+\[
+U_n(x)=\frac{\sin[(n+1)\arccos(x)]}{\sqrt{1-x^2}}
+\]
+The LDE
+\[
+(1-x^2)\frac{d^2T_n(x)}{dx^2}-x\frac{dT_n(x)}{dx}+n^2T_n(x)=0
+\]
+has solutions $T_n(x)=\cos(n\arccos(x))$.
+
+\subsection{Weber}
+The LDE $W''_n(x)+(n+\half-\kwart x^2)W_n(x)=0$ has solutions:
+$W_n(x)={\rm He}_n(x)\exp(-\kwart x^2)$.
+
+\section{Non-linear differential equations}
+Some non-linear differential equations and a solution are:
+\[
+\begin{array}{lll}
+y'=a\sqrt{y^2+b^2}&~~~~&y=b\sinh(a(x-x_0))\\
+y'=a\sqrt{y^2-b^2}&~~~~&y=b\cosh(a(x-x_0))\\
+y'=a\sqrt{b^2-y^2}&~~~~&y=b\cos(a(x-x_0))\\
+y'=a(y^2+b^2)     &~~~~&y=b\tan(a(x-x_0))\\
+y'=a(y^2-b^2)     &~~~~&y=b\coth(a(x-x_0))\\
+y'=a(b^2-y^2)     &~~~~&y=b\tanh(a(x-x_0))\\
+\displaystyle y'=ay\left(\frac{b-y}{b}\right)&~~~~&\displaystyle y=\frac{b}{1+Cb\exp(-ax)}
+\end{array}
+\]
+
+\section{Sturm-Liouville equations}
+Sturm-Liouville equations are second order LDE's of the form:
+\[
+-\frac{d}{dx}\left(p(x)\frac{dy(x)}{dx}\right)+q(x)y(x)=\lambda m(x)y(x)
+\]
+The boundary conditions are chosen so that the operator
+\[
+L=-\frac{d}{dx}\left(p(x)\frac{d}{dx}\right)+q(x)
+\]
+is Hermitean. The normalization function $m(x)$ must satisfy
+\[
+\int\limits_a^bm(x)y_i(x)y_j(x)dx=\delta_{ij}
+\]
+When $y_1(x)$ and $y_2(x)$ are two linear independent solutions one can write
+the Wronskian in this form:
+\[
+W(y_1,y_2)=\left|\begin{array}{cc}y_1&y_2\\ y_1'&y_2' \end{array}\right|=
+\frac{C}{p(x)}
+\]
+where $C$ is constant. By changing to another dependent variable $u(x)$,
+given by: $u(x)=y(x)\sqrt{p(x)}$, the LDE transforms into the
+{\it normal form}:
+\[
+\frac{d^2u(x)}{dx^2}+I(x)u(x)=0~~~\mbox{with}~~~
+I(x)=\frac{1}{4}\left(\frac{p'(x)}{p(x)}\right)^2-\frac{1}{2}\frac{p''(x)}{p(x)}-\frac{q(x)-\lambda m(x)}{p(x)}
+\]
+If $I(x)>0$, than $y''/y<0$ and the solution has an oscillatory behaviour,
+if $I(x)<0$, than $y''/y>0$ and the solution has an exponential behaviour.
+
+\section{Linear partial differential equations}
+\subsection{General}
+The {\it normal derivative} is defined by:
+\[
+\Q{u}{n}=(\vec{\nabla}u,\vec{n})
+\]
+A frequently used solution method for PDE's is {\it separation of variables}:
+one assumes that the solution can be written as $u(x,t)=X(x)T(t)$. When this
+is substituted two ordinary DE's for $X(x)$ and $T(t)$ are obtained.
+
+\subsection{Special cases}
+\subsubsection{The wave equation}
+The {\it wave equation} in 1 dimension is given by
+\[
+\QQ{u}{t}=c^2\QQ{u}{x}
+\]
+When the initial conditions $u(x,0)=\varphi(x)$ and
+$\partial u(x,0)/\partial t=\Psi(x)$ apply, the general solution is given by:
+\[
+u(x,t)=\frac{1}{2}\left[\varphi(x+ct)+\varphi(x-ct)\right]+\frac{1}{2c}
+\int\limits_{x-ct}^{x+ct}\Psi(\xi)d\xi
+\]
+
+\subsubsection{The diffusion equation}
+The {\it diffusion equation} is:
+\[
+\Q{u}{t}=D\nabla^2u
+\]
+Its solutions can be written in terms of the propagators $P(x,x',t)$. These
+have the property that\\ $P(x,x',0)=\delta(x-x')$. In 1 dimension it reads:
+\[
+P(x,x',t)=\frac{1}{2\sqrt{\pi Dt}}\exp\left(\frac{-(x-x')^2}{4Dt}\right)
+\]
+In 3 dimensions it reads:
+\[
+P(x,x',t)=\frac{1}{8(\pi Dt)^{3/2}}\exp\left(\frac{-(\vec{x}-\vvec{x}')^2}{4Dt}\right)
+\]
+With initial condition $u(x,0)=f(x)$ the solution is:
+\[
+u(x,t)=\int\limits_{\cal G}f(x')P(x,x',t)dx'
+\]
+The solution of the equation
+\[
+\Q{u}{t}-D\QQ{u}{x}=g(x,t)
+\]
+is given by
+\[
+u(x,t)=\int dt' \int dx'g(x',t')P(x,x',t-t')
+\]
+
+\subsubsection{The equation of Helmholtz}
+The equation of Helmholtz is obtained by substitution of
+$u(\vec{x},t)=v(\vec{x})\exp(i\omega t)$ in the wave equation. This gives
+for $v$:
+\[
+\nabla^2v(\vec{x},\omega)+k^2v(\vec{x},\omega)=0
+\]
+This gives as solutions for $v$:
+\begin{enumerate}
+\item In cartesian coordinates: substitution of
+$v=A\exp(i\vec{k}\cdot\vvec{x})$ gives:
+\[
+v(\vvec{x})=\int\cdots\int A(k){\rm e}^{i\vec{k}\cdot\vec{x}}dk
+\]
+with the integrals over $\vvec{k}^2=k^2$.
+\item In polar coordinates:
+\[
+v(r,\varphi)=\sum_{m=0}^\infty(A_mJ_m(kr)+B_mN_m(kr)){\rm e}^{im\varphi}
+\]
+\item In spherical coordinates:
+\[
+v(r,\theta,\varphi)=\sum_{l=0}^\infty\sum_{m=-l}^l[A_{lm}J_{l+\frac{1}{2}}(kr)+B_{lm}J_{-l-\frac{1}{2}}(kr)]\frac{Y(\theta,\varphi)}{\sqrt{r}}
+\]
+\end{enumerate}
+
+\subsection{Potential theory and Green's theorem}
+Subject of the potential theory are the {\it Poisson equation}
+$\nabla^2u=-f(\vvec{x})$ where $f$ is a given function, and the {\it Laplace
+equation} $\nabla^2u=0$. The solutions of these can often be interpreted as
+a potential. The solutions of Laplace's equation are called {\it harmonic
+functions}.
+\npar
+When a vector field $\vec{v}$ is given by $\vec{v}={\rm grad}\varphi$
+holds:
+\[
+\int\limits_a^b(\vec{v},\vvec{t})ds=\varphi(\vvec{b})-\varphi(\vvec{a})
+\]
+In this case there exist functions $\varphi$ and $\vec{w}$ so that
+$\vec{v}={\rm grad}\varphi+{\rm curl}\vec{w}$.
+\npar
+The {\it field lines} of the field $\vec{v}(\vvec{x})$ follow from:
+\[
+\dot{\vvec{x}}(t)=\lambda\vec{v}(\vvec{x})
+\]
+The {\it first theorem of Green} is:
+\[
+\iiint\limits_{\cal\!\!\! G}[u\nabla^2v+(\nabla u,\nabla v)]d^3V=\mathop{\oiint}\limits_{\cal\!\!\! S}u\Q{v}{n}d^2A
+\]
+The {\it second theorem of Green} is:
+\[
+\iiint\limits_{\cal\!\!\! G}[u\nabla^2v-v\nabla^2u]d^3V=\mathop{\oiint}\limits_{\cal\!\!\! S}\left(u\Q{v}{n}-v\Q{u}{n}\right)d^2A
+\]
+A harmonic function which is 0 on the boundary of an area is also 0 within that
+area. A harmonic function with a normal derivative of 0 on the boundary of an
+area is constant within that area.
+\npar
+The {\it Dirichlet problem} is:
+\[
+\nabla^2u(\vvec{x})=-f(\vvec{x})~~,~~\vec{x}\in R~~,~~u(\vvec{x})=g(\vvec{x})~~\mbox{for all}~~\vec{x}\in S.
+\]
+It has a unique solution.
+\npar
+The {\it Neumann problem} is:
+\[
+\nabla^2u(\vvec{x})=-f(\vvec{x})~~,~~\vec{x}\in R~~,~~\Q{u(\vvec{x})}{n}=h(\vvec{x})~~\mbox{for all}~~\vec{x}\in S.
+\]
+The solution is unique except for a constant. The solution exists if:
+\[
+-\iiint\limits_{\!\!\!R}f(\vvec{x})d^3V=\mathop{\oiint}_{\!\!\!S}h(\vvec{x})d^2A
+\]
+A {\it fundamental solution} of the Laplace equation satisfies:
+\[
+\nabla^2u(\vvec{x})=-\delta(\vvec{x})
+\]
+This has in 2 dimensions in polar coordinates the following solution:
+\[
+u(r)=\frac{\ln(r)}{2\pi}
+\]
+This has in 3 dimensions in spherical coordinates the following solution:
+\[
+u(r)=\frac{1}{4\pi r}
+\]
+The equation $\nabla^2v=-\delta(\vec{x}-\vvec{\xi})$ has the solution
+\[
+v(\vvec{x})=\frac{1}{4\pi|\vec{x}-\vvec{\xi}|}
+\]
+After substituting this in Green's 2nd theorem and applying the sieve
+property of the $\delta$ function one can derive Green's 3rd theorem:
+\[
+u(\vvec{\xi})=-\frac{1}{4\pi}\iiint\limits_R\frac{\nabla^2u}{r}d^3V+
+\frac{1}{4\pi}\mathop{\oiint}\limits_S\left[\frac{1}{r}\Q{u}{n}-u\Q{}{n}\left(\frac{1}{r}\right)\right]d^2A
+\]
+The {\it Green function} $G(\vec{x},\vvec{\xi})$ is defined by:
+$\nabla^2G=-\delta(\vec{x}-\vvec{\xi})$, and on boundary $S$ holds
+$G(\vec{x},\vvec{\xi})=0$. Than $G$ can be written as:
+\[
+G(\vec{x},\vvec{\xi})=\frac{1}{4\pi|\vec{x}-\vvec{\xi}|}+g(\vec{x},\vvec{\xi})
+\]
+Than $g(\vec{x},\vvec{\xi})$ is a solution of Dirichlet's problem. The solution
+of Poisson's equation $\nabla^2u=-f(\vvec{x})$ when on the boundary $S$ holds:
+$u(\vvec{x})=g(\vvec{x})$, is:
+\[
+u(\vvec{\xi})=\iiint\limits_RG(\vec{x},\vvec{\xi})f(\vvec{x})d^3V-
+\mathop{\oiint}\limits_Sg(\vvec{x})\Q{G(\vec{x},\vvec{\xi})}{n}d^2A
+\]
+
+
+\chapter{Linear algebra}
+\typeout{Linear algebra}
+\section{Vector spaces}
+$\cal G$ is a group for the operation $\otimes$ if:
+\begin{enumerate}
+\item $\forall a,b\in{\cal G}\Rightarrow a\otimes b\in\cal G$: a group is
+      {\it closed}.
+\item $(a\otimes b)\otimes c = a\otimes (b\otimes c)$: a group is
+      {\it associative}.
+\item $\exists e\in{\cal G}$ so that $a\otimes e=e\otimes a=a$: there exists a
+      {\it unit element}.
+\item $\forall a\in{\cal G}\exists \overline{a}\in{\cal G}$ so that $a\otimes\overline{a}=e$:
+      each element has an {\it inverse}.
+\end{enumerate}
+If\\
+\hspace*{4.5mm}5. $a\otimes b=b\otimes a$
+\npar
+the group is called {\it Abelian} or {\it commutative}.
+Vector spaces form an Abelian group for addition and multiplication:
+$1\cdot\vec{a}=\vec{a}$, $\lambda(\mu\vec{a})=(\lambda\mu)\vec{a}$,
+$(\lambda+\mu)(\vec{a}+\vec{b})=\lambda\vec{a}+\lambda\vec{b}+\mu\vec{a}+\mu\vec{b}$.
+\npar
+$W$ is a {\it linear subspace} if $\forall \vec{w}_1,\vec{w}_2\in W$
+holds: $\lambda\vec{w}_1+\mu\vec{w}_2\in W$.
+\npar
+$W$ is an {\it invariant subspace} of $V$ for the operator $A$ if
+$\forall\vec{w}\in W$ holds: $A\vec{w}\in W$.
+
+\section{Basis}
+For an orthogonal basis holds: $(\vec{e}_i,\vec{e}_j)=c\delta_{ij}$. For an
+orthonormal basis holds:  $(\vec{e}_i,\vec{e}_j)=\delta_{ij}$.
+\npar
+The set vectors $\{\vec{a}_n\}$ is linear independent if:
+\[
+\sum\limits_i\lambda_i\vec{a}_i=0~~\Leftrightarrow~~\forall_i\lambda_i=0
+\]
+The set $\{\vec{a}_n\}$ is a basis if it is 1. independent and 2.
+$V=<\vec{a}_1,\vec{a_2},...>=\sum\lambda_i\vec{a}_i$.
+
+\section{Matrix calculus}
+\subsection{Basic operations}
+For the matrix multiplication of matrices $A=a_{ij}$ and $B=b_{kl}$ holds
+with $^r$ the row index and $^k$ the column index:
+\[
+A^{r_1k_1}\cdot B^{r_2k_2}=C^{r_1k_2}~~,~~(AB)_{ij}=\sum_ka_{ik}b_{kj}
+\]
+where $^r$ is the number of rows and $^k$ the number of columns.
+\npar
+The {\it transpose} of $A$ is defined by: $a_{ij}^T=a_{ji}$.
+For this holds $(AB)^T=B^TA^T$ and $(A^T)^{-1}=(A^{-1})^T$. For the
+{\it inverse matrix} holds: $(A\cdot B)^{-1}=B^{-1}\cdot A^{-1}$. The inverse
+matrix $A^{-1}$ has the property that $A\cdot A^{-1}=\II$ and can be found by
+diagonalization: $(A_{ij}|\II)\sim(\II|A_{ij}^{-1})$.
+\npar
+The inverse of a $2\times2$ matrix is:
+\[
+\left(\begin{array}{cc}a&b\\ c&d\end{array}\right)^{-1}=\frac{1}{ad-bc}
+\left(\begin{array}{cc}d&-b\\ -c&a\end{array}\right)
+\]
+\npar
+The {\it determinant function} $D=\det(A)$ is defined by:
+\[
+\det(A)=D(\vec{a}_{*1},\vec{a}_{*2},...,\vec{a}_{*n})
+\]
+For the determinant $\det(A)$ of a matrix $A$ holds:
+$\det(AB)=\det(A)\cdot\det(B)$. Een $2\times2$ matrix has determinant:
+\[
+\det\left(\begin{array}{cc}a&b\\ c&d \end{array}\right)=ad-cb
+\]
+The derivative of a matrix is a matrix with the derivatives of the coefficients:
+\[
+\frac{dA}{dt}=\frac{da_{ij}}{dt}~~~\mbox{and}~~~\frac{dAB}{dt}=B\frac{dA}{dt}+A\frac{dB}{dt}
+\]
+The derivative of the determinant is given by:
+\[
+\frac{d\det(A)}{dt}=D(\frac{d\vec{a}_1}{dt},...,\vec{a}_n)+
+D(\vec{a}_1,\frac{d\vec{a}_2}{dt},...,\vec{a}_n)+...+D(\vec{a}_1,...,\frac{d\vec{a}_n}{dt})
+\]
+When the rows of a matrix are considered as vectors the {\it row rank} of a
+matrix is the number of independent vectors in this set. Similar for the
+{\it column rank}. The row rank equals the column rank for each matrix.
+\npar
+Let $\tilde{A}:\tilde{V}\rightarrow\tilde{V}$ be the complex extension of the
+real linear operator $A:V\rightarrow V$ in a finite dimensional $V$.
+Then $A$ and $\tilde{A}$ have the same caracteristic equation.
+\npar
+When $A_{ij}\in\RR$ and $\vec{v}_1+i\vec{v_2}$ is an eigenvector of $A$
+at eigenvalue $\lambda=\lambda_1+i\lambda_2$, than holds:
+\begin{enumerate}
+\item $A\vec{v}_1=\lambda_1\vec{v}_1-\lambda_2\vec{v}_2$ and $A\vec{v}_2=\lambda_2\vec{v}_1+\lambda_1\vec{v}_2$.
+\item $\vec{v}^{~*}=\vec{v}_1-i\vec{v}_2$ is an eigenvalue at $\lambda^*=\lambda_1-i\lambda_2$.
+\item The linear span $<\vec{v}_1,\vec{v}_2>$ is an invariant subspace of $A$.
+\end{enumerate}
+If $\vec{k}_n$ are the columns of $A$, than the transformed space of $A$ is
+given by:
+\[
+R(A)=<A\vec{e}_1,...,A\vec{e}_n>=<\vec{k}_1,...,\vec{k}_n>
+\]
+If the columns $\vec{k}_n$ of a $n\times m$ matrix $A$ are independent, than
+the nullspace ${\cal N}(A)=\{\vvec{0}\}$.
+
+\subsection{Matrix equations}
+We start with the equation
+\[
+A\cdot\vec{x}=\vec{b}
+\]
+and $\vec{b}\neq\vec{0}$. If $\det(A)=0$ the only solution is $\vec{0}$. If
+$\det(A)\neq0$ there exists exactly one solution $\neq\vec{0}$.
+\npar
+The equation
+\[
+A\cdot\vec{x}=\vec{0}
+\]
+has exactly one solution $\neq\vec{0}$ if $\det(A)=0$, and if
+$\det(A)\neq0$ the solution is $\vec{0}$.
+\npar
+Cramer's rule for the solution of systems of linear equations is: let the
+system be written as
+\[
+A\cdot\vec{x}=\vec{b}\equiv\vec{a}_1x_1+...+\vec{a}_nx_n=\vec{b}
+\]
+then $x_j$ is given by:
+\[
+x_j=\frac{D(\vec{a}_1,...,\vec{a}_{j-1},\vec{b},\vec{a}_{j+1},...,\vec{a}_n)}{\det(A)}
+\]
+
+\section{Linear transformations}
+A transformation $A$ is linear if:
+$A(\lambda\vec{x}+\beta\vvec{y})=\lambda A\vec{x}+\beta A\vec{y}$.
+\npar
+Some common linear transformations are:
+\begin{center}
+\begin{tabular}{||p{7cm}|p{6cm}||}
+\hline
+\bf Transformation type&\bf Equation\\
+\hline
+\hline
+Projection on the line $<\vec{a}>$             &$P(\vvec{x})=(\vec{a},\vvec{x})\vec{a}/(\vec{a},\vvec{a})$\\
+Projection on the plane $(\vec{a},\vvec{x})=0$ &$Q(\vvec{x})=\vec{x}-P(\vvec{x})$\\
+Mirror image in the line $<\vec{a}>$             &$S(\vvec{x})=2P(\vvec{x})-\vec{x}$\\
+Mirror image in the plane $(\vec{a},\vvec{x})=0$&$T(\vvec{x})=2Q(\vvec{x})-\vec{x}=\vec{x}-2P(\vvec{x})$\\
+\hline
+\end{tabular}
+\end{center}
+For a projection holds: $\vec{x}-P_W(\vvec{x})\perp P_W(\vvec{x})$ and
+$P_W(\vvec{x})\in W$.
+\npar
+If for a transformation $A$ holds: $(A\vec{x},\vvec{y})=(\vec{x},A\vvec{y})=(A\vec{x},A\vvec{y})$,
+than $A$ is a projection.
+\npar
+Let $A:W\rightarrow W$ define a linear transformation; we define:
+\begin{itemize}
+\item If $S$ is a subset of $V$: $A(S):=\{A\vec{x}\in W|\vec{x}\in S\}$
+\item If $T$ is a subset of $W$: $A^\leftarrow(T):=\{\vec{x}\in V|A(\vvec{x})\in T\}$
+\end{itemize}
+Than $A(S)$ is a linear subspace of $W$ and the {\it inverse transformation}
+$A^\leftarrow(T)$ is a linear subspace of $V$. From this follows that $A(V)$ is
+the {\it image space} of $A$, notation: ${\cal R}(A)$. $A^\leftarrow(\vvec{0})=E_0$
+is a linear subspace of $V$, the {\it null space} of $A$, notation:
+${\cal N}(A)$. Then the following holds:
+\[
+{\rm dim}({\cal N}(A))+{\rm dim}({\cal R}(A))={\rm dim}(V)
+\]
+
+\section{Plane and line}
+The equation of a line that contains the points $\vec{a}$ and $\vec{b}$ is:
+\[
+\vec{x}=\vec{a}+\lambda(\vec{b}-\vvec{a})=\vec{a}+\lambda\vec{r}
+\]
+The equation of a plane is:
+\[
+\vec{x}=\vec{a}+\lambda(\vec{b}-\vvec{a})+\mu(\vec{c}-\vvec{a})=\vec{a}+\lambda\vec{r}_1+\mu\vec{r}_2
+\]
+When this is a plane in $\RR^3$, the {\it normal vector} to this plane is given
+by:
+\[
+\vec{n}_V=\frac{\vec{r}_1\times\vec{r}_2}{|\vec{r}_1\times\vec{r}_2|}
+\]
+A line can also be described by the points for which the line equation
+$\ell$: $(\vec{a},\vec{x})+b=0$ holds, and for a plane V: $(\vec{a},\vec{x})+k=0$.
+The normal vector to V is than: $\vec{a}/|\vec{a}|$.
+\npar
+The distance $d$ between 2 points $\vec{p}$ and $\vec{q}$ is given by
+$d(\vec{p},\vvec{q})=\|\vec{p}-\vvec{q}\|$.
+\npar
+In $\RR^2$ holds:
+The distance of a point $\vec{p}$ to the line $(\vec{a},\vvec{x})+b=0$ is
+\[
+d(\vec{p},\ell)=\frac{|(\vec{a},\vvec{p})+b|}{|\vec{a}|}
+\]
+Similarly in $\RR^3$:
+The distance of a point $\vec{p}$ to the plane $(\vec{a},\vvec{x})+k=0$ is
+\[
+d(\vec{p},V)=\frac{|(\vec{a},\vvec{p})+k|}{|\vec{a}|}
+\]
+This can be generalized for $\RR^n$ and $\CC^n$ (theorem from Hesse).
+
+\section{Coordinate transformations}
+The linear transformation $A$ from $\KK^n\rightarrow\KK^m$ is given by
+($\KK=\RR$ of $\CC$):
+\[
+\vec{y}=A^{m\times n}\vec{x}
+\]
+where a column of $A$ is the image of a base vector in the original.
+\npar
+The matrix $A_\alpha^\beta$ transforms a vector given w.r.t. a basis
+$\alpha$ into a vector w.r.t. a basis $\beta$. It is given by:
+\[
+A_\alpha^\beta=\left(\beta(A\vec{a}_1),...,\beta(A\vec{a}_n)\right)
+\]
+where $\beta(\vvec{x})$ is the representation of the vector $\vec{x}$
+w.r.t.\ basis $\beta$.
+\npar
+The {\it transformation matrix} $S_\alpha^\beta$ transforms vectors from
+coordinate system $\alpha$ into coordinate system $\beta$:
+\[
+S_\alpha^\beta:=\II_\alpha^\beta=\left(\beta(\vec{a}_1),...,\beta(\vec{a}_n)\right)
+\]
+and $S_\alpha^\beta\cdot S_\beta^\alpha=\II$
+\npar
+The matrix of a transformation $A$ is than given by:
+\[
+A_\alpha^\beta=\left(A_\alpha^\beta\vec{e}_1,...,A_\alpha^\beta\vec{e}_n\right)
+\]
+For the transformation of matrix operators to another coordinate system holds:
+$A_\alpha^\delta=S_\lambda^\delta A_\beta^\lambda S_\alpha^\beta$,
+$A_\alpha^\alpha=S_\beta^\alpha A_\beta^\beta S_\alpha^\beta$ and
+$(AB)_\alpha^\lambda=A_\beta^\lambda B_\alpha^\beta$.
+\npar
+Further is $A_\alpha^\beta=S_\alpha^\beta A_\alpha^\alpha$,
+$A_\beta^\alpha=A_\alpha^\alpha S_\beta^\alpha$. A vector is transformed via
+$X_\alpha=S_\alpha^\beta X_\beta$.
+
+\section{Eigen values}
+The {\it eigenvalue equation}
+\[
+A\vec{x}=\lambda\vec{x}
+\]
+with {\it eigenvalues} $\lambda$ can be solved with
+$(A-\lambda\II)=\vec{0}\Rightarrow\det(A-\lambda\II)=0$. The eigenvalues
+follow from this characteristic equation. The following is true:
+$\det(A)=\prod\limits_i\lambda_i$ and
+${\rm Tr}(A)=\sum\limits_ia_{ii}=\sum\limits_i\lambda_i$.
+\npar
+The eigen values $\lambda_i$ are independent of the chosen basis.
+The matrix of $A$ in a basis of eigenvectors, with $S$ the transformation matrix
+to this basis, $S=(E_{\lambda_1},...,E_{\lambda_n})$, is given by:
+\[
+\Lambda=S^{-1}AS={\rm diag}(\lambda_1,...,\lambda_n)
+\]
+When 0 is an eigen value of $A$ than $E_0(A)={\cal N}(A)$.
+\npar
+When $\lambda$ is an eigen value of $A$ holds: $A^n\vec{x}=\lambda^n\vec{x}$.
+
+\section{Transformation types}
+\subsubsection{Isometric transformations}
+A transformation is {\it isometric} when: $\|A\vec{x}\|=\|\vec{x}\|$. This
+implies that the eigen values of an isometric transformation are given by
+$\lambda=\exp(i\varphi)\Rightarrow|\lambda|=1$. Than also holds:
+$(A\vec{x},A\vvec{y})=(\vec{x},\vvec{y})$.
+\npar
+When $W$ is an invariant subspace if the isometric transformation $A$ with
+dim$(A)<\infty$, than also $W^\perp$ is an invariante subspace.
+
+\subsubsection{Orthogonal transformations}
+A transformation $A$ is {\it orthogonal} if $A$ is isometric {\it and}
+the inverse $A^\leftarrow$ exists. For an orthogonal transformation $O$ holds
+$O^TO=\II$, so: $O^T=O^{-1}$. If $A$ and $B$ are orthogonal, than $AB$ and
+$A^{-1}$ are also orthogonal.
+\npar
+Let $A:V\rightarrow V$ be orthogonal with dim$(V)<\infty$. Than $A$ is:
+\npar
+{\bf Direct orthogonal} if $\det(A)=+1$. $A$ describes a rotation.
+A rotation in $\RR^2$ through angle $\varphi$ is given by:
+\[
+R=
+\left(\begin{array}{cc}
+\cos(\varphi)&-\sin(\varphi)\\
+\sin(\varphi)&\cos(\varphi)
+\end{array}\right)
+\]
+So the rotation angle $\varphi$ is determined by Tr$(A)=2\cos(\varphi)$
+with $0\leq\varphi\leq\pi$. Let $\lambda_1$ and $\lambda_2$ be the roots of
+the characteristic equation, than also holds:
+$\Re(\lambda_1)=\Re(\lambda_2)=\cos(\varphi)$, and $\lambda_1=\exp(i\varphi)$,
+$\lambda_2=\exp(-i\varphi)$.
+\npar
+In $\RR^3$ holds: $\lambda_1=1$, $\lambda_2=\lambda_3^*=\exp(i\varphi)$. A
+rotation over $E_{\lambda_1}$ is given by the matrix
+\[
+\left(\begin{array}{ccc}
+1&0&0\\
+0&\cos(\varphi)&-\sin(\varphi)\\
+0&\sin(\varphi)&\cos(\varphi)
+\end{array}\right)
+\]
+{\bf Mirrored orthogonal} if $\det(A)=-1$. Vectors from $E_{-1}$ are mirrored
+by $A$ w.r.t.\ the invariant subspace $E^\perp_{-1}$. A mirroring in $\RR^2$
+in $<(\cos(\half\varphi),\sin(\half\varphi))>$ is given by:
+\[
+S=
+\left(\begin{array}{cc}
+\cos(\varphi)&\sin(\varphi)\\
+\sin(\varphi)&-\cos(\varphi)
+\end{array}\right)
+\]
+Mirrored orthogonal transformations in $\RR^3$ are rotational mirrorings:
+rotations of axis $<\vec{a}_1>$ through angle $\varphi$ and mirror plane
+$<\vec{a}_1>^\perp$. The matrix of such a transformation is given by:
+\[
+\left(\begin{array}{ccc}
+-1&0&0\\
+0&\cos(\varphi)&-\sin(\varphi)\\
+0&\sin(\varphi)&\cos(\varphi)
+\end{array}\right)
+\]
+For all orthogonal transformations $O$ in $\RR^3$ holds that
+$O(\vvec{x})\times O(\vvec{y})=O(\vec{x}\times\vvec{y})$.
+\npar
+$\RR^n$ $(n<\infty)$ can be decomposed in invariant subspaces with dimension
+1 or 2 for each orthogonal transformation.
+
+\subsubsection{Unitary transformations}
+Let $V$ be a complex space on which an inner product is defined. Than a linear
+transformation $U$ is {\it unitary} if $U$ is isometric {\it and} its inverse
+transformation $A^\leftarrow$ exists. A $n\times n$ matrix is unitary if
+$U^HU=\II$. It has determinant $|\det(U)|=1$. Each isometric transformation
+in a finite-dimensional complex vector space is unitary.
+\npar
+{\bf Theorem}: for a $n\times n$ matrix $A$ the following statements are
+equivalent:
+\begin{enumerate}
+\item $A$ is unitary,
+\item The columns of $A$ are an orthonormal set,
+\item The rows of $A$ are an orthonormal set.
+\end{enumerate}
+
+\subsubsection{Symmetric transformations}
+A transformation $A$ on $\RR^n$ is {\it symmetric} if
+$(A\vec{x},\vvec{y})=(\vec{x},A\vvec{y})$. A matrix $A\in\MM^{n\times n}$
+is symmetric if $A=A^T$. A linear operator is only symmetric if its matrix
+w.r.t.\ an arbitrary basis is symmetric. All eigenvalues of a symmetric
+transformation belong to $\RR$. The different eigenvectors are mutually
+perpendicular. If $A$ is symmetric, than $A^T=A=A^H$ on an orthogonal basis.
+\npar
+For each matrix $B\in\MM^{m\times n}$ holds: $B^TB$ is symmetric.
+
+\subsubsection{Hermitian transformations}
+A transformation $H:V\rightarrow V$ with $V=\CC^n$ is {\it Hermitian} if
+$(H\vec{x},\vvec{y})=(\vec{x},H\vvec{y})$. The {\it Hermitian conjugated}
+transformation $A^H$ of $A$ is: $[a_{ij}]^H=[a_{ji}^*]$. An alternative
+notation is: $A^H=A^\dagger$. The inner product of two vectors $\vec{x}$ and
+$\vec{y}$ can now be written in the form: $(\vec{x},\vvec{y})=\vec{x}^H\vec{y}$.
+\npar
+If the transformations $A$ and $B$ are Hermitian, than their product $AB$ is
+Hermitian if:\\ $[A,B]=AB-BA=0$. $[A,B]$ is called the {\it commutator} of $A$
+and $B$.
+\npar
+The eigenvalues of a Hermitian transformation belong to $\RR$.
+\npar
+A matrix representation can be coupled with a Hermitian operator $L$.
+W.r.t.\ a basis $\vec{e}_i$ it is given by $L_{mn}=(\vec{e}_m,L\vec{e}_n)$.
+
+\subsubsection{Normal transformations}
+For each linear transformation $A$ in a complex vector space $V$ there exists
+exactly one linear transformation $B$ so that $(A\vec{x},\vvec{y})=(\vec{x},B\vvec{y})$.
+This $B$ is called the {\it adjungated transformation} of $A$. Notation:
+$B=A^*$.  The following holds: $(CD)^*=D^*C^*$. $A^*=A^{-1}$ if $A$ is unitary
+and $A^*=A$ if $A$ is Hermitian.
+\npar
+{\bf Definition}: the linear transformation $A$ is {\it normal} in a complex
+vector space $V$ if $A^*A=AA^*$. This is only the case if for its matrix $S$
+w.r.t.\ an orthonormal basis holds: $A^\dagger A=AA^\dagger$.
+\npar
+If $A$ is normal holds:
+\begin{enumerate}
+\item For all vectors $\vec{x}\in V$ and a normal transformation $A$ holds:
+\[
+(A\vec{x},A\vvec{y})=(A^*A\vec{x},\vvec{y})=(AA^*\vec{x},\vvec{y})=(A^*\vec{x},A^*\vvec{y})
+\]
+\item $\vec{x}$ is an eigenvector of $A$ if and only if $\vec{x}$ is an
+      eigenvector of $A^*$.
+\item Eigenvectors of $A$ for different eigenvalues are mutually perpendicular.
+\item If $E_\lambda$ if an eigenspace from $A$ than the orthogonal complement
+      $E_\lambda^\perp$ is an invariant subspace of $A$.
+\end{enumerate}
+Let the different roots of the characteristic equation of $A$ be $\beta_i$ with
+multiplicities $n_i$. Than the dimension of each eigenspace $V_i$ equals
+$n_i$. These eigenspaces are mutually perpendicular and each vector
+$\vec{x}\in V$ can be written in exactly one way as
+\[
+\vec{x}=\sum_i\vec{x}_i~~~\mbox{with}~~~\vec{x}_i\in V_i
+\]
+This can also be written as: $\vec{x}_i=P_i\vec{x}$ where $P_i$ is a projection
+on $V_i$. This leads to the {\it spectral mapping theorem}: let $A$ be a normal
+transformation in a complex vector space $V$ with dim$(V)=n$. Than:
+\begin{enumerate}
+\item There exist projection transformations $P_i$, $1\leq i\leq p$, with the
+      properties
+      \begin{itemize}
+      \item $P_i\cdot P_j=0$ for $i\neq j$,
+      \item $P_1+...+P_p=\II$,
+      \item ${\rm dim}P_1(V)+...+{\rm dim}P_p(V)=n$
+      \end{itemize}
+      and complex numbers $\alpha_1,...,\alpha_p$ so that
+      $A=\alpha_1P_1+...+\alpha_pP_p$.
+\item If $A$ is unitary than holds $|\alpha_i|=1~\forall i$.
+\item If $A$ is Hermitian than $\alpha_i\in\RR~\forall i$.
+\end{enumerate}
+
+\subsubsection{Complete systems of commuting Hermitian transformations}
+Consider $m$ Hermitian linear transformations $A_i$ in a $n$ dimensional
+complex inner product space $V$. Assume they mutually commute.
+\npar
+{\bf Lemma}: if $E_\lambda$ is the eigenspace for eigenvalue $\lambda$ from
+$A_1$, than $E_\lambda$ is an invariant subspace of all transformations
+$A_i$. This means that if $\vec{x}\in E_\lambda$, than $A_i\vec{x}\in E_\lambda$.
+\npar
+{\bf Theorem}. Consider $m$ commuting Hermitian matrices $A_i$. Than there
+exists a unitary matrix $U$ so that all matrices $U^\dagger A_iU$ are diagonal.
+The columns of $U$ are the common eigenvectors of all matrices $A_j$.
+\npar
+If all eigenvalues of a Hermitian linear transformation in a $n$-dimensional
+complex vector space differ, than the normalized eigenvector is known except
+for a phase factor $\exp(i\alpha)$.
+\npar
+{\bf Definition}: a commuting set Hermitian transformations is called
+{\it complete} if for each set of two common eigenvectors $\vec{v}_i,\vec{v}_j$
+there exists a transformation $A_k$ so that $\vec{v}_i$ and $\vec{v}_j$ are
+eigenvectors with different eigenvalues of $A_k$.
+\npar
+Usually a commuting set is taken as small as possible. In quantum physics one
+speaks of commuting observables. The required number of commuting observables
+equals the number of quantum numbers required to characterize a state.
+
+\section{Homogeneous coordinates}
+Homogeneous coordinates are used if one wants to combine both rotations and
+translations in {\it one} matrix transformation. An extra coordinate is
+introduced to describe the non-linearities. Homogeneous coordinates are derived
+from cartesian coordinates as follows:
+\[
+\left(\begin{array}{c}x\\ y\\ z\end{array}\right)_{\rm cart}=
+\left(\begin{array}{c}wx\\ wy\\ wz\\ w\end{array}\right)_{\rm hom}=
+\left(\begin{array}{c}X\\ Y\\ Z\\ w\end{array}\right)_{\rm hom}
+\]
+so $x=X/w$, $y=Y/w$ and $z=Z/w$. Transformations in homogeneous coordinates
+are described by the following matrices:
+\begin{enumerate}
+\item Translation along vector $(X_0, Y_0, Z_0, w_0)$:
+\[
+T=\left(\begin{array}{cccc}
+w_0&0&0&X_0\\
+0&w_0&0&Y_0\\
+0&0&w_0&Z_0\\
+0&0&0&w_0
+\end{array}\right)
+\]
+\item Rotations of the $x,y,z$ axis, resp. through angles $\alpha,\beta,\gamma$:
+\[
+R_x(\alpha)=\left(\begin{array}{cccc}
+1&0&0&0\\
+0&\cos\alpha&-\sin\alpha&0\\
+0&\sin\alpha&\cos\alpha&0\\
+0&0&0&1
+\end{array}\right)~~~~
+R_y(\beta)=\left(\begin{array}{cccc}
+\cos\beta&0&\sin\beta&0\\
+0&1&0&0\\
+-\sin\beta&0&\cos\beta&0\\
+0&0&0&1
+\end{array}\right)~~~~
+\]
+\[
+R_z(\gamma)=\left(\begin{array}{cccc}
+\cos\gamma&-\sin\gamma&0&0\\
+\sin\gamma&\cos\gamma&0&0\\
+0&0&1&0\\
+0&0&0&1
+\end{array}\right)
+\]
+\item A perspective projection on image plane $z=c$ with the center of
+      projection in the origin. This transformation has no inverse.
+\[
+P(z=c)=\left(\begin{array}{cccc}
+1&0&0&0\\
+0&1&0&0\\
+0&0&1&0\\
+0&0&1/c&0
+\end{array}\right)
+\]
+\end{enumerate}
+
+\section{Inner product spaces}
+A complex inner product on a complex vector space is defined as follows:
+\begin{enumerate}
+\item $(\vec{a},\vvec{b})=\overline{(\vec{b},\vvec{a})}$,
+\item $(\vec{a},\beta_1\vec{b}_1+\beta_2\vvec{b}_2)=\beta_1(\vec{a},\vvec{b}_1)+\beta_2(\vec{a},\vvec{b}_2)$
+      for all $\vec{a},\vec{b}_1,\vec{b}_2\in V$ and $\beta_1,\beta_2\in\CC$.
+\item $(\vec{a},\vvec{a})\geq0$ for all $\vec{a}\in V$,
+      $(\vec{a},\vvec{a})=0$ if and only if $\vec{a}=\vec{0}$.
+\end{enumerate}
+Due to (1) holds: $(\vec{a},\vvec{a})\in\RR$. The {\it inner product space} $\CC^n$ is
+the complex vector space on which a complex inner product is defined by:
+\[
+(\vec{a},\vvec{b})=\sum_{i=1}^na_i^*b_i
+\]
+For function spaces holds:
+\[
+(f,g)=\int\limits_a^bf^*(t)g(t)dt
+\]
+For each $\vec{a}$ the length $\|\vvec{a}\|$ is defined by:
+$\|\vvec{a}\|=\sqrt{(\vec{a},\vvec{a})}$. The following holds:
+$\|\vvec{a}\|-\|\vvec{b}\|\leq\|\vec{a}+\vvec{b}\|\leq\|\vvec{a}\|+\|\vvec{b}\|$,
+and with $\varphi$ the angle between $\vec{a}$ and $\vec{b}$ holds:
+$(\vec{a},\vvec{b})=\|\vvec{a}\|\cdot\|\vvec{b}\|\cos(\varphi)$.
+\npar
+Let $\{\vec{a}_1,...,\vec{a}_n\}$ be a set of vectors in an inner product space
+$V$. Than the {\it Gramian G} of this set is given by: $G_{ij}=(\vec{a}_i,\vec{a}_j)$.
+The set of vectors is independent if and only if $\det(G)=0$.
+\npar
+A set is {\it orthonormal} if $(\vec{a}_i,\vec{a}_j)=\delta_{ij}$.
+If $\vec{e}_1,\vec{e}_2,...$ form an orthonormal row in an infinite dimensional
+vector space Bessel's inequality holds:
+\[
+\|\vvec{x}\|^2\geq\sum_{i=1}^\infty|(\vec{e}_i,\vvec{x})|^2
+\]
+The equal sign holds if and only if
+$\lim\limits_{n\rightarrow\infty}\|\vec{x}_n-\vvec{x}\|=0$.
+\npar
+The inner product space $\ell^2$ is defined in $\CC^\infty$ by:
+\[
+\ell^2=\left\{\vec{a}=(a_1,a_2,...)~|~\sum_{n=1}^\infty|a_n|^2<\infty\right\}
+\]
+A space is called a {\it Hilbert space} if it is $\ell^2$ and if also holds:
+$\lim\limits_{n\rightarrow\infty}|a_{n+1}-a_n|=0$.
+
+\section{The Laplace transformation}
+The class LT exists of functions for which holds:
+\begin{enumerate}
+\item On each interval $[0,A]$, $A>0$ there are no more than a finite number of
+      discontinuities and each discontinuity has an upper - and lower limit,
+\item $\exists t_0\in[0,\infty>$ and $a,M\in\RR$ so that for $t\geq t_0$
+      holds: $|f(t)|\exp(-at)<M$.
+\end{enumerate}
+Than there exists a Laplace transform for $f$.
+\npar
+The Laplace transformation is a generalisation of the Fourier transformation.
+The Laplace transform of a function $f(t)$ is, with $s\in\CC$ and $t\geq0$:
+\[
+F(s)=\int\limits_0^\infty f(t){\rm e}^{-st}dt
+\]
+The Laplace transform of the derivative of a function is given by:
+\[
+{\cal L}\left(f^{(n)}(t)\right)=-f^{(n-1)}(0)-sf^{(n-2)}(0)-...-s^{n-1}f(0)+s^nF(s)
+\]
+The operator $\cal L$ has the following properties:
+\begin{enumerate}
+\item Equal shapes: if $a>0$ than
+\[
+{\cal L}\left(f(at)\right)=\frac{1}{a}F\left(\frac{s}{a}\right)
+\]
+\item Damping: ${\cal L}\left({\rm e}^{-at}f(t)\right)=F(s+a)$
+\item Translation: If $a>0$ and $g$ is defined by $g(t)=f(t-a)$ if
+      $t>a$ and $g(t)=0$ for $t\leq a$, than holds:
+      ${\cal L}\left(g(t)\right)={\rm e}^{-sa}{\cal L}(f(t))$.
+\end{enumerate}
+If $s\in\RR$ than holds $\Re(\lambda f)={\cal L}(\Re(f))$ and
+$\Im(\lambda f)={\cal L}(\Im(f))$.
+\npar
+For some often occurring functions holds:
+\begin{center}
+\begin{tabular}{||c||c||}
+\hline
+$f(t)=$&$F(s)={\cal L}(f(t))=$\\
+\hline
+\hline
+$\displaystyle\frac{t^n}{n!}{\rm e}^{at}$&$(s-a)^{-n-1}$\rule{0pt}{15pt}\\
+${\rm e}^{at}\cos(\omega t)$&$\displaystyle\frac{s-a}{(s-a)^2+\omega^2}$\rule{0pt}{15pt}\\
+${\rm e}^{at}\sin(\omega t)$&$\displaystyle\frac{\omega}{(s-a)^2+\omega^2}$\rule{0pt}{15pt}\\
+$\delta(t-a)$&$\exp(-as)$\rule{0pt}{13pt}\\
+\hline
+\end{tabular}
+\end{center}
+
+\section{The convolution}
+The convolution integral is defined by:
+\[
+(f*g)(t)=\int\limits_0^tf(u)g(t-u)du
+\]
+The convolution has the following properties:
+\begin{enumerate}
+\item $f*g\in$LT
+\item ${\cal L}(f*g)={\cal L}(f)\cdot{\cal L}(g)$
+\item Distribution: $f*(g+h)=f*g+f*h$
+\item Commutative: $f*g=g*f$
+\item Homogenity: $f*(\lambda g)=\lambda f*g$
+\end{enumerate}
+If ${\cal L}(f)=F_1\cdot F_2$, than is $f(t)=f_1*f_2$.
+
+\section{Systems of linear differential equations}
+We start with the equation $\dot{\vec{x}}=A\vec{x}$. Assume that
+$\vec{x}=\vec{v}\exp(\lambda t)$, than follows: $A\vec{v}=\lambda\vec{v}$.
+In the $2\times2$ case holds:
+\begin{enumerate}
+\item $\lambda_1=\lambda_2$: than $\vec{x}(t)=\sum\vec{v}_i\exp(\lambda_it)$.
+\item $\lambda_1\neq\lambda_2$: than $\vec{x}(t)=(\vec{u}t+\vec{v})\exp(\lambda t)$.
+\end{enumerate}
+Assume that $\lambda=\alpha+i\beta$ is an eigenvalue with eigenvector $\vec{v}$,
+than $\lambda^*$ is also an eigenvalue for eigenvector $\vvec{v}^*$. Decompose
+$\vec{v}=\vec{u}+i\vec{w}$, than the real solutions are
+\[
+c_1[\vec{u}\cos(\beta t)-\vec{w}\sin(\beta t)]{\rm e}^{\alpha t}+c_2[\vec{v}\cos(\beta t)+\vec{u}\sin(\beta t)]{\rm e}^{\alpha t}
+\]
+\npar
+There are two solution strategies for the equation $\ddot{\vec{x}}=A\vec{x}$:
+\begin{enumerate}
+\item Let $\vec{x}=\vec{v}\exp(\lambda t)\Rightarrow\det(A-\lambda^2\II)=0$.
+\item Introduce: $\dot{x}=u$ and $\dot{y}=v$, this leads to $\ddot{x}=\dot{u}$ and
+      $\ddot{y}=\dot{v}$. This transforms a $n$-dimensional set of second order
+      equations into a $2n$-dimensional set of first order equations. 
+\end{enumerate}
+
+\section{Quadratic forms}
+\subsection{Quadratic forms in $\RR^2$}
+The general equation of a quadratic form is:
+$\vec{x}^TA\vec{x}+2\vec{x}^TP+S=0$. Here, $A$ is a symmetric matrix.
+If $\Lambda=S^{-1}AS={\rm diag}(\lambda_1,...,\lambda_n)$ holds:
+$\vec{u}^T\Lambda\vec{u}+2\vec{u}^TP+S=0$, so all cross terms are 0.
+$\vec{u}=(u,v,w)$ should be chosen so that det$(S)=+1$,
+to maintain the same orientation as the system $(x,y,z)$.
+\npar
+Starting with the equation
+\[
+ax^2+2bxy+cy^2+dx+ey+f=0
+\]
+we have $|A|=ac-b^2$. An ellipse has $|A|>0$, a parabola $|A|=0$ and
+a hyperbole $|A|<0$. In polar coordinates this can be written as:
+\[
+r=\frac{ep}{1-e\cos(\theta)}
+\]
+An ellipse has $e<1$, a parabola $e=1$ and a hyperbola $e>1$.
+
+\subsection{Quadratic surfaces in $\RR^3$}
+Rank 3:
+\[
+p\frac{x^2}{a^2}+q\frac{y^2}{b^2}+r\frac{z^2}{c^2}=d
+\]
+\begin{itemize}
+\item Ellipsoid: $p=q=r=d=1$, $a,b,c$ are the lengths of the semi axes.
+\item Single-bladed hyperboloid: $p=q=d=1$, $r=-1$.
+\item Double-bladed hyperboloid: $r=d=1$, $p=q=-1$.
+\item Cone: $p=q=1$, $r=-1$, $d=0$.
+\end{itemize}
+Rank 2:
+\[
+p\frac{x^2}{a^2}+q\frac{y^2}{b^2}+r\frac{z}{c^2}=d
+\]
+\begin{itemize}
+\item Elliptic paraboloid: $p=q=1$, $r=-1$, $d=0$.
+\item Hyperbolic paraboloid: $p=r=-1$, $q=1$, $d=0$.
+\item Elliptic cylinder: $p=q=-1$, $r=d=0$.
+\item Hyperbolic cylinder: $p=d=1$, $q=-1$, $r=0$.
+\item Pair of planes: $p=1$, $q=-1$, $d=0$.
+\end{itemize}
+Rank 1:
+\[
+py^2+qx=d
+\]
+\begin{itemize}
+\item Parabolic cylinder: $p,q>0$.
+\item Parallel pair of planes: $d>0$, $q=0$, $p\neq 0$.
+\item Double plane: $p\neq 0$, $q=d=0$.
+\end{itemize}
+
+
+\chapter{Complex function theory}
+\typeout{Complex function theory}
+\section{Functions of complex variables}
+Complex function theory deals with complex functions of a complex variable.
+Some definitions:
+\npar
+$f$ is {\it analytical} on $\cal G$ if $f$ is continuous and differentiable
+on $\cal G$.
+\npar
+A {\it Jordan curve} is a curve that is closed and singular.
+\npar
+If K is a curve in $\CC$ with parameter equation $z=\phi(t)=x(t)+iy(t)$,
+$a\leq t\leq b$, than the length $L$ of K is given by:
+\[
+L=\int\limits_a^b \sqrt{\left(\frac{dx}{dt}\right)^2+\left(\frac{dy}{dt}\right)^2}dt=
+\int\limits_a^b\left|\frac{dz}{dt}\right|dt=\int\limits_a^b|\phi'(t)|dt
+\]
+The derivative of $f$ in point $z=a$ is:
+\[
+f'(a)=\lim_{z\rightarrow a}\frac{f(z)-f(a)}{z-a}
+\]
+If $f(z)=u(x,y)+iv(x,y)$ the derivative is:
+\[
+f'(z)=\Q{u}{x}+i\Q{v}{x}=-i\Q{u}{y}+\Q{v}{y}
+\]
+Setting both results equal yields the equations of Cauchy-Riemann:
+\[
+\Q{u}{x}=\Q{v}{y}~~~,~~~\Q{u}{y}=-\Q{v}{x}
+\]
+These equations imply that $\nabla^2u=\nabla^2v=0$.
+$f$ is analytical if $u$ and $v$ satisfy these equations.
+
+\section{Complex integration}
+\subsection{Cauchy's integral formula}
+Let $K$ be a curve described by $z=\phi(t)$ on $a\leq t\leq b$ and $f(z)$
+is continuous on $K$. Than the integral of $f$ over $K$ is:
+\[
+\int\limits_Kf(z)dz=\int\limits_a^bf(\phi(t))\dot{\phi}(t)dt
+\stackrel{f\mbox{\small continuous}}{=}F(b)-F(a)
+\]
+{\bf Lemma}: let $K$ be the circle with center $a$ and radius $r$ taken in a
+positive direction. Than holds for integer $m$:
+\[
+\frac{1}{2\pi i}\oint\limits_K \frac{dz}{(z-a)^m}=\left\{
+\begin{array}{l}
+0~~\mbox{if}~~m\neq1\\
+1~~\mbox{if}~~m=1
+\end{array}\right.
+\]
+{\bf Theorem}: if $L$ is the length of curve $K$ and if $|f(z)|\leq M$ for
+$z\in K$, than, if the integral exists, holds:
+\[
+\left|\int\limits_K f(z)dz\right|\leq ML
+\]
+{\bf Theorem}: let $f$ be continuous on an area $G$ and let $p$ be a fixed
+point of $G$. Let $F(z)=\int_p^zf(\xi)d\xi$ for all $z\in G$ only depend on
+$z$ and not on the integration path. Than $F(z)$ is analytical on $G$ with
+$F'(z)=f(z)$.
+\npar
+This leads to two equivalent formulations of the {\it main theorem of
+complex integration}: let the function $f$ be analytical on an area $G$. Let
+$K$ and $K'$ be two curves with the same starting - and end points, which can be
+transformed into each other by continous deformation within $G$. Let $B$ be
+a Jordan curve. Than holds
+\[
+\int\limits_Kf(z)dz=\int\limits_{K'}f(z)dz\Leftrightarrow\oint\limits_Bf(z)dz=0
+\]
+By applying the main theorem on ${\rm e}^{iz}/z$ one can derive that
+\[
+\int\limits_0^\infty\frac{\sin(x)}{x}dx=\frac{\pi}{2}
+\]
+
+\subsection{Residue}
+A point $a\in\CC$ is a {\it regular point} of a function $f(z)$ if $f$ is
+analytical in $a$. Otherwise $a$ is a {\it singular point} or {\it pole} of
+$f(z)$. The {\it residue} of $f$ in $a$ is defined by
+\[
+\mathop{\rm Res}\limits_{z=a}f(z)=\frac{1}{2\pi i}\oint\limits_Kf(z)dz
+\]
+where $K$ is a Jordan curve which encloses $a$ in positive direction. The
+residue is 0 in regular points, in singular points it can be both 0 and $\neq0$.
+Cauchy's residue proposition is: let $f$ be analytical within and on a Jordan
+curve $K$ except in a finite number of singular points $a_i$ within $K$. Than,
+if $K$ is taken in a positive direction, holds:
+\[
+\frac{1}{2\pi i}\oint\limits_Kf(z)dz=\sum_{k=1}^n\mathop{\rm Res}\limits_{z=a_k}f(z)
+\]
+{\bf Lemma}: let the function $f$ be analytical in $a$, than holds:
+\[
+\mathop{\rm Res}\limits_{z=a}\frac{f(z)}{z-a}=f(a)
+\]
+This leads to Cauchy's integral theorem: if $F$ is analytical on the Jordan
+curve $K$, which is taken in a positive direction, holds:
+\[
+\frac{1}{2\pi i}\oint\limits_K\frac{f(z)}{z-a}dz=\left\{\begin{array}{l}
+f(a)~~\mbox{if}~~a~~\mbox{inside}~~K\\
+0~~\mbox{if}~~a~~\mbox{outside}~~K
+\end{array}\right.
+\]
+{\bf Theorem}: let $K$ be a curve ($K$ need not be closed) and let
+$\phi(\xi)$ be continuous on $K$. Than the function
+\[
+f(z)=\int\limits_K\frac{\phi(\xi)d\xi}{\xi-z}
+\]
+is analytical with $n$-th derivative
+\[
+f^{(n)}(z)=n!\int\limits_K\frac{\phi(\xi)d\xi}{(\xi-z)^{n+1}}
+\]
+{\bf Theorem}: let $K$ be a curve and $G$ an area. Let $\phi(\xi,z)$ be
+defined for $\xi\in K$, $z\in G$, with the following properties:
+\begin{enumerate}
+\item $\phi(\xi,z)$ is limited, this means $|\phi(\xi,z)|\leq M$ for $\xi\in K$, $z\in G$,
+\item For fixed $\xi\in K$, $\phi(\xi,z)$ is an analytical function of $z$ on $G$,
+\item For fixed $z\in G$ the functions $\phi(\xi,z)$ and $\partial\phi(\xi,z)/\partial z$
+      are continuous functions of $\xi$ on $K$.
+\end{enumerate}
+Than the function
+\[
+f(z)=\int\limits_K\phi(\xi,z)d\xi
+\]
+is analytical with derivative
+\[
+f'(z)=\int\limits_K\Q{\phi(\xi,z)}{z}d\xi
+\]
+{\bf Cauchy's inequality}: let $f(z)$ be an analytical function within and on
+the circle $C:|z-a|=R$ and let $|f(z)|\leq M$ for $z\in C$. Than holds
+\[
+\left|f^{(n)}(a)\right|\leq\frac{Mn!}{R^n}
+\]
+
+\section{Analytical functions definied by series}
+The series $\sum f_n(z)$ is called {\it pointwise convergent} on an area $G$
+with sum $F(z)$ if
+\[
+\forall_{\varepsilon>0}\forall_{z\in G}\exists_{N_0\in\RR}\forall_{n>n_0}
+\left[~\left|f(z)-\sum_{n=1}^Nf_n(z)\right|<\varepsilon\right]
+\]
+The series is called {\it uniform convergent} if
+\[
+\forall_{\varepsilon>0}\exists_{N_0\in\RR}\forall_{n>n_0}\exists_{z\in G}
+\left[~\left|f(z)-\sum_{n=1}^Nf_n(z)\right|<\varepsilon\right]
+\]
+Uniform convergence implies pointwise convergence, the opposite is not
+necessary.
+\npar
+{\bf Theorem}: let the power series $\sum\limits_{n=0}^\infty a_nz^n$ have
+a radius of convergence $R$. $R$ is the distance to the first non-essential
+singularity.
+\begin{itemize}
+\item If $\displaystyle\lim_{n\rightarrow\infty}\sqrt[n]{|a_n|}=L$ exists, than $R=1/L$.
+\item If $\displaystyle\lim_{n\rightarrow\infty}|a_{n+1}|/|a_n|=L$ exists, than $R=1/L$.
+\end{itemize}
+If these limits both don't exist one can find $R$ with the formula of
+Cauchy-Hadamard:
+\[
+\frac{1}{R}=\lim_{n\rightarrow\infty}{\rm sup}\sqrt[n]{|a_n|}
+\]
+
+\section{Laurent series}
+{\bf Taylor's theorem}: let $f$ be analytical in an area $G$ and let point
+$a\in G$ has distance $r$ to the boundary of $G$. Than $f(z)$ can be expanded
+into the Taylor series near $a$:
+\[
+f(z)=\sum_{n=0}^\infty c_n(z-a)^n~~~\mbox{with}~~~c_n=\frac{f^{(n)}(a)}{n!}
+\]
+valid for $|z-a|<r$. The radius of convergence of the Taylor series is $\geq r$.
+If $f$ has a pole of order $k$ in $a$ than $c_1,...,c_{k-1}=0$, $c_k\neq0$.
+\npar
+{\bf Theorem of Laurent}: let $f$ be analytical in the circular area
+$G:r<|z-a|<R$. Than $f(z)$ can be expanded into a Laurent series with center
+$a$:
+\[
+f(z)=\sum_{n=-\infty}^\infty c_n(z-a)^n~~~\mbox{with}~~~
+c_n=\frac{1}{2\pi i}\oint\limits_K\frac{f(w)dw}{(w-a)^{n+1}}~~,~~n\in\ZZ
+\]
+valid for $r<|z-a|<R$ and $K$ an arbitrary Jordan curve in $G$ which encloses
+point $a$ in positive direction.
+\npar
+The {\it principal part} of a Laurent series is: $\sum\limits_{n=1}^\infty c_{-n}(z-a)^{-n}$.
+One can classify singular points with this. There are 3 cases:
+\begin{enumerate}
+\item There is no principal part. Than $a$ is a non-essential singularity.
+      Define $f(a)=c_0$ and the series is also valid for $|z-a|<R$ and
+      $f$ is analytical in $a$.
+\item The principal part contains a finite number of terms. Than there exists
+      a $k\in\NN$ so that\\ $\lim\limits_{z\rightarrow a}(z-a)^kf(z)=c_{-k}\neq0$.
+      Than the function $g(z)=(z-a)^kf(z)$ has a non-essential singularity in
+      $a$. One speaks of a pole of order $k$ in $z=a$.
+\item The principal part contains an infinite number of terms. Then, $a$ is an
+      essential singular point of $f$, such as $\exp(1/z)$ for $z=0$.
+\end{enumerate}
+If $f$ and $g$ are analytical, $f(a)\neq0$, $g(a)=0$, $g'(a)\neq0$ than
+$f(z)/g(z)$ has a simple pole (i.e.\ a pole of order 1) in $z=a$ with
+\[
+\mathop{\rm Res}\limits_{z=a}\frac{f(z)}{g(z)}=\frac{f(a)}{g'(a)}
+\]
+
+\section{Jordan's theorem}
+Residues are often used when solving definite integrals. We define the notations
+$C_\rho^+=\{z||z|=\rho,\Im(z)\geq0\}$ and $C_\rho^-=\{z||z|=\rho,\Im(z)\leq0\}$
+and $M^+(\rho,f)=\mathop{\rm max}\limits_{z\in C_\rho^+}|f(z)|$,
+$M^-(\rho,f)=\mathop{\rm max}\limits_{z\in C_\rho^-}|f(z)|$. We assume that
+$f(z)$ is analytical for $\Im(z)>0$ with a possible exception of a finite number
+of singular points which do not lie on the real axis,
+$\lim\limits_{\rho\rightarrow\infty}\rho M^+(\rho,f)=0$ and that the integral
+exists, than
+\[
+\int\limits_{-\infty}^\infty f(x)dx=2\pi i\sum{\rm Res}f(z)~~~\mbox{in}~~~\Im(z)>0
+\]
+Replace $M^+$ by $M^-$ in the conditions above and it follows that:
+\[
+\int\limits_{-\infty}^\infty f(x)dx=-2\pi i\sum{\rm Res}f(z)~~~\mbox{in}~~~\Im(z)<0
+\]
+{\it Jordan's lemma}: let $f$ be continuous for $|z|\geq R$, $\Im(z)\geq0$ and
+$\lim\limits_{\rho\rightarrow\infty}M^+(\rho,f)=0$. Than holds for $\alpha>0$
+\[
+\lim_{\rho\rightarrow\infty}\int\limits_{C_\rho^+}f(z){\rm e}^{i\alpha z}dz=0
+\]
+Let $f$ be continuous for $|z|\geq R$, $\Im(z)\leq0$ and
+$\lim\limits_{\rho\rightarrow\infty}M^-(\rho,f)=0$. Than holds for $\alpha<0$
+\[
+\lim_{\rho\rightarrow\infty}\int\limits_{C_\rho^-}f(z){\rm e}^{i\alpha z}dz=0
+\]
+Let $z=a$ be a simple pole of $f(z)$ and let $C_\delta$ be the half circle
+$|z-a|=\delta,0\leq{\rm arg}(z-a)\leq\pi$, taken from $a+\delta$ to
+$a-\delta$. Than is
+\[
+\lim_{\delta\downarrow0}\frac{1}{2\pi i}\int\limits_{C_\delta}f(z)dz=\half\mathop{\rm Res}\limits_{z=a}f(z)
+\]
+
+
+\chapter{Tensor calculus}
+\typeout{Tensor calculus}
+\section{Vectors and covectors}
+A finite dimensional vector space is denoted by $\cal V, W$. The vector
+space of linear transformations from $\cal V$ to $\cal W$ is denoted by
+$\cal L(V,W)$. Consider ${\cal L(V,}\RR):={\cal V}^*$. We name $\cal V^*$ the
+{\it dual space} of $\cal V$. Now we can define {\it vectors} in $\cal V$ with
+basis $\vec{c}$ and {\it covectors} in $\cal V^*$ with basis $\hat{\vec{c}}$.
+Properties of both are:
+\begin{enumerate}
+\item Vectors: $\vec{x}=x^i\vec{c}_i$ with basis vectors $\vec{c}_i$:
+      \[
+      \vec{c}_i=\Q{}{x^i}
+      \]
+      Transformation from system $i$ to $i'$ is given by:
+      \[
+      \vec{c}_{i'}=A_{i'}^i\vec{c}_i=\partial_i\in{\cal V}~~,~~x^{i'}=A_i^{i'}x^i
+      \]
+\item Covectors: $\hat{\vec{x}}=x_i\hat{\vec{c}}^{~i}$ with basis vectors $\hat{\vec{c}}^{~i}$
+      \[
+      \hat{\vec{c}}^{~i}=dx^i
+      \]
+      Transformation from system $i$ to $i'$ is given by:
+      \[
+      \hat{\vec{c}}^{~i'}=A_i^{i'}\hat{\vec{c}}^{~i}\in{\cal V}^*~~,~~\vec{x}_{i'}=A_{i'}^i\vec{x}_i
+      \]
+\end{enumerate}
+Here the {\it Einstein convention} is used:
+\[
+a^ib_i:=\sum_ia^ib_i
+\]
+The coordinate transformation is given by:
+\[
+A_{i'}^i=\Q{x^i}{x^{i'}}~~,~~A_i^{i'}=\Q{x^{i'}}{x^i}
+\]
+From this follows that $A_k^i\cdot A_l^k=\delta_l^k$ and $A_{i'}^i=(A_i^{i'})^{-1}$.
+\npar
+In differential notation the coordinate transformations are given by:
+\[
+dx^i=\Q{x^i}{x^{i'}}dx^{i'}~~~\mbox{and}~~~\Q{}{x^{i'}}=\Q{x^i}{x^{i'}}\Q{}{x^i}
+\]
+The general transformation rule for a tensor $T$ is:
+\[
+T_{s_1...s_m}^{q_1...q_n}=\left|\Q{\vec{x}}{\vec{u}}\right|^\ell
+\Q{u^{q_1}}{x^{p_1}}\cdots\Q{u^{q_n}}{x^{p_n}}\cdot\Q{x^{r_1}}{u^{s_1}}\cdots\Q{x^{r_m}}{u^{s_m}}T_{r_1...r_m}^{p_1...p_n}
+\]
+For an {\it absolute tensor} $\ell=0$.
+
+\section{Tensor algebra}
+The following holds:
+\[
+a_{ij}(x_i+y_i)\equiv a_{ij}x_i+a_{ij}y_i,~~~\mbox{but:}~~a_{ij}(x_i+y_j)\not\equiv a_{ij}x_i+a_{ij}y_j
+\]
+and
+\[
+(a_{ij}+a_{ji})x_ix_j\equiv2a_{ij}x_ix_j,~~~\mbox{but:}~~(a_{ij}+a_{ji})x_iy_j\not\equiv 2a_{ij}x_iy_j
+\]
+en $(a_{ij}-a_{ji})x_ix_j\equiv0$.
+\npar
+The sum and difference of two tensors is a tensor of the same rank:
+$A_q^p\pm B_q^p$. The {\it outer tensor product} results in a tensor with a
+rank equal to the sum of the ranks of both tensors:
+$A_q^{pr}\cdot B_s^m=C_{qs}^{prm}$. The {\it contraction} equals two indices
+and sums over them. Suppose we take $r=s$ for a tensor $A_{qs}^{mpr}$, this
+results in: $\sum\limits_r A_{qr}^{mpr}=B_q^{mp}$. The
+{\it inner product} of two tensors is defined by taking the outer product
+followed by a contraction.
+
+\section{Inner product}
+{\bf Definition}: the bilinear transformation $B:{\cal V}\times{\cal V}^*\rightarrow\RR$,
+$B(\vec{x},\hat{\vec{y}}\,)=\hat{\vec{y}}(\vvec{x})$ is denoted by
+$<\vec{x},\hat{\vec{y}}\,>$.
+For this {\it pairing operator} $<\cdot,\cdot>=\delta$ holds:
+\[
+\hat{\vec{y}}(\vec{x})=<\vec{x},\hat{\vec{y}}>=y_ix^i~~~,~~~<\hat{\vec{c}^{~i}},\vec{c}_j>=\delta_j^i
+\]
+Let $G:{\cal V}\rightarrow{\cal V}^*$ be a linear bijection. Define the
+bilinear forms
+\begin{eqnarray*}
+g:{\cal V\times V}\rightarrow\RR&~~~&g(\vec{x},\vvec{y})=<\vec{x},G\vvec{y}>\\
+h:{\cal V^*\times V^*}\rightarrow\RR&~~~&h(\hat{\vec{x}},\hat{\vec{y}}\,)=<G^{-1}\hat{\vec{x}},\hat{\vec{y}}\,>
+\end{eqnarray*}
+Both are not degenerated. The following holds: $h(G\vec{x},G\vvec{y})=<\vec{x},G\vec{y}>=g(\vec{x},\vvec{y})$.
+If we identify $\cal V$ and $\cal V^*$ with $G$, than $g$ (or $h$)
+gives an inner product on $\cal V$.
+\npar
+The inner product $(,)_\Lambda$ on $\Lambda^k(\cal V)$ is defined by:
+\[
+(\Phi,\Psi)_\Lambda=\frac{1}{k!}(\Phi,\Psi)_{T^0_k(\cal V)}
+\]
+The inner product of two vectors is than given by:
+\[
+(\vec{x},\vvec{y})=x^iy^i<\vec{c}_i,G\vec{c}_j>=g_{ij}x^ix^j
+\]
+The matrix $g_{ij}$ of $G$ is given by
+\[
+g_{ij}\hat{\vec{c}}^{~j}=G\vec{c}_i
+\]
+The matrix $g^{ij}$ of $G^{-1}$ is given by:
+\[
+g^{kl}\vec{c}_l=G^{-1}\hat{\vec{c}}^{~k}
+\]
+For this {\it metric tensor} $g_{ij}$ holds: $g_{ij}g^{jk}=\delta_i^k$.
+This tensor can raise or lower indices:
+\[
+x_j=g_{ij}x^i~~~,~~~x^i=g^{ij}x_j
+\]
+and $du^i=\hat{\vec{c}}^{~i}=g^{ij}\vec{c}_j$.
+\npar
+
+\section{Tensor product}
+{\bf Definition}: let $\cal U$ and $\cal V$ be two finite dimensional vector
+spaces with dimensions $m$ and $n$. Let $\cal U^*\times V^*$ be the cartesian
+product of $\cal U$ and $\cal V$. A function $t:{\cal U^*\times V^*}\rightarrow\RR$;
+$(\hat{\vec{u}};\hat{\vec{v}}\,)\mapsto t(\hat{\vec{u}};\hat{\vec{v}}\,)=t^{\alpha\beta}u_\alpha u_\beta\in\RR$
+is called a tensor if $t$ is linear in $\hat{\vec{u}}$ and $\hat{\vec{v}}$.
+The tensors $t$ form a vector space denoted by $\cal U\otimes V$.
+The elements $T\in\cal V\otimes V$ are called contravariant 2-tensors:
+$T=T^{ij}\vec{c}_i\otimes\vec{c}_j=T^{ij}\partial_i\otimes\partial_j$. The
+elements $T\in\cal V^*\otimes V^*$ are called covariant 2-tensors:
+$T=T_{ij}\hat{\vec{c}}^{~i}\otimes\hat{\vec{c}}^{~j}=T_{ij}dx^i\otimes dx^j$.
+The elements $T\in\cal V^*\otimes V$ are called mixed 2 tensors:
+$T=T_i^{.j}\hat{\vec{c}}^{~i}\otimes\vec{c}_j=T_i^{.j}dx^i\otimes\partial_j$,
+and analogous for $T\in\cal V\otimes V^*$.
+\npar
+The numbers given by
+\[
+t^{\alpha\beta}=t(\hat{\vec{c}}^{~\alpha},\hat{\vec{c}}^{~\beta}\,)
+\]
+with $1\leq\alpha\leq m$ and $1\leq\beta\leq n$ are the components of $t$.
+\npar
+Take $\vec{x}\in\cal U$ and $\vec{y}\in\cal V$. Than the function
+$\vec{x}\otimes\vec{y}$, definied by
+\[
+(\vec{x}\otimes\vec{y})(\hat{\vec{u}},\hat{\vec{v}})=<\vec{x},\hat{\vec{u}}>_U<\vec{y},\hat{\vec{v}}>_V
+\]
+is a tensor. The components are derived from: $(\vec{u}\otimes\vvec{v})_{ij}=u_iv^j$.
+The tensor product of 2 tensors is given by:
+\begin{eqnarray*}
+{2\choose0}~\mbox{form:}~&&(\vec{v}\otimes\vec{w})(\hat{\vec{p}},\hat{\vec{q}})=v^ip_iw^kq_k=T^{ik}p_iq_k\\
+{0\choose2}~\mbox{form:}~&&(\hat{\vec{p}}\otimes\hat{\vec{q}})(\vec{v},\vec{w})=p_iv^iq_kw^k=T_{ik}v^iw^k\\
+{1\choose1}~\mbox{form:}~&&(\vec{v}\otimes\hat{\vec{p}})(\hat{\vec{q}},\vec{w})=v^iq_ip_kw^k=T_k^iq_iw^k
+\end{eqnarray*}
+
+\section{Symmetric and antisymmetric tensors}
+A tensor $t\in{\cal V\otimes V}$ is called symmetric resp. antisymmetric if
+$\forall\hat{\vec{x}},\hat{\vec{y}}\in{\cal V^*}$ holds:
+$t(\hat{\vec{x}},\hat{\vec{y}}\,)=t(\hat{\vec{y}},\hat{\vec{x}}\,)$ resp.
+$t(\hat{\vec{x}},\hat{\vec{y}}\,)=-t(\hat{\vec{y}},\hat{\vec{x}}\,)$.
+\npar
+A tensor $t\in{\cal V^*\otimes V^*}$ is called symmetric resp. antisymmetric
+if $\forall\vec{x},\vec{y}\in{\cal V}$ holds:
+$t(\vec{x},\vvec{y})=t(\vec{y},\vvec{x})$ resp.
+$t(\vec{x},\vvec{y})=-t(\vec{y},\vvec{x})$. The linear transformations
+$\cal S$ and $\cal A$ in $\cal V\otimes W$ are defined by:
+\begin{eqnarray*}
+{\cal S}t(\hat{\vec{x}},\hat{\vec{y}}\,)&=&\half(t(\hat{\vec{x}},\hat{\vec{y}})+t(\hat{\vec{y}},\hat{\vec{x}}\,))\\
+{\cal A}t(\hat{\vec{x}},\hat{\vec{y}}\,)&=&\half(t(\hat{\vec{x}},\hat{\vec{y}})-t(\hat{\vec{y}},\hat{\vec{x}}\,))
+\end{eqnarray*}
+Analogous in $\cal V^*\otimes V^*$. If $t$ is symmetric resp. antisymmetric,
+than ${\cal S}t=t$ resp. ${\cal A}t=t$.
+\npar
+The tensors $\vec{e}_i\vee\vec{e}_j=\vec{e}_i\vec{e}_j=2{\cal S}(\vec{e}_i\otimes\vec{e}_j)$,
+with $1\leq i\leq j\leq n$ are a basis in $\cal S(V\otimes V)$ with dimension
+$\half n(n+1)$.
+\npar
+The tensors $\vec{e}_i\wedge\vec{e}_j=2{\cal A}(\vec{e}_i\otimes\vec{e}_j)$,
+with $1\leq i\leq j\leq n$ are a basis in $\cal A(V\otimes V)$ with dimension
+$\half n(n-1)$.
+\npar
+The complete antisymmetric tensor $\varepsilon$ is given by:
+$\varepsilon_{ijk}\varepsilon_{klm}=\delta_{il}\delta_{jm}-\delta_{im}\delta_{jl}$.
+\npar
+The permutation-operators $e_{pqr}$ are defined by:
+$e_{123}=e_{231}=e_{312}=1$, $e_{213}=e_{132}=e_{321}=-1$, for all other
+combinations $e_{pqr}=0$. There is a connection with the $\varepsilon$ tensor:
+$\varepsilon_{pqr}=g^{-1/2}e_{pqr}$ and $\varepsilon^{pqr}=g^{1/2}e^{pqr}$.
+
+\section{Outer product}
+Let $\alpha\in\Lambda^k(\cal V)$ and $\beta\in\Lambda^l(\cal V)$. Than
+$\alpha\wedge\beta\in\Lambda^{k+l}(\cal V)$ is defined by:
+\[
+\alpha\wedge\beta=\frac{(k+l)!}{k!l!}{\cal A}(\alpha\otimes\beta)
+\]
+If $\alpha$ and $\beta\in\Lambda^1(\cal V)={\cal V}^*$ holds:
+$\alpha\wedge\beta=\alpha\otimes\beta-\beta\otimes\alpha$
+\npar
+The outer product can be written as: $(\vec{a}\times\vec{b})_i=\varepsilon_{ijk}a^jb^k$,
+$\vec{a}\times\vec{b}=G^{-1}\cdot*(G\vec{a}\wedge G\vvec{b})$.
+\npar
+Take $\vec{a},\vec{b},\vec{c},\vec{d}\in\RR^4$. Than
+$(dt\wedge dz)(\vec{a},\vvec{b})=a_0b_4-b_0a_4$ is the oriented surface of the
+projection on the $tz$-plane of the parallelogram spanned by $\vec{a}$ and
+$\vec{b}$.
+\npar
+Further
+\[
+(dt\wedge dy\wedge dz)(\vec{a},\vec{b},\vec{c})=\det\left|\begin{array}{ccc}
+a_0&b_0&c_0\\ a_2&b_2&c_2\\ a_4&b_4&c_4 \end{array}\right|
+\]
+is the oriented 3-dimensional volume of the projection on the $tyz$-plane of
+the parallelepiped spanned by $\vec{a}$, $\vec{b}$ and $\vec{c}$.
+\npar
+$(dt\wedge dx\wedge dy\wedge dz)(\vec{a},\vec{b},\vec{c},\vec{d})=\det(\vec{a},\vec{b},\vec{c},\vec{d})$
+is the 4-dimensional volume of the hyperparellelepiped spanned by
+$\vec{a}$, $\vec{b}$, $\vec{c}$ and $\vec{d}$.
+
+\section{The Hodge star operator}
+$\Lambda^k(\cal V)$ and $\Lambda^{n-k}(\cal V)$ have the same dimension
+because ${n\choose k}={n\choose{n-k}}$ for $1\leq k\leq n$.
+Dim$(\Lambda^n({\cal V}))=1$. The choice of a basis means the choice of an oriented
+measure of volume, a volume $\mu$, in $\cal V$. We can gauge $\mu$ so that for
+an orthonormal basis $\vec{e}_i$ holds: $\mu(\vec{e}_i)=1$. This basis is than
+by definition positive oriented if
+$\mu=\hat{\vec{e}}^{~1}\wedge \hat{\vec{e}}^{~2}\wedge...\wedge \hat{\vec{e}}^{~n}=1$.
+\npar
+Because both spaces have the same dimension one can ask if there exists a
+bijection between them. If $\cal V$ has no extra structure this is not the
+case. However, such an operation does exist if there is an inner product
+defined on $\cal V$ and the corresponding volume $\mu$. This is called
+the {\it Hodge star operator} and denoted by $*$. The following holds:
+\[
+\forall_{w\in\Lambda^k({\cal V})}\exists_{*w\in\Lambda^{k-n}({\cal V})}\forall_{\theta\in\Lambda^k({\cal V})}~~
+\theta\wedge*w=(\theta,w)_\lambda\mu
+\]
+For an orthonormal basis in $\RR^3$ holds: the volume: $\mu=dx\wedge dy\wedge dz$,
+$*dx\wedge dy\wedge dz=1$, $*dx=dy\wedge dz$, $*dz=dx\wedge dy$, $*dy=-dx\wedge dz$,
+$*(dx\wedge dy)=dz$, $*(dy\wedge dz)=dx$, $*(dx\wedge dz)=-dy$.
+\npar
+For a Minkowski basis in $\RR^4$ holds: $\mu=dt\wedge dx\wedge dy\wedge dz$,
+$G=dt\otimes dt-dx\otimes dx-dy\otimes dy-dz\otimes dz$, and
+$*dt\wedge dx\wedge dy\wedge dz=1$ and $*1=dt\wedge dx\wedge dy\wedge dz$.
+Further $*dt=dx\wedge dy\wedge dz$ and $*dx=dt\wedge dy\wedge dz$.
+
+\section{Differential operations}
+\subsection{The directional derivative}
+The {\it directional derivative} in point $\vec{a}$ is given by:
+\[
+{\cal L}_{\vec{a}}f=<\vec{a},df>=a^i\Q{f}{x^i}
+\]
+
+\subsection{The Lie-derivative}
+The {\it Lie-derivative} is given by:
+\[
+({\cal L}_{\vec{v}}\vec{w})^j=w^i\partial_iv^j-v^i\partial_iw^j
+\]
+
+\subsection{Christoffel symbols}
+To each curvelinear coordinate system $u^i$ we add a system of $n^3$
+functions $\Gamma^i_{jk}$ of $\vec{u}$, defined by
+\[
+\frac{\partial^2\vec{x}}{\partial u^i\partial u^k}=\Gamma_{jk}^i\Q{\vec{x}}{u^i}
+\]
+These are {\it Christoffel symbols of the second kind}. Christoffel symbols
+are no tensors. The Christoffel symbols of the second kind are given by:
+\[
+\left\{\begin{array}{@{}c@{}}i\\ jk \end{array}\right\}:=\Gamma^i_{jk}=
+\left\langle\frac{\partial^2\vec{x}}{\partial u^k\partial u^j},dx^i\right\rangle
+\]
+with $\Gamma^i_{jk}=\Gamma^i_{kj}$. Their transformation to a different
+coordinate system is given by:
+\[
+\Gamma_{j'k'}^{i'}=A_{i'}^iA_{j'}^jA_{k'}^k\Gamma^i_{jk}+A_i^{i'}(\partial_{j'}A_{k'}^i)
+\]
+The first term in this expression is 0 if the primed coordinates are
+cartesian.
+\npar
+There is a relation between Christoffel symbols and the metric:
+\[
+\Gamma_{jk}^i=\half g^{ir}(\partial_j g_{kr}+\partial_k g_{rj}-\partial_r g_{jk})
+\]
+and $\Gamma^\alpha_{\beta\alpha}=\partial_\beta(\ln(\sqrt{|g|}))$.
+\npar
+Lowering an index gives the {\it Christoffel symbols of the first kind}:
+$\Gamma^i_{jk}=g^{il}\Gamma_{jkl}$.
+
+\subsection{The covariant derivative}
+The {\it covariant derivative} $\nabla_j$ of a vector, covector and of
+rank-2 tensors is given by:
+\begin{eqnarray*}
+\nabla_ja^i                  &=&\partial_ja^i+\Gamma^i_{jk}a^k\\
+\nabla_ja_i                  &=&\partial_ja_i-\Gamma^k_{ij}a_k\\
+\nabla_\gamma a^\alpha_\beta &=&\partial_\gamma a^\alpha_\beta -\Gamma^\varepsilon_{\gamma\beta} a^\alpha_\varepsilon+\Gamma^\alpha_{\gamma\varepsilon}a_\beta^\varepsilon\\
+\nabla_\gamma a_{\alpha\beta}&=&\partial_\gamma a_{\alpha\beta}-\Gamma^\varepsilon_{\gamma\alpha}a_{\varepsilon\beta}-\Gamma^\varepsilon_{\gamma\beta}a_{\alpha\varepsilon}\\
+\nabla_\gamma a^{\alpha\beta}&=&\partial_\gamma a^{\alpha\beta}+\Gamma^\alpha_{\gamma\varepsilon}a^{\varepsilon\beta}+\Gamma^\beta_{\gamma\varepsilon}a^{\alpha\varepsilon}
+\end{eqnarray*}
+Ricci's theorem:
+\[
+\nabla_\gamma g_{\alpha\beta}=\nabla_\gamma g^{\alpha\beta}=0
+\]
+
+\section{Differential operators}
+\subsubsection{The Gradient}
+is given by:
+\[
+{\rm grad}(f)=G^{-1}df=g^{ki}\Q{f}{x^i}\Q{}{x^k}
+\]
+
+\subsubsection{The divergence}
+is given by:
+\[
+{\rm div}(a^i)=\nabla_ia^i=\frac{1}{\sqrt{g}}\partial_k(\sqrt{g}\,a^k)
+\]
+
+\subsubsection{The curl}
+is given by:
+\[
+{\rm rot}(a)=G^{-1}\cdot*\cdot d\cdot G\vec{a}=-\varepsilon^{pqr}\nabla_qa_p=\nabla_qa_p-\nabla_pa_q
+\]
+
+\subsubsection{The Laplacian}
+is given by:
+\[
+\Delta(f)={\rm div~grad}(f)=*d*df=\nabla_ig^{ij}\partial_jf=g^{ij}\nabla_i\nabla_jf=
+\frac{1}{\sqrt{g}}\frac{\partial}{\partial x^i}\left(\sqrt{g}\,g^{ij}\frac{\partial f}{\partial x^j}\right)
+\]
+
+\section{Differential geometry}
+\subsection{Space curves}
+We limit ourselves to $\RR^3$ with a fixed orthonormal basis. A point is
+represented by the vector $\vec{x}=(x^1,x^2,x^3)$. A space curve is a
+collection of points represented by $\vec{x}=\vec{x}(t)$. The arc length of a
+space curve is given by:
+\[
+s(t)=\int\limits_{t_0}^t\sqrt{\left(\frac{dx}{d\tau}\right)^2+\left(\frac{dy}{d\tau}\right)^2+\left(\frac{dz}{d\tau}\right)^2}d\tau
+\]
+The derivative of $s$ with respect to $t$ is the length of the vector $d\vec{x}/dt$:
+\[
+\left(\frac{ds}{dt}\right)^2=\left(\frac{d\vec{x}}{dt},\frac{d\vec{x}}{dt}\right)
+\]
+The {\it osculation plane} in a point $P$ of a space curve is the limiting
+position of the plane through the tangent of the plane in point $P$ and a point
+$Q$ when $Q$ approaches $P$ along the space curve. The osculation plane is
+parallel with $\dot{\vec{x}}(s)$. If $\ddot{\vec{x}}\neq0$ the osculation
+plane is given by:
+\[
+\vec{y}=\vec{x}+\lambda\dot{\vec{x}}+\mu\ddot{\vec{x}}~~~\mbox{so}~~~
+\det(\vec{y}-\vec{x},\dot{\vec{x}},\ddot{\vec{x}}\,)=0
+\]
+In a bending point holds, if $\dddot{\vec{x}}\neq0$:
+\[
+\vec{y}=\vec{x}+\lambda\dot{\vec{x}}+\mu\dddot{\vec{x}}
+\]
+The {\it tangent} has unit vector $\vec{\ell}=\dot{\vec{x}}$, the
+{\it main normal} unit vector $\vec{n}=\ddot{\vec{x}}$ and the
+{\it binormal} $\vec{b}=\dot{\vec{x}}\times\ddot{\vec{x}}$. So the main normal
+lies in the osculation plane, the binormal is perpendicular to it.
+\npar
+Let $P$ be a point and $Q$ be a nearby point of a space curve $\vec{x}(s)$.
+Let $\Delta\varphi$ be the angle between the tangents in $P$ and $Q$ and let
+$\Delta\psi$ be the angle between the osculation planes (binormals) in $P$ and
+$Q$. Then the {\it curvature} $\rho$ and the {\it torsion} $\tau$ in $P$ are
+defined by:
+\[
+\rho^2=\left(\frac{d\varphi}{ds}\right)^2=\lim_{\Delta s\rightarrow0}\left(\frac{\Delta\varphi}{\Delta s}\right)^2~~~,~~~
+\tau^2=\left(\frac{d\psi}{ds}\right)^2
+\]
+and $\rho>0$. For plane curves $\rho$ is the ordinary curvature and
+$\tau=0$. The following holds:
+\[
+\rho^2=(\vec{\ell},\vec{\ell})=(\ddot{\vec{x}},\ddot{\vec{x}}\,)~~~\mbox{and}~~~
+\tau^2=(\dot{\vec{b}},\dot{\vec{b}})
+\]
+Frenet's equations express the derivatives as linear combinations of these
+vectors:
+\[
+\dot{\vec{\ell}}=\rho\vec{n}~~,~~\dot{\vec{n}}=-\rho\vec{\ell}+\tau\vec{b}~~,~~
+\dot{\vec{b}}=-\tau\vec{n}
+\]
+From this follows that $\det(\dot{\vec{x}},\ddot{\vec{x}},\dddot{\vec{x}}\,)=\rho^2\tau$.
+\npar
+Some curves and their properties are:
+\begin{center}
+\begin{tabular}{||l@{\hspace*{1cm}}l||}
+\hline
+Screw line       &$\tau/\rho=$constant\\
+Circle screw line&$\tau=$constant, $\rho=$constant\\
+Plane curves     &$\tau=0$\\
+Circles          &$\rho=$constant, $\tau=0$\\
+Lines            &$\rho=\tau=0$\\
+\hline
+\end{tabular}
+\end{center}
+
+\subsection{Surfaces in $\RR^3$}
+A surface in $\RR^3$ is the collection of end points of the vectors
+$\vec{x}=\vec{x}(u,v)$, so $x^h=x^h(u^\alpha)$. On the surface are 2 families
+of curves, one with $u=$constant and one with $v=$constant.
+\npar
+The tangent plane in a point $P$ at the surface has basis:
+\[
+\vec{c}_1=\partial_1\vec{x}~~~\mbox{and}~~~\vec{c}_2=\partial_2\vec{x}
+\]
+
+\subsection{The first fundamental tensor}
+Let $P$ be a point of the surface $\vec{x}=\vec{x}(u^\alpha)$. The following
+two curves through $P$, denoted by $u^\alpha=u^\alpha(t)$,
+$u^\alpha=v^\alpha(\tau)$, have as tangent vectors in $P$
+\[
+\frac{d\vec{x}}{dt}=\frac{du^\alpha}{dt}\partial_\alpha\vec{x}~~~,~~~
+\frac{d\vec{x}}{d\tau}=\frac{dv^\beta}{d\tau}\partial_\beta\vec{x}
+\]
+The {\it first fundamental tensor} of the surface in $P$ is the inner product
+of these tangent vectors:
+\[
+\left(\frac{d\vec{x}}{dt},\frac{d\vec{x}}{d\tau}\right)=
+(\vec{c}_\alpha,\vec{c}_\beta)\frac{du^\alpha}{dt}\frac{dv^\beta}{d\tau}
+\]
+The covariant components w.r.t.\ the basis
+$\vec{c}_\alpha=\partial_\alpha\vec{x}$ are:
+\[
+g_{\alpha\beta}=(\vec{c}_\alpha,\vec{c}_\beta)
+\]
+For the angle $\phi$ between the parameter curves in $P$: $u=t,v=$constant and
+$u=$constant, $v=\tau$ holds:
+\[
+\cos(\phi)=\frac{g_{12}}{\sqrt{g_{11}g_{22}}}
+\]
+For the arc length $s$ of $P$ along the curve $u^\alpha(t)$ holds:
+\[
+ds^2=g_{\alpha\beta}du^\alpha du^\beta
+\]
+This expression is called the {\it line element}.
+
+\subsection{The second fundamental tensor}
+The 4 derivatives of the tangent vectors
+$\partial_\alpha\partial_\beta\vec{x}=\partial_\alpha\vec{c}_\beta$ are each
+linear independent of the vectors $\vec{c}_1$, $\vec{c}_2$ and $\vec{N}$, with
+$\vec{N}$ perpendicular to $\vec{c}_1$ and $\vec{c}_2$. This is written as:
+\[
+\partial_\alpha\vec{c}_\beta=\Gamma^\gamma_{\alpha\beta}\vec{c}_\gamma+h_{\alpha\beta}\vec{N}
+\]
+This leads to:
+\[
+\Gamma^\gamma_{\alpha\beta}=(\vec{c}^{~\gamma},\partial_\alpha\vec{c}_\beta)~~~,~~~
+h_{\alpha\beta}=(\vec{N},\partial_\alpha\vec{c}_\beta)=\frac{1}{\sqrt{\det|g|}}\det(\vec{c}_1,\vec{c}_2,\partial_\alpha\vec{c}_\beta)
+\]
+
+\subsection{Geodetic curvature}
+A curve on the surface $\vec{x}(u^\alpha)$ is given by:
+$u^\alpha=u^\alpha(s)$, than $\vec{x}=\vec{x}(u^\alpha(s))$ with $s$ the
+arc length of the curve. The length of $\ddot{\vec{x}}$ is the curvature
+$\rho$ of the curve in $P$. The projection of $\ddot{\vec{x}}$ on the surface
+is a vector with components
+\[
+p^\gamma=\ddot{u}^\gamma+\Gamma^\gamma_{\alpha\beta}\dot{u}^\alpha\dot{u}^\beta
+\]
+of which the length is called the {\it geodetic curvature} of the curve in $p$.
+This remains the same if the surface is curved and the line element remains the
+same. The projection of $\ddot{\vec{x}}$ on $\vec{N}$ has length
+\[
+p=h_{\alpha\beta}\dot{u}^\alpha\dot{u}^\beta
+\]
+and is called the {\it normal curvature} of the curve in $P$. The {\it theorem
+of Meusnier} states that different curves on the surface with the same tangent
+vector in $P$ have the same normal curvature.
+\npar
+A {\it geodetic line} of a surface is a curve on the surface for which in each
+point the main normal of the curve is the same as the normal on the surface.
+So for a geodetic line is in each point $p^\gamma=0$, so
+\[
+\frac{d^2u^\gamma}{ds^2}+\Gamma^\gamma_{\alpha\beta}\frac{du^\alpha}{ds}\frac{du^\beta}{ds}=0
+\]
+The covariant derivative $\nabla/dt$ in $P$ of a vector field of a surface along
+a curve is the projection on the tangent plane in $P$ of the normal derivative
+in $P$.
+\npar
+For two vector fields $\vec{v}(t)$ and $\vec{w}(t)$ along the same curve of
+the surface follows Leibniz' rule:
+\[
+\frac{d(\vec{v},\vvec{w})}{dt}=\left(\vec{v},\frac{\nabla\vec{w}}{dt}\right)+\left(\vec{w},\frac{\nabla\vec{v}}{dt}\right)
+\]
+Along a curve holds:
+\[
+\frac{\nabla}{dt}(v^\alpha\vec{c}_\alpha)=\left(\frac{dv^\gamma}{dt}+\Gamma^\gamma_{\alpha\beta}\frac{du^\alpha}{dt}v^\beta\right)\vec{c}_\gamma
+\]
+
+\section{Riemannian geometry}
+The {\it Riemann tensor} $R$ is defined by:
+\[
+R^\mu_{\nu\alpha\beta}T^\nu=\nabla_\alpha\nabla_\beta T^\mu-\nabla_\beta\nabla_\alpha T^\mu
+\]
+This is a $1\choose 3$ tensor with $n^2(n^2-1)/12$ independent components not
+identically equal to 0. This tensor is a measure for the curvature of the
+considered space. If it is 0, the space is a flat manifold. It has the
+following symmetry properties:
+\[
+R_{\alpha\beta\mu\nu}=R_{\mu\nu\alpha\beta}=-R_{\beta\alpha\mu\nu}=-R_{\alpha\beta\nu\mu}
+\]
+The following relation holds:
+\[
+[\nabla_\alpha,\nabla_\beta]T_\nu^\mu=R_{\sigma\alpha\beta}^\mu T_\nu^\sigma+R_{\nu\alpha\beta}^\sigma T_\sigma^\mu
+\]
+The Riemann tensor depends on the Christoffel symbols through
+\[
+R^\alpha_{\beta\mu\nu}=\partial_\mu\Gamma^\alpha_{\beta\nu}-\partial_\nu\Gamma^\alpha_{\beta\mu}+\Gamma^\alpha_{\sigma\mu}\Gamma^\sigma_{\beta\nu}-\Gamma^\alpha_{\sigma\nu}\Gamma^\sigma_{\beta\mu}
+\]
+In a space and coordinate system where the Christoffel symbols are 0 this
+becomes:
+\[
+R^\alpha_{\beta\mu\nu}=\half g^{\alpha\sigma}(\partial_\beta\partial_\mu g_{\sigma\nu}-\partial_\beta\partial_\nu g_{\sigma\mu}+\partial_\sigma\partial_\nu g_{\beta\mu}-\partial_\sigma\partial_\mu g_{\beta\nu})
+\]
+The {\it Bianchi identities} are: $\nabla_\lambda R_{\alpha\beta\mu\nu}+\nabla_\nu R_{\alpha\beta\lambda\mu} +\nabla_\mu R_{\alpha\beta\nu\lambda}=0$.
+\npar
+The {\it Ricci tensor} is obtained by contracting the Riemann tensor:
+$R_{\alpha\beta}\equiv R_{\alpha\mu\beta}^\mu$, and is symmetric in its
+indices: $R_{\alpha\beta}=R_{\beta\alpha}$. The {\it Einstein tensor} $G$ is
+defined by: $G^{\alpha\beta}\equiv R^{\alpha\beta}-\half g^{\alpha\beta}$.
+It has the property that $\nabla_\beta G^{\alpha\beta}=0$. The Ricci-scalar is
+$R=g^{\alpha\beta}R_{\alpha\beta}$.
+
+
+\chapter{Numerical mathematics}
+\typeout{Numerical mathematics}
+\label{chap:num}
+\section{Errors}
+There will be an error in the solution if a problem has a number of parameters
+which are not exactly known. The dependency between errors in input data and
+errors in the solution can be expressed in the {\it condition number} $c$. If
+the problem is given by $x=\phi(a)$ the first-order approximation for an error
+$\delta a$ in $a$ is:
+\[
+\frac{\delta x}{x}=\frac{a\phi'(a)}{\phi(a)}\cdot\frac{\delta a}{a}
+\]
+The number $c(a)=|a\phi'(a)|/|\phi(a)|$. $c\ll1$ if the problem is
+well-conditioned.
+
+\section{Floating point representations}
+The floating point representation depends on 4 natural numbers:
+\begin{enumerate}
+\item The basis of the number system $\beta$,
+\item The length of the mantissa $t$,
+\item The length of the exponent $q$,
+\item The sign $s$.
+\end{enumerate}
+Than the representation of machine numbers becomes: \fbox{rd$(x)=s\cdot m\cdot\beta^e$}
+where mantissa $m$ is a number with $t$ $\beta$-based numbers and for which holds
+$1/\beta\leq|m|<1$, and $e$ is a number with $q$ $\beta$-based numbers for which
+holds $|e|\leq\beta^q-1$. The number 0 is added to this set, for example with
+$m=e=0$. The largest machine number is
+\[
+a_{\rm max}=(1-\beta^{-t})\beta^{\beta^q-1}
+\]
+and the smallest positive machine number is
+\[
+a_{\rm min}=\beta^{-\beta^q}
+\]
+The distance between two successive machine numbers in the interval
+$[\beta^{p-1},\beta^p]$ is $\beta^{p-t}$. If $x$ is a real number and the
+closest machine number is ${\rm rd}(x)$, than holds:
+\begin{eqnarray*}
+{\rm rd}(x)=x(1+\varepsilon) &~~~\mbox{with}~~~&|\varepsilon|\leq\half\beta^{1-t}\\
+x={\rm rd}(x)(1+\varepsilon')&~~~\mbox{with}~~~&|\varepsilon'|\leq\half\beta^{1-t}
+\end{eqnarray*}
+The number $\eta:=\half\beta^{1-t}$ is called the machine-accuracy, and
+\[
+\varepsilon,\varepsilon'\leq\eta\left|\frac{x-{\rm rd}(x)}{x}\right|\leq\eta
+\]
+An often used 32 bits float format is: 1 bit for $s$, 8 for the exponent
+and $23$ for de mantissa. The base here is 2.
+
+\section{Systems of equations}
+We want to solve the matrix equation $A\vec{x}=\vec{b}$ for a non-singular
+$A$, which is equivalent to finding the inverse matrix $A^{-1}$. Inverting
+a $n\times n$ matrix via Cramer's rule requires too much multiplications
+$f(n)$ with $n!\leq f(n)\leq (e-1)n!$, so other methods are preferable.
+
+\subsection{Triangular matrices}
+Consider the equation $U\vec{x}=\vec{c}$ where $U$ is a right-upper triangular,
+this is a matrix in which $U_{ij}=0$ for all $j<i$, and all $U_{ii}\neq0$. Than:
+\begin{eqnarray*}
+x_n    &=&c_n/U_{nn}\\
+x_{n-1}&=&(c_{n-1}-U_{n-1,n}x_n)/U_{n-1,n-1}\\
+\vdots & &\vdots\\
+x_1    &=&(c_1-\sum_{j=2}^nU_{1j}x_j)/U_{11}
+\end{eqnarray*}
+In code:
+\begin{verbatim}
+for (k = n; k > 0; k--)
+{
+  S = c[k];
+  for (j = k + 1; j < n; j++)
+  {
+    S -= U[k][j] * x[j];
+  }
+  x[k] = S / U[k][k];
+}
+\end{verbatim}
+This algorithm requires $\frac{1}{2}n(n+1)$ floating point calculations.
+
+\subsection{Gauss elimination}
+Consider a general set $A\vec{x}=\vec{b}$. This can be reduced by Gauss
+elimination to a triangular form by multiplying the first equation with
+$A_{i1}/A_{11}$ and than subtract it from all others; now the first column
+contains all 0's except $A_{11}$. Than the 2nd equation is subtracted in
+such a way from the others that all elements on the second row are 0 except
+$A_{22}$, etc. In code:
+\begin{verbatim}
+for (k = 1; k <= n; k++)
+{
+  for (j = k; j <= n; j++) U[k][j] = A[k][j];
+  c[k] = b[k];
+
+  for (i = k + 1; i <= n; i++)
+  {
+    L = A[i][k] / U[k][k];
+    for (j = k + 1; j <= n; j++)
+    {
+      A[i][j] -= L * U[k][j];
+    }
+    b[i] -= L * c[k];
+  }
+}
+\end{verbatim}
+This algorithm requires $\frac{1}{3}n(n^2-1)$ floating point multiplications
+and divisions for operations on the coefficient matrix and $\frac{1}{2}n(n-1)$
+multiplications for operations on the right-hand terms, whereafter the
+triangular set has to be solved with $\frac{1}{2}n(n+1)$ operations.
+
+\subsection{Pivot strategy}
+Some equations have to be interchanged if the corner elements
+$A_{11}, A^{(1)}_{22},...$ are not all $\neq0$ to allow Gauss elimination to
+work. In the following, $A^{(n)}$ is the element after the $n$th iteration.
+One method is: if $A^{(k-1)}_{kk}=0$, than search for an element $A^{(k-1)}_{pk}$
+with $p>k$ that is $\neq0$ and interchange the $p$th and the $n$th equation. This
+strategy fails only if the set is singular and has no solution at all.
+
+\section{Roots of functions}
+\subsection{Successive substitution}
+We want to solve the equation $F(x)=0$, so we want to find the root
+$\alpha$ with $F(\alpha)=0$.
+\npar
+Many solutions are essentially the following:
+\begin{enumerate}
+\item Rewrite the equation in the form $x=f(x)$ so that a solution of this
+      equation is also a solution of $F(x)=0$. Further, $f(x)$ may not vary
+      too much with respect to $x$ near $\alpha$.
+\item Assume an initial estimation $x_0$ for $\alpha$ and obtain the series
+      $x_n$ with $x_n=f(x_{n-1})$, in the hope that $\lim\limits_{n\rightarrow\infty}x_n=\alpha$.
+\end{enumerate}
+Example: choose
+\[
+f(x)=\beta-\varepsilon\frac{h(x)}{g(x)}=x-\frac{F(x)}{G(x)}
+\]
+than we can expect that the row $x_n$ with
+\begin{eqnarray*}
+x_0&=&\beta\\
+x_n&=&x_{n-1}-\varepsilon\frac{h(x_{n-1})}{g(x_{n-1})}
+\end{eqnarray*}
+converges to $\alpha$.
+
+\subsection{Local convergence}
+Let $\alpha$ be a solution of $x=f(x)$ and let $x_n=f(x_{n-1})$ for a given
+$x_0$. Let $f'(x)$ be continuous in a neighbourhood of $\alpha$. Let
+$f'(\alpha)=A$ with $|A|<1$. Than there exists a $\delta>0$ so that for each
+$x_0$ with $|x_0-\alpha|\leq\delta$ holds:
+\begin{enumerate}
+\item $\lim\limits_{n\rightarrow\infty}n_n=\alpha$,
+\item If for a particular $k$ holds: $x_k=\alpha$, than for each $n\geq k$
+      holds that $x_n=\alpha$. If $x_n\neq\alpha$ for all $n$ than holds
+\[
+\lim_{n\rightarrow\infty}\frac{\alpha-x_n}{\alpha-x_{n-1}}=A~~~,~~~
+\lim_{n\rightarrow\infty}\frac{x_n-x_{n-1}}{x_{n-1}-x_{n-2}}=A~~~,~~~
+\lim_{n\rightarrow\infty}\frac{\alpha-x_n}{x_n-x_{n-1}}=\frac{A}{1-A}
+\]
+\end{enumerate}
+The quantity $A$ is called the {\it asymptotic convergence factor}, the
+quantity $B=-{}^{10}\log|A|$ is called the {\it asymptotic convergence speed}.
+
+\subsection{Aitken extrapolation}
+We define
+\[
+A=\lim_{n\rightarrow\infty}\frac{x_n-x_{n-1}}{x_{n-1}-x_{n-2}}
+\]
+$A$ converges to $f'(a)$. Than the row
+\[
+\alpha_n=x_n+\frac{A_n}{1-A_n}(x_n-x_{n-1})
+\]
+will converge to $\alpha$.
+
+\subsection{Newton iteration}
+There are more ways to transform $F(x)=0$ into $x=f(x)$. One essential
+condition for them all is that in a neighbourhood of a root $\alpha$ holds
+that $|f'(x)|<1$, and the smaller $f'(x)$, the faster the series converges.
+A general method to construct $f(x)$ is:
+\[
+f(x)=x-\Phi(x)F(x)
+\]
+with $\Phi(x)\neq0$ in a neighbourhood of $\alpha$. If one chooses:
+\[
+\Phi(x)=\frac{1}{F'(x)}
+\]
+Than this becomes Newtons method. The iteration formula than becomes:
+\[
+x_n=x_{n-1}-\frac{F(x_{n-1})}{F'(x_{n-1})}
+\]
+Some remarks:
+\begin{itemize}
+\item This same result can also be derived with Taylor series.
+\item Local convergence is often difficult to determine.
+\item If $x_n$ is far apart from $\alpha$ the convergence can sometimes be very slow.
+\item The assumption $F'(\alpha)\neq0$ means that $\alpha$ is a simple root.
+\end{itemize}
+For $F(x)=x^k-a$ the series becomes:
+\[
+x_n=\frac{1}{k}\left((k-1)x_{n-1}+\frac{a}{x_{n-1}^{k-1}}\right)
+\]
+This is a well-known way to compute roots.
+\npar
+The following code finds the root of a function by means of Newton's method. The
+root lies within the interval {\tt [x1, x2]}. The value is adapted until the
+accuracy is better than {\tt$\pm$eps}. The function {\tt funcd} is a routine
+that returns both the function and its first derivative in point {\tt x} in the
+passed pointers.
+\begin{verbatim}
+float SolveNewton(void (*funcd)(float, float*, float*), float x1, float x2, float eps)
+{
+  int   j, max_iter = 25;
+  float df, dx, f, root;
+
+  root = 0.5 * (x1 + x2);
+  for (j = 1; j <= max_iter; j++)
+  {
+    (*funcd)(root, &f, &df);
+    dx  = f/df;
+    root = -dx;
+    if ( (x1 - root)*(root - x2) < 0.0 )
+    {
+      perror("Jumped out of brackets in SolveNewton.");
+      exit(1);
+    }
+    if ( fabs(dx) < eps ) return root; /* Convergence */
+  }
+  perror("Maximum number of iterations exceeded in SolveNewton.");
+  exit(1);
+  return 0.0;
+}
+\end{verbatim}
+
+\subsection{The secant method}
+This is, in contrast to the two methods discussed previously, a two-step
+method. If two approximations $x_n$ and $x_{n-1}$ exist for a root, than
+one can find the next approximation with
+\[
+x_{n+1}=x_n-F(x_n)\frac{x_n-x_{n-1}}{F(x_n)-F(x_{n-1})}
+\]
+If $F(x_n)$ and $F(x_{n-1})$ have a different sign one is interpolating,
+otherwise extrapolating.
+
+\section{Polynomial interpolation}
+A base for polynomials of order $n$ is given by {\it Lagrange's interpolation
+polynomials}:
+\[
+L_j(x)=\prod_{{l=0}\atop{l\neq j}}^n\frac{x-x_l}{x_j-x_l}
+\]
+The following holds:
+\begin{enumerate}
+\item Each $L_j(x)$ has order $n$,
+\item $L_j(x_i)=\delta_{ij}$ for $i,j=0,1,...,n$,
+\item Each polynomial $p(x)$ can be written uniquely as
+\[
+p(x)=\sum_{j=0}^n c_jL_j(x)~~~\mbox{with}~~~c_j=p(x_j)
+\]
+\end{enumerate}
+This is not a suitable method to calculate the value of a ploynomial in a
+given point $x=a$. To do this, the Horner algorithm is more usable: the
+value $s=\sum_k c_kx^k$ in $x=a$ can be calculated as follows:
+\begin{verbatim}
+float GetPolyValue(float c[], int n)
+{
+  int i; float s = c[n];
+  for (i = n - 1; i >= 0; i--)
+  {
+    s = s * a + c[i];
+  }
+  return s;
+}
+\end{verbatim}
+After it is finished {\tt s} has value $p(a)$.
+
+\section{Definite integrals}
+Almost all numerical methods are based on a formula of the type:
+\[
+\int\limits_a^bf(x)dx=\sum_{i=0}^nc_if(x_i)+R(f)
+\]
+with $n$, $c_i$ and $x_i$ independent of $f(x)$ and $R(f)$ the error which
+has the form $R(f)=Cf^{(q)}(\xi)$ for all common methods. Here, $\xi\in(a,b)$
+and $q\geq n+1$. Often the points $x_i$ are chosen equidistant.
+Some common formulas are:
+\begin{itemize}
+\item The trapezoid rule: $n=1$, $x_0=a$, $x_1=b$, $h=b-a$:
+\[
+\int\limits_a^bf(x)dx=\frac{h}{2}[f(x_0)+f(x_1)]-\frac{h^3}{12}f''(\xi)
+\]
+\item Simpson's rule: $n=2$, $x_0=a$, $x_1=\half(a+b)$, $x_2=b$, $h=\half(b-a)$:
+\[
+\int\limits_a^bf(x)dx=\frac{h}{3}[f(x_0)+4f(x_1)+f(x_2)]-\frac{h^5}{90}f^{(4)}(\xi)
+\]
+\item The midpoint rule: $n=0$, $x_0=\half(a+b)$, $h=b-a$:
+\[
+\int\limits_a^bf(x)dx=hf(x_0)+\frac{h^3}{24}f''(\xi)
+\]
+\end{itemize}
+The interval will usually be split up and the integration formulas be
+applied to the partial intervals if $f$ varies much within the interval.
+\npar
+A Gaussian integration formula is obtained when one wants to get both the
+coefficients $c_j$ and the points $x_j$ in an integral formula so that the
+integral formula gives exact results for polynomials of an order as high as
+possible. Two examples are:
+\begin{enumerate}
+\item Gaussian formula with 2 points:
+\[
+\int\limits_{-h}^hf(x)dx=h\left[f\left(\frac{-h}{\sqrt{3}}\right)+f\left(\frac{h}{\sqrt{3}}\right)\right]+\frac{h^5}{135}f^{(4)}(\xi)
+\]
+\item Gaussian formula with 3 points:
+\[
+\int\limits_{-h}^hf(x)dx=\frac{h}{9}\left[5f\left(-h\sqrt{\mbox{$\frac{3}{5}$}}\right)+8f(0)+5f\left(h\sqrt{\mbox{$\frac{3}{5}$}}\right)\right]+\frac{h^7}{15750}f^{(6)}(\xi)
+\]
+\end{enumerate}
+
+\section{Derivatives}
+There are several formulas for the numerical calculation of $f'(x)$:
+\begin{itemize}
+\item Forward differentiation:
+\[
+f'(x)=\frac{f(x+h)-f(x)}{h}-\half hf''(\xi)
+\]
+\item Backward differentiation:
+\[
+f'(x)=\frac{f(x)-f(x-h)}{h}+\half hf''(\xi)
+\]
+\item Central differentiation:
+\[
+f'(x)=\frac{f(x+h)-f(x-h)}{2h}-\frac{h^2}{6}f'''(\xi)
+\]
+\item The approximation is better if more function values are used:
+\[
+f'(x)=\frac{-f(x+2h)+8f(x+h)-8f(x-h)+f(x-2h)}{12h}+\frac{h^4}{30}f^{(5)}(\xi)
+\]
+\end{itemize}
+There are also formulas for higher derivatives:
+\[
+f''(x)=\frac{-f(x+2h)+16f(x+h)-30f(x)+16f(x-h)-f(x-2h)}{12h^2}+\frac{h^4}{90}f^{(6)}(\xi)
+\]
+
+\section{Differential equations}
+We start with the first order DE $y'(x)=f(x,y)$ for $x>x_0$ and initial condition
+$y(x_0)=x_0$. Suppose we find approximations $z_1,z_2,...,z_n$ for $y(x_1)$,
+$y(x_2)$,..., $y(x_n)$. Than we can derive some formulas to obtain
+$z_{n+1}$ as approximation for $y(x_{n+1})$:
+\begin{itemize}
+\item Euler (single step, explicit):
+\[
+z_{n+1}=z_n+hf(x_n,z_n)+\frac{h^2}{2}y''(\xi)
+\]
+\item Midpoint rule (two steps, explicit):
+\[
+z_{n+1}=z_{n-1}+2hf(x_n,z_n)+\frac{h^3}{3}y'''(\xi)
+\]
+\item Trapezoid rule (single step, implicit):
+\[
+z_{n+1}=z_n+\half h(f(x_n,z_n)+f(x_{n+1},z_{n+1}))-\frac{h^3}{12}y'''(\xi)
+\]
+\end{itemize}
+Runge-Kutta methods are an important class of single-step methods. They
+work so well because the solution $y(x)$ can be written as:
+\[
+y_{n+1}=y_n+hf(\xi_n,y(\xi_n))~~~\mbox{with}~~~\xi_n\in(x_n,x_{n+1})
+\]
+Because $\xi_n$ is unknown some ``measurements'' are done on the
+increment function $k=hf(x,y)$ in well chosen points near the solution.
+Than one takes for $z_{n+1}-z_n$ a weighted average of the measured values.
+One of the possible 3rd order Runge-Kutta methods is given by:
+\begin{eqnarray*}
+k_1&=&hf(x_n,z_n)\\
+k_2&=&hf(x_n+\half h,z_n+\half k_1)\\
+k_3&=&hf(x_n+\mbox{$\frac{3}{4}$}h,z_n+\mbox{$\frac{3}{4}$}k_2)\\
+z_{n+1}&=&z_n+\mbox{$\frac{1}{9}$}(2k_1+3k_2+4k_3)
+\end{eqnarray*}
+and the classical 4th order method is:
+\begin{eqnarray*}
+k_1&=&hf(x_n,z_n)\\
+k_2&=&hf(x_n+\half h,z_n+\half k_1)\\
+k_3&=&hf(x_n+\half h,z_n+\half k_2)\\
+k_4&=&hf(x_n+h,z_n+k_3)\\
+z_{n+1}&=&z_n+\mbox{$\frac{1}{6}$}(k_1+2k_2+2k_3+k_4)
+\end{eqnarray*}
+Often the accuracy is increased by adjusting the stepsize for each step with
+the estimated error. Step doubling is most often used for 4th order Runge-Kutta.
+
+\section{The fast Fourier transform}
+The Fourier transform of a function can be approximated when some discrete
+points are known. Suppose we have $N$ successive samples $h_k=h(t_k)$ with
+$t_k=k\Delta$, $k=0,1,2,...,N-1$. Than the discrete Fourier transform is
+given by:
+\[
+H_n=\sum_{k=0}^{N-1}h_k{\rm e}^{2\pi ikn/N}
+\]
+and the inverse Fourier transform by
+\[
+h_k=\frac{1}{N}\sum_{n=0}^{N-1}H_n{\rm e}^{-2\pi ikn/N}
+\]
+This operation is order $N^2$. It can be faster, order $N\cdot ^2\log(N)$,
+with the fast Fourier transform. The basic idea is that a Fourier transform
+of length $N$ can be rewritten as the sum of two discrete Fourier transforms,
+each of length $N/2$. One is formed from the even-numbered points of
+the original $N$, the other from the odd-numbered points.
+\npar
+This can be implemented as follows.
+The array {\tt data[1..2*nn]} contains on the odd positions the real and on the
+even positions the imaginary parts of the input data: {\tt data[1]}
+is the real part and {\tt data[2]} the imaginary part of $f_0$, etc. The
+next routine replaces the values in {\tt data} by their discrete Fourier
+transformed values if {\tt isign} $=1$, and by their inverse transformed values
+if {\tt isign} $=-1$. {\tt nn} must be a power of 2.
+\begin{verbatim}
+#include <math.h>
+#define SWAP(a,b) tempr=(a);(a)=(b);(b)=tempr
+
+void FourierTransform(float data[], unsigned long nn, int isign)
+{
+  unsigned long n, mmax, m, j, istep, i;
+  double        wtemp, wr, wpr, wpi, wi, theta;
+  float         tempr, tempi;
+
+  n = nn << 1;
+  j = 1;
+  for (i = 1; i < n; i += 2)
+  {
+    if ( j > i )
+    {
+      SWAP(data[j], data[i]);
+      SWAP(data[j+1], data[i+1]);
+    }
+    m = n >> 1;
+    while ( m >= 2 && j > m )
+    {
+      j -= m;
+      m >>= 1;
+    }
+    j += m;
+  }
+  mmax = 2;
+  while ( n > mmax ) /* Outermost loop, is executed log2(nn) times */
+  {
+    istep = mmax << 1;
+    theta = isign * (6.28318530717959/mmax);
+    wtemp = sin(0.5 * theta);
+    wpr   = -2.0 * wtemp * wtemp;
+    wpi   = sin(theta);
+    wr    = 1.0;
+    wi    = 0.0;
+    for (m = 1; m < mmax; m += 2)
+    {
+      for (i = m; i <= n; i += istep) /* Danielson-Lanczos equation */
+      {
+        j          = i + mmax;
+        tempr      = wr * data[j]   - wi * data[j+1];
+        tempi      = wr * data[j+1] + wi * data[j];
+        data[j]    = data[i]   - tempr;
+        data[j+1]  = data[i+1] - tempi;
+        data[i]   += tempr;
+        data[i+1] += tempi;
+      }
+      wr = (wtemp = wr) * wpr - wi * wpi + wr;
+      wi = wi * wpr + wtemp * wpi + wi;
+    }
+    mmax=istep;
+  }
+}
+\end{verbatim}
+
+\end{document}
+
