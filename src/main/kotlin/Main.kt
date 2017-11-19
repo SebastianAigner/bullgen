@@ -13,6 +13,7 @@ import java.io.File
 import java.io.StringWriter
 
 val slideGenerators = arrayOf(
+    MathSlideGenerator(),
     CorporateSlideGenerator(),
     HappyTeamSlideGenerator(),
     TitleSlideGenerator(),
