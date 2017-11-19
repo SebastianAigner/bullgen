@@ -1,11 +1,6 @@
 
-import generators.EmojiJerkSlideGenerator
+import generators.*
 
-import generators.SuggestedReadingGenerator
-
-import generators.TitleSlideGenerator
-import generators.HappyTeamSlideGenerator
-import generators.ProductGrowthSlideGenerator
 import org.json.JSONObject
 import org.thymeleaf.TemplateEngine
 import org.thymeleaf.context.Context
@@ -18,6 +13,7 @@ import java.io.File
 import java.io.StringWriter
 
 val slideGenerators = arrayOf(
+    CorporateSlideGenerator(),
     HappyTeamSlideGenerator(),
     TitleSlideGenerator(),
     EmojiJerkSlideGenerator(),
