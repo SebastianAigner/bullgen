@@ -4,7 +4,7 @@ import SlideGenerator
 import plusAssign
 
 class EmojiJerkSlideGenerator: SlideGenerator {
-    val emojis = listOf("😎", "🤡", "😏", "😡", "🤓", "🤠", "🌶", "💦")
+    val emojis = listOf("😎", "🤡", "😏", "😡", "🤓", "🤠", "🌶", "💯", "👀")
     val tableSize = 3
     override fun generate(keywords: Array<String>): HTMLString {
         val sb = StringBuilder()

@@ -20,6 +20,7 @@ val slideGenerators = arrayOf(
         GenericFillerSlideGenerator(),
         ProductGrowthSlideGenerator(),
         GermanConceptGenerator(),
+        InspirationalSlide(),
         SuggestedReadingGenerator()
 )
 
