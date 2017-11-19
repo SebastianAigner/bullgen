@@ -5,24 +5,24 @@ import org.json.JSONObject
 import org.thymeleaf.TemplateEngine
 import org.thymeleaf.context.Context
 import org.thymeleaf.templateresolver.ClassLoaderTemplateResolver
-import providers.GenericImageProvider
-import providers.InspirationalQuotesProvider
-import providers.TheValleyNameProvider
-import providers.TweetsProvider
+import providers.*
 import java.io.File
 import java.io.StringWriter
 
 val slideGenerators = arrayOf(
     ProblemStatementSlideGenerator(),
-    MathSlideGenerator(),
-    CorporateSlideGenerator(),
     HappyTeamSlideGenerator(),
     TitleSlideGenerator(),
+    CorporateSlideGenerator(),
+    TwitterSlideGenerator(),
+    JustNumbersGenerator(),
     EmojiJerkSlideGenerator(),
-    SuggestedReadingGenerator(),
-    HappyTeamSlideGenerator(),
+    MathSlideGenerator(),
+    GenericFillerSlideGenerator(),
     ProductGrowthSlideGenerator(),
-    TitleSlideGenerator()
+    GermanConceptGenerator(),
+    InspirationalSlide(),
+    SuggestedReadingGenerator()
 )
 
 fun main(args: Array<String>) {
@@ -34,22 +34,7 @@ fun main(args: Array<String>) {
     val writer = StringWriter()
     val context = Context()
 
-//    val imageProvider = FaceImageProvider("businessman")
-//    println(imageProvider.provide())
-
-//    val quoteProvider = InspirationalQuotesProvider()
-//    println(quoteProvider.provide())
-
-//    val markovNameProvider = TheValleyNameProvider()
-//    markovNameProvider.provide()
-
-//    val markovNameProvider = TheValleyNameProvider()
-//    markovNameProvider.provide()
-
-//    var tweetsProvider = TweetsProvider("trump idiot")
-//    println(tweetsProvider.provide()[0].first)
-
-    val slideContents = slideGenerators.map { it.generate(arrayOf("blockchain", "scalability", "happiness")) }
+    val slideContents = slideGenerators.map { it.generate(arrayOf(getNoun(), getNoun(), getNoun())) }
 
     val slides = slideContents.map {
         Slide(it)

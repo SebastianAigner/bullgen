@@ -1,0 +1,15 @@
+.left {
+    left:-8.33%;
+    display: inline-block;
+    width:20%;
+    z-index:-10;
+}
+
+.right {
+    left:31.25%;
+    top: 75px;
+    text-align: left;
+    display: inline-block;
+    z-index:-10;
+    width:75%;
+}

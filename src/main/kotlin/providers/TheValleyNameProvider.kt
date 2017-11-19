@@ -14,7 +14,6 @@ class TheValleyNameProvider() {
         inputStream.bufferedReader().useLines { lines -> lines.forEach { lineList.add(it)} }
 
         var generator: Generator = KatzBackoffGenerator(lineList, 2, 0.001f)
-        println(generator.generate())
-        return ""
+        return generator.generate()
     }
 }
