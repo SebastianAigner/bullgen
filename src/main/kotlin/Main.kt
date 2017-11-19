@@ -10,9 +10,9 @@ import java.io.File
 import java.io.StringWriter
 
 val slideGenerators = arrayOf(
-    TitleSlideGenerator(),
-        CorporateSlideGenerator(),
         HappyTeamSlideGenerator(),
+        TitleSlideGenerator(),
+        CorporateSlideGenerator(),
         TwitterSlideGenerator(),
         JustNumbersGenerator(),
         EmojiJerkSlideGenerator(),

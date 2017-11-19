@@ -21,7 +21,7 @@ fun provideGrowthChart(nMonths: Int, yLabel: String): HTMLString {
                 {
                     "data": [${values.joinToString(",")}],
                     "label": "$yLabel",
-                    "backgroundColor": "hsl(${(Math.random() * 270).toInt()}, 70%, 50%)"
+                    "backgroundColor": "hsla(${(Math.random() * 270).toInt()}, 50%, 30%, 0.7)"
                 }
             ]
         },
