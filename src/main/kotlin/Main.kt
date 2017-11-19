@@ -8,6 +8,7 @@ import org.thymeleaf.templateresolver.ClassLoaderTemplateResolver
 import providers.GenericImageProvider
 import providers.InspirationalQuotesProvider
 import providers.TheValleyNameProvider
+import providers.TweetsProvider
 import java.io.File
 import java.io.StringWriter
 
@@ -42,6 +43,9 @@ fun main(args: Array<String>) {
 
 //    val markovNameProvider = TheValleyNameProvider()
 //    markovNameProvider.provide()
+
+//    var tweetsProvider = TweetsProvider("trump idiot")
+//    println(tweetsProvider.provide()[0].first)
 
     val slideContents = slideGenerators.map { it.generate(arrayOf("blockchain", "scalability", "happiness")) }
 
