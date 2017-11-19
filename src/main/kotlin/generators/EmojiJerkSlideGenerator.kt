@@ -8,7 +8,7 @@ class EmojiJerkSlideGenerator: SlideGenerator {
     val tableSize = 3
     override fun generate(keywords: Array<String>): HTMLString {
         val sb = StringBuilder()
-        val technologies = techProviderMock().take(tableSize)
+        val technologies = keywords.take(3)
         val criteria = listOf("Usability", "Performance", "Sustainability", "Awareness")
         sb += "<table>"
         sb += "<tr>"

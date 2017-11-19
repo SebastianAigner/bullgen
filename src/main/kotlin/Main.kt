@@ -5,23 +5,22 @@ import org.json.JSONObject
 import org.thymeleaf.TemplateEngine
 import org.thymeleaf.context.Context
 import org.thymeleaf.templateresolver.ClassLoaderTemplateResolver
-import providers.GenericImageProvider
-import providers.InspirationalQuotesProvider
-import providers.TheValleyNameProvider
-import providers.TweetsProvider
+import providers.*
 import java.io.File
 import java.io.StringWriter
 
 val slideGenerators = arrayOf(
-    MathSlideGenerator(),
-    CorporateSlideGenerator(),
-    HappyTeamSlideGenerator(),
     TitleSlideGenerator(),
-    EmojiJerkSlideGenerator(),
-    SuggestedReadingGenerator(),
-    HappyTeamSlideGenerator(),
-    ProductGrowthSlideGenerator(),
-    TitleSlideGenerator()
+        CorporateSlideGenerator(),
+        HappyTeamSlideGenerator(),
+        TwitterSlideGenerator(),
+        JustNumbersGenerator(),
+        EmojiJerkSlideGenerator(),
+        MathSlideGenerator(),
+        GenericFillerSlideGenerator(),
+        ProductGrowthSlideGenerator(),
+        GermanConceptGenerator(),
+        SuggestedReadingGenerator()
 )
 
 fun main(args: Array<String>) {
@@ -48,7 +47,7 @@ fun main(args: Array<String>) {
 //    var tweetsProvider = TweetsProvider("trump idiot")
 //    println(tweetsProvider.provide()[0].first)
 
-    val slideContents = slideGenerators.map { it.generate(arrayOf("blockchain", "scalability", "happiness")) }
+    val slideContents = slideGenerators.map { it.generate(arrayOf(getNoun(), getNoun(), getNoun())) }
 
     val slides = slideContents.map {
         Slide(it)
