@@ -6,7 +6,7 @@ import providers.InspirationalQuotesProvider
 
 class InspirationalSlide: SlideGenerator {
     override fun generate(keywords: Array<String>): HTMLString {
-        val (quote, author) = InspirationalQuotesProvider().provide()
+        val (quote, author) = InspirationalQuotesProvider("solution").provide()
         val headline = "".choice("Those who know", "Inspiring words", "Food for thought")
         return """
             <h2>$headline</h2>
