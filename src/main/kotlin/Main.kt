@@ -33,21 +33,6 @@ fun main(args: Array<String>) {
     val writer = StringWriter()
     val context = Context()
 
-//    val imageProvider = FaceImageProvider("businessman")
-//    println(imageProvider.provide())
-
-//    val quoteProvider = InspirationalQuotesProvider()
-//    println(quoteProvider.provide())
-
-//    val markovNameProvider = TheValleyNameProvider()
-//    markovNameProvider.provide()
-
-//    val markovNameProvider = TheValleyNameProvider()
-//    markovNameProvider.provide()
-
-//    var tweetsProvider = TweetsProvider("trump idiot")
-//    println(tweetsProvider.provide()[0].first)
-
     val slideContents = slideGenerators.map { it.generate(arrayOf(getNoun(), getNoun(), getNoun())) }
 
     val slides = slideContents.map {
