@@ -7,11 +7,11 @@ import twitter4j.QueryResult
 
 
 
-class TweetsProvider {
+class TweetsProvider(val keywords: String) {
     fun provide(): List<Triple<String, String, List<String>>> {
         // The factory instance is re-useable and thread safe.
         val twitter = TwitterFactory.getSingleton()
-        val query = Query("blockchain")
+        val query = Query(keywords)
         val result = twitter.search(query)
 
         val tweets = result.tweets.map{tweet ->

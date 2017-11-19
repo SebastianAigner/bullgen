@@ -44,7 +44,7 @@ fun main(args: Array<String>) {
 //    val markovNameProvider = TheValleyNameProvider()
 //    markovNameProvider.provide()
 
-//    var tweetsProvider = TweetsProvider()
+//    var tweetsProvider = TweetsProvider("trump idiot")
 //    println(tweetsProvider.provide()[0].first)
 
     val slideContents = slideGenerators.map { it.generate(arrayOf("blockchain", "scalability", "happiness")) }
